@@ -10,8 +10,12 @@ void setup()
   gsmSerial.begin(9600);
   Serial.println("Starting TC35 and debug Communication...");
 }
- 
-void loop() {
+
+void loop() { 
+  loop_gsm();
+}
+
+void loop_gsm() {
   //If a character comes in from the cellular module...
   if(gsmSerial.available() > 0){
     gsm_char=gsmSerial.read();    //Store the char in gsm_char.
