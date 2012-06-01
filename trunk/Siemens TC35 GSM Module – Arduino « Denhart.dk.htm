@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"><head profile="http://purl.org/uF/2008/03/ http://purl.org/uF/hAtom/0.1/">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="template" content="?!?">
+
+	<title>Siemens TC35 GSM Module – Arduino «  Denhart.dk</title>
+
+	<link rel="stylesheet" type="text/css" media="screen" href="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/style.css">
+
+	
+		<link rel="pingback" href="http://denhart.dk/xmlrpc.php">
+	
+	<link rel="alternate" type="application/rss+xml" title="Denhart.dk » Feed" href="http://denhart.dk/feed/">
+<link rel="alternate" type="application/rss+xml" title="Denhart.dk » Comments Feed" href="http://denhart.dk/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Denhart.dk » Siemens TC35 GSM Module – Arduino Comments Feed" href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/feed/">
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/prototype.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/wp-scriptaculous.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/effects.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/lightbox-resize.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/jquery.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/k2_004.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/comment-reply.js"></script>
+<link rel="prev" title="Siemens TC35 GSM Module – Overview" href="http://denhart.dk/2012/01/siemens-tc35-gsm-module/">
+<link rel="canonical" href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/">
+<link rel="shortlink" href="http://denhart.dk/?p=437">
+
+	<!-- begin lightbox scripts -->
+	<script type="text/javascript">
+    //<![CDATA[
+    document.write('<link rel="stylesheet" href="http://denhart.dk/wp-content/plugins/lightbox-2/Themes/Black/lightbox.css" type="text/css" media="screen" />');
+    //]]>
+    </script><link rel="stylesheet" href="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/lightbox.css" type="text/css" media="screen">
+	<!-- end lightbox scripts -->
+<link rel="stylesheet" type="text/css" href="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/recaptcha.css">
+<link rel="stylesheet" href="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/wp-syntax.css" type="text/css" media="screen">
+
+		<link rel="archives" title="January 2012" href="http://denhart.dk/2012/01/">
+	<link rel="archives" title="December 2011" href="http://denhart.dk/2011/12/">
+	<link rel="archives" title="October 2011" href="http://denhart.dk/2011/10/">
+	<link rel="archives" title="September 2011" href="http://denhart.dk/2011/09/">
+	<link rel="archives" title="August 2011" href="http://denhart.dk/2011/08/">
+	<link rel="archives" title="May 2011" href="http://denhart.dk/2011/05/">
+	<link rel="archives" title="March 2011" href="http://denhart.dk/2011/03/">
+	<link rel="archives" title="January 2011" href="http://denhart.dk/2011/01/">
+	<link rel="archives" title="December 2010" href="http://denhart.dk/2010/12/">
+	<link rel="archives" title="November 2010" href="http://denhart.dk/2010/11/">
+	<link rel="archives" title="October 2010" href="http://denhart.dk/2010/10/">
+	<link rel="archives" title="August 2010" href="http://denhart.dk/2010/08/">
+	<link rel="archives" title="July 2010" href="http://denhart.dk/2010/07/">
+	<link rel="archives" title="May 2010" href="http://denhart.dk/2010/05/">
+	<link rel="archives" title="March 2010" href="http://denhart.dk/2010/03/">
+	<link rel="archives" title="February 2010" href="http://denhart.dk/2010/02/">
+
+<script src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/MathJax.js" type="text/javascript">
+    MathJax.Hub.Config({
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+    });
+</script><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style>
+
+<style type="text/css">.recaptchatable td img{display:block}.recaptchatable .recaptcha_image_cell center img{height:57px}.recaptchatable .recaptcha_image_cell center{height:57px}.recaptchatable .recaptcha_image_cell{background-color:white;height:57px;padding:7px!important}.recaptchatable,#recaptcha_area tr,#recaptcha_area td,#recaptcha_area th{margin:0!important;border:0!important;border-collapse:collapse!important;vertical-align:middle!important}.recaptchatable *{margin:0;padding:0;border:0;color:black;position:static;top:auto;left:auto;right:auto;bottom:auto;text-align:left!important}.recaptchatable #recaptcha_image{margin:auto;border:1px solid #dfdfdf!important}.recaptchatable a img{border:0}.recaptchatable a,.recaptchatable a:hover{outline:none;border:0!important;padding:0!important;text-decoration:none;color:blue;background:none!important;font-weight:normal}.recaptcha_input_area{position:relative!important;background:none!important}.recaptchatable label.recaptcha_input_area_text{border:1px solid #dfdfdf!important;margin:0!important;padding:0!important;position:static!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important}.recaptcha_theme_red label.recaptcha_input_area_text,.recaptcha_theme_white label.recaptcha_input_area_text{color:black!important}.recaptcha_theme_blackglass label.recaptcha_input_area_text{color:white!important}.recaptchatable #recaptcha_response_field{font-size:11pt}.recaptcha_theme_blackglass #recaptcha_response_field,.recaptcha_theme_white #recaptcha_response_field{border:1px solid gray}.recaptcha_theme_red #recaptcha_response_field{border:1px solid #cca940}.recaptcha_audio_cant_hear_link{font-size:7pt;color:black}.recaptchatable{line-height:1em;border:1px solid #dfdfdf!important}.recaptcha_error_text{color:red}
+
+.recaptcha_is_showing_audio .recaptcha_only_if_image,.recaptcha_isnot_showing_audio .recaptcha_only_if_audio,.recaptcha_had_incorrect_sol .recaptcha_only_if_no_incorrect_sol,.recaptcha_nothad_incorrect_sol .recaptcha_only_if_incorrect_sol{display:none !important}</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuTitle {background-color: #CCCCCC; margin: -1px -1px 1px -1px; text-align: center; font-style: italic; font-size: 80%; color: #444444; padding: 2px 0; overflow: hidden}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style></head>
+
+<body class="wordpress k2 y2012 m06 d01 h15 rollingarchives animations single postid-437 s-slug-siemens-tc35-gsm-module-arduino s-y2012 s-m01 s-d21 s-h18 s-category-c s-category-electronics s-category-note-to-self s-category-random s-tag-arduino s-tag-gsm s-tag-module s-tag-sample-code s-tag-siemens s-tag-tc35 s-author-denhart columns-two lang-en wpmu-1 gecko win"><div style="display: none;" id="MathJax_Message"></div>
+
+
+<div id="page">
+
+	
+	<div role="banner" id="header">
+
+		
+<div class="blog-title">	<a href="http://denhart.dk/" accesskey="1">Denhart.dk</a>
+</div>
+<p class="description">pronounced  /ˈdɛnˌhɑrt/</p>
+
+<ul role="navigation" class="menu">
+	<li class="page_item blogtab">
+		<a href="http://denhart.dk/" title="Blog">
+			Blog		</a>
+	</li>
+
+	
+	<li class="page_item page-item-2"><a href="http://denhart.dk/about/">About</a></li>
+<li class="page_item page-item-37"><a href="http://denhart.dk/stats/">Stats</a></li>
+<li class="page_item page-item-476"><a href="http://denhart.dk/math-notes/">Notes</a></li>
+
+	</ul><!-- .menu -->
+
+
+		
+	</div> <!-- #header -->
+
+	<hr>
+
+	
+<div class="content">
+
+<div id="primary-wrapper">
+	<div role="main" id="primary">
+		<div id="notices"></div>
+		<a name="startcontent" id="startcontent"></a>
+
+		<div id="current-content" class="hfeed">
+
+		
+			
+	<div id="nav-above" class="navigation">
+
+			<div class="nav-previous"><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module/" rel="prev"><span class="meta-nav">«</span> Siemens TC35 GSM Module – Overview</a></div>
+		<div class="nav-next"></div>
+	
+		<div class="clear"></div>
+	</div>
+
+ 
+
+			<div id="post-437" class="post-437 post type-post status-publish format-standard hentry category-c category-electronics category-note-to-self category-random tag-arduino tag-gsm tag-module tag-sample-code tag-siemens tag-tc35 p1 y2012 m01 d21 h18">
+				<div class="entry-head">
+					<h1 class="entry-title">
+						<a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/" rel="bookmark" title="Permanent Link to Siemens TC35 GSM Module – Arduino">Siemens TC35 GSM Module – Arduino</a>
+					</h1>
+
+					
+					<div class="entry-meta">
+						Published on <abbr class="published entry-date" title="2012-01-21T16:55:54+0200">January 21, 2012</abbr> in <span class="entry-categories"><a href="http://denhart.dk/category/c/" title="View all posts in C">C</a>, <a href="http://denhart.dk/category/electronics/" title="View all posts in Electronics">Electronics</a>, <a href="http://denhart.dk/category/note-to-self/" title="View all posts in Note to self">Note to self</a> and <a href="http://denhart.dk/category/random/" title="View all posts in Random">Random</a></span>. <span class="entry-comments"><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/#comments" class="commentslink" title="Comment on Siemens TC35 GSM Module – Arduino">9 <span>Comments</span></a></span> <span class="entry-tags"><span>Tags:</span> <a href="http://denhart.dk/tag/arduino/" rel="tag">arduino</a>, <a href="http://denhart.dk/tag/gsm/" rel="tag">GSM</a>, <a href="http://denhart.dk/tag/module/" rel="tag">Module</a>, <a href="http://denhart.dk/tag/sample-code/" rel="tag">Sample code</a>, <a href="http://denhart.dk/tag/siemens/" rel="tag">Siemens</a>, <a href="http://denhart.dk/tag/tc35/" rel="tag">TC35</a>.</span>					</div> <!-- .entry-meta -->
+
+									</div><!-- .entry-head -->
+
+				<div class="entry-content">
+										<p>So, using this module with an Arduino is quite simple, 
+because the TC35 module provides a UART interface, so its&nbsp;basically
+ just serial communication between the Arduino and GSM module.&nbsp; 
+Hooking it up to the Arduino requires 3 wires, TX, RX and common GND.</p>
+<p>The TC35 Terminal will be connected like a DCE, so the connection should be:</p>
+<p>TxD TC35T connected to TxD Arduino<br>
+RxD TC35T connected to RxD Arduino</p>
+<p>Because i’m using the Arduino Duemilanove, which only has 1 hardware 
+UART, i’m going to use the SoftwareSerial lib to create a software 
+serialport using two digitalpins. (Pin 2 = RxD and pin 3 = TxD). But if 
+you had an Arduino Mega you could just as easy use the hardware UART, 
+since it has 3 or 4.. </p>
+<p>My setup:<a href="http://i.imgur.com/YCwfZ.jpg" rel="lightbox[437]"> Arduino and TC35</a>, <a href="http://i.imgur.com/0ZZYx.jpg" rel="lightbox[437]">Arduino closeup</a>, <a href="http://i.imgur.com/9Lv5j.jpg" rel="lightbox[437]">TC35 closeup</a></p>
+<p>And now for some code, this piece of code will send an SMS, when s is sent to the Arduino:</p>
+
+<div class="wp_syntax"><div class="code"><pre class="c" style="font-family:monospace;"><span style="color: #339933;">#include &lt;SoftwareSerial.h&gt;  </span>
+<span style="color: #993333;">char</span> gsm_char<span style="color: #339933;">=</span><span style="color: #0000dd;">0</span><span style="color: #339933;">;</span>      <span style="color: #666666; font-style: italic;">//Stores character from the gsmSerial</span>
+&nbsp;
+SoftwareSerial gsmSerial<span style="color: #009900;">(</span><span style="color: #0000dd;">2</span><span style="color: #339933;">,</span><span style="color: #0000dd;">3</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//Creates a software serial port. (rx,tx)</span>
+&nbsp;
+<span style="color: #993333;">void</span> setup<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+  <span style="color: #666666; font-style: italic;">//Initialize serial ports for communication.</span>
+  Serial.<span style="color: #202020;">begin</span><span style="color: #009900;">(</span><span style="color: #0000dd;">9600</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+  gsmSerial.<span style="color: #202020;">begin</span><span style="color: #009900;">(</span><span style="color: #0000dd;">9600</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+  Serial.<span style="color: #202020;">println</span><span style="color: #009900;">(</span><span style="color: #ff0000;">"Starting TC35 and debug Communication..."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #993333;">void</span> loop<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+  <span style="color: #666666; font-style: italic;">//If a character comes in from the cellular module...</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>gsmSerial.<span style="color: #202020;">available</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">&gt;</span> <span style="color: #0000dd;">0</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>
+    gsm_char<span style="color: #339933;">=</span>gsmSerial.<span style="color: #202020;">read</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">//Store the char in gsm_char.</span>
+    Serial.<span style="color: #202020;">print</span><span style="color: #009900;">(</span>gsm_char<span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//Print it to debug serial</span>
+  <span style="color: #009900;">}</span>
+  <span style="color: #666666; font-style: italic;">//Read serial input</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>Serial.<span style="color: #202020;">available</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">&gt;</span> <span style="color: #0000dd;">0</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>
+    gsm_char<span style="color: #339933;">=</span>Serial.<span style="color: #202020;">read</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//Store char in gsm_char (Not really from the gsm, just saving some memory)</span>
+    <span style="color: #666666; font-style: italic;">//Evaluate input.</span>
+    <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>gsm_char<span style="color: #339933;">==</span><span style="color: #ff0000;">'t'</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>
+      gsmSerial.<span style="color: #202020;">print</span><span style="color: #009900;">(</span><span style="color: #ff0000;">"AT<span style="color: #000099; font-weight: bold;">\r</span>"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//Send test command</span>
+    <span style="color: #009900;">}</span> <span style="color: #b1b100;">else</span> <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>gsm_char<span style="color: #339933;">==</span><span style="color: #ff0000;">'p'</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>
+      gsmSerial.<span style="color: #202020;">print</span><span style="color: #009900;">(</span><span style="color: #ff0000;">"AT+CPIN=PINNUMBER<span style="color: #000099; font-weight: bold;">\r</span>"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//Enter pin, hardcoded</span>
+    <span style="color: #009900;">}</span> <span style="color: #b1b100;">else</span> <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>gsm_char<span style="color: #339933;">==</span><span style="color: #ff0000;">'g'</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>
+      gsmSerial.<span style="color: #202020;">print</span><span style="color: #009900;">(</span><span style="color: #ff0000;">"AT+CMGF=1<span style="color: #000099; font-weight: bold;">\r</span>"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//Set text mode.</span>
+    <span style="color: #009900;">}</span> <span style="color: #b1b100;">else</span> <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>gsm_char<span style="color: #339933;">==</span><span style="color: #ff0000;">'s'</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>
+      <span style="color: #666666; font-style: italic;">//Send sms!</span>
+      gsmSerial.<span style="color: #202020;">print</span><span style="color: #009900;">(</span><span style="color: #ff0000;">"AT+CMGS=PHONENUMBER<span style="color: #000099; font-weight: bold;">\r</span>"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//AT command to send SMS</span>
+      delay<span style="color: #009900;">(</span><span style="color: #0000dd;">100</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+      gsmSerial.<span style="color: #202020;">print</span><span style="color: #009900;">(</span><span style="color: #ff0000;">"Hello Henrik"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//Print the message</span>
+      delay<span style="color: #009900;">(</span><span style="color: #0000dd;">10</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+      gsmSerial.<span style="color: #202020;">print</span><span style="color: #009900;">(</span><span style="color: #ff0000;">"<span style="color: #660099; font-weight: bold;">\x1A</span>"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//Send it ascii SUB</span>
+    <span style="color: #009900;">}</span>
+  <span style="color: #009900;">}</span>
+<span style="color: #009900;">}</span></pre></div></div>
+
+				</div><!-- .entry-content -->
+
+				<div class="entry-foot">
+					
+					<div class="entry-meta">
+											</div><!-- .entry-meta -->
+
+									</div><!-- .entry-foot -->
+			</div><!-- #post-ID -->
+
+			<div class="comments">
+				
+		<h4><span id="comments">9</span> Responses to “Siemens TC35 GSM Module – Arduino”</h4>
+
+		<div class="metalinks">
+			<span class="commentsrsslink"><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/feed/">Feed for this Entry</a></span>
+			<span class="trackbacklink"><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/trackback/" title="Copy this URI to trackback this entry.">Trackback Address</a></span>		</div>
+
+		<hr>
+
+			<ul id="commentlist">
+		
+	<li id="comment-850">
+		<div class="comment even thread-even depth-1 c-y2012 c-m03 c-d01 c-h02">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/9ef5fecdd4aa7ee7b9bf01be24d22dce.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Kay Warner</span>
+
+				<div class="comment-meta">
+					<a href="#comment-850" title="Permanent Link to this Comment">
+						March 1, 2012 at 12:43 am					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>Outstanding tutorial Henrik, really great work. </p>
+<p>Thank you for sharing! </p>
+<p>Kay</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-850" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-976">
+		<div class="comment odd alt thread-odd thread-alt depth-1 c-y2012 c-m03 c-d20 c-h16">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/dcfba5e03aa61e7353df40dec07db8ae.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Niels</span>
+
+				<div class="comment-meta">
+					<a href="#comment-976" title="Permanent Link to this Comment">
+						March 20, 2012 at 2:08 pm					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>I’ve been working on a project where I want to send data through 
+sms via tc35-module. I’ve stuck on programming en connecting the device 
+for a while now. You helped me a lot with this manual and program.<br>
+Thank you</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-976" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-1375">
+		<div class="comment even thread-even depth-1 c-y2012 c-m04 c-d13 c-h03">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/25f58f274f55708e9d4904b55fa2cb1a.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Dina</span>
+
+				<div class="comment-meta">
+					<a href="#comment-1375" title="Permanent Link to this Comment">
+						April 13, 2012 at 1:01 am					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>Can you tell me how to connect RX and TX with Arduino UNO?<br>
+thanks</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-1375" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-1396">
+		<div class="comment odd alt thread-odd thread-alt depth-1 c-y2012 c-m04 c-d14 c-h01">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/4f01137307c3c82b314fd8b35c08748d.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Guy</span>
+
+				<div class="comment-meta">
+					<a href="#comment-1396" title="Permanent Link to this Comment">
+						April 13, 2012 at 11:13 pm					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>Hi Henrik, realy nice…an thanks for this nice tutorial. 
+unfortunatly only “Starting TC35 and debug Communication” is displayed 
+on the serial monitor and that is all <img src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/icon_sad.gif" alt=":-(" class="wp-smiley">  any idea about what can be the issue?</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-1396" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-1404">
+		<div class="comment even thread-even depth-1 c-y2012 c-m04 c-d14 c-h11">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/73c3a795499952f0028da06f78441582.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Nicolas Pr.</span>
+
+				<div class="comment-meta">
+					<a href="#comment-1404" title="Permanent Link to this Comment">
+						April 14, 2012 at 9:50 am					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>Hi ! Thanks a lot !! Your article makes our life easier <img src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/icon_smile.gif" alt=":-)" class="wp-smiley"><br>
+Would you happen to know a fast way to receive an SMS as well ?<br>
+Thanks again !!</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-1404" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-1496">
+		<div class="comment odd alt thread-odd thread-alt depth-1 c-y2012 c-m04 c-d17 c-h22">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/641d60c9ec38fa03332898de0020b4ff.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Tomy</span>
+
+				<div class="comment-meta">
+					<a href="#comment-1496" title="Permanent Link to this Comment">
+						April 17, 2012 at 8:48 pm					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>Hi, I need to call. How can I make?</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-1496" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-1609">
+		<div class="comment even thread-even depth-1 c-y2012 c-m04 c-d23 c-h17">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/43da482cc64e6ab0751ab03d556c45e0.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">glenn</span>
+
+				<div class="comment-meta">
+					<a href="#comment-1609" title="Permanent Link to this Comment">
+						April 23, 2012 at 3:38 pm					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>Hello</p>
+<p>thanks for this.  I have this working now. But for some reason when 
+the SMS arrives on the phone it seems to have a date of 1970 ?<br>
+Any ideas why this would be ? I tried sending the SMS to different phones and it seems to be the same</p>
+<p>thanks</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-1609" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-1830">
+		<div class="comment odd alt thread-odd thread-alt depth-1 c-y2012 c-m04 c-d30 c-h16">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/dcfba5e03aa61e7353df40dec07db8ae.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Niels</span>
+
+				<div class="comment-meta">
+					<a href="#comment-1830" title="Permanent Link to this Comment">
+						April 30, 2012 at 2:20 pm					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>I still have some problems with my setup. It used to work, but if
+ I connect everything and press the button on the tc-35, the LED only 
+blinks a couple of times instead of the small blinks every 3seconds. My 
+manual says :<br>
+No SIM card inserted or no PIN entered, or network search in progress, 
+or ongoing user authentication, or network login in progress.<br>
+My SIM is inserted, PIN disabled. So he can’t find the network. While inserted in a cell phone, there is no problem connecting.<br>
+The weird thing is; everything just worked the other week.<br>
+What could the problem be?</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-1830" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+
+	<li id="comment-2017">
+		<div class="comment even thread-even depth-1 c-y2012 c-m05 c-d04 c-h18">
+
+			<div class="comment-head">
+									<span class="gravatar">
+						<img alt="" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/b943de553a280134eefcb171e432c6d7.png" class="avatar avatar-32 photo" height="32" width="32">					</span>
+				
+				<span class="comment-author">Steve</span>
+
+				<div class="comment-meta">
+					<a href="#comment-2017" title="Permanent Link to this Comment">
+						May 4, 2012 at 4:17 pm					</a>
+				</div><!-- .comment-meta -->
+			</div><!-- .comment-head -->
+
+			<div class="comment-content">
+				
+				<p>Make sure your power supply can provide 2A, voltage drop during 
+registration to the network could be a problem.  Suggest 10,000uF cap.</p>
+ 
+			</div><!-- .comment-content -->
+
+			<div class="buttons">
+					
+				
+								<div id="comment-reply-2017" class="comment-reply">
+									</div>
+							</div><!-- .buttons -->
+
+
+		</div><!-- comment -->
+</li>
+		</ul>
+
+		
+	<div id="nav-comments" class="navigation">
+
+			<div class="nav-previous"><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module/" rel="prev"><span class="meta-nav">«</span> Siemens TC35 GSM Module – Overview</a></div>
+		<div class="nav-next"></div>
+	
+		<div class="clear"></div>
+	</div>
+
+
+	
+			
+	
+		<div id="respond">
+		<h4 class="reply">Leave a Reply</h4>
+
+		<div class="quoter_page_container"></div>
+		
+				<div class="cancel-comment-reply">
+			<a rel="nofollow" id="cancel-comment-reply-link" href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/#respond" style="display: none;">Cancel Reply</a>		</div>
+		
+					<form action="http://denhart.dk/wp-comments-post.php" method="post" id="commentform">
+
+						
+							<div id="comment-author-info">
+					<p>
+						<input name="author" id="author" size="22" tabindex="1" type="text">
+						<label for="author">
+							<strong>Name</strong> (required)						</label>
+					</p>
+					
+					<p>
+						<input name="email" id="email" size="22" tabindex="2" type="text">
+						<label for="email">
+							<strong>Mail</strong> (will not be published) (required)						</label>
+					</p>
+					
+					<p>
+						<input name="url" id="url" size="22" tabindex="3" type="text">
+						<label for="url">
+							<strong>Website</strong>
+						</label>
+					</p>			
+				</div><!-- comment-personaldetails -->
+			
+				<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; line=&quot;&quot; escaped=&quot;&quot;&gt; </p>-->
+		
+				<p>
+					<textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea>
+				</p>
+		
+				                <script type="text/javascript">
+                    var RecaptchaOptions = { theme : 'clean', lang : 'en' , tabindex : 5 };
+                </script><script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/challenge"></script><script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/recaptcha.js"></script><div class=" recaptcha_nothad_incorrect_sol recaptcha_isnot_showing_audio" id="recaptcha_widget_div" style=""><div id="recaptcha_area"><table style="direction: ltr;" id="recaptcha_table" class="recaptchatable recaptcha_theme_clean"> <tbody><tr height="73"> <td class="recaptcha_image_cell" width="302"><center><div style="width: 300px; height: 57px;" id="recaptcha_image"><img style="display: block;" alt="Immagine di verifica reCAPTCHA" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/image.jpeg" height="57" width="300"></div></center></td> <td style="padding: 10px 7px 7px;"> <a tabindex="6" href="javascript:Recaptcha.reload();" title="Nuova verifica" id="recaptcha_reload_btn"><img src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/refresh.png" id="recaptcha_reload" alt="Nuova verifica" height="18" width="25"></a> <a tabindex="7" href="javascript:Recaptcha.switch_type('audio');" title="Verifica audio" id="recaptcha_switch_audio_btn" class="recaptcha_only_if_image"><img src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/audio.png" id="recaptcha_switch_audio" alt="Verifica audio" height="15" width="25"></a><a tabindex="8" href="javascript:Recaptcha.switch_type('image');" title="Verifica visiva" id="recaptcha_switch_img_btn" class="recaptcha_only_if_audio"><img src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/text.png" id="recaptcha_switch_img" alt="Verifica visiva" height="15" width="25"></a> <a tabindex="9" target="_blank" href="http://www.google.com/recaptcha/help?c=03AHJ_Vuv-Tvtf30PoSCk6dNwlMwvN6NzFvv5J6-IBKBnZacoPk0vcQR6mXUXTSklbFc1nbJ1mB-FsaNEQUIQvFYZCrM9F8OUMQu7kl7xKuR8jX_IMBf8PkFgDDt86leg6icY-BJb88cvMfyfhGDdu9_Bh6ofF3wa5Kw&amp;hl=it" title="Guida" id="recaptcha_whatsthis_btn"><img alt="Guida" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/help.png" id="recaptcha_whatsthis" height="16" width="25"></a> </td> <td style="padding: 18px 7px;"> <img src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/logo.png" id="recaptcha_logo" alt="" height="36" width="71"> </td> </tr> <tr> <td style="padding-left: 7px;"> <div class="recaptcha_input_area" style="padding-top: 2px; padding-bottom: 7px;"> <span style="display: none;" id="recaptcha_challenge_field_holder"><input name="recaptcha_challenge_field" id="recaptcha_challenge_field" value="03AHJ_Vuv-Tvtf30PoSCk6dNwlMwvN6NzFvv5J6-IBKBnZacoPk0vcQR6mXUXTSklbFc1nbJ1mB-FsaNEQUIQvFYZCrM9F8OUMQu7kl7xKuR8jX_IMBf8PkFgDDt86leg6icY-BJb88cvMfyfhGDdu9_Bh6ofF3wa5Kw" type="hidden"></span><input tabindex="5" autocomplete="off" style="border: 1px solid rgb(60, 60, 60); width: 302px;" name="recaptcha_response_field" id="recaptcha_response_field" type="text"> </div> </td> <td></td> <td style="padding: 4px 7px 12px;"> <img src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/tagline.png" id="recaptcha_tagline" height="17" width="71"> </td> </tr> </tbody></table> </div></div><script>Recaptcha.widget = Recaptcha.$("recaptcha_widget_div"); Recaptcha.challenge_callback();</script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6LdqWboSAAAAAF8yCxYTf9-5ss4jUusWPRGYP8uC" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript>                        <div id="recaptcha-submit-btn-area">&nbsp;<input name="submit" id="submit" tabindex="6" value="Submit" type="submit"></div>
+                        <noscript>
+                         <style type='text/css'>#submit {display:none;}</style>
+                         <input name="submit" type="submit" id="submit-alt" tabindex="6" value="Submit Comment"/> 
+                        </noscript>		
+				<p>
+					</p><div></div>
+
+					<input name="comment_post_ID" value="437" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+
+				<p></p>
+			</form>
+
+			
+		<div class="clear"></div>
+	</div> <!-- .commentformbox -->
+
+				</div><!-- .comments -->
+
+			
+	<div id="nav-below" class="navigation">
+
+			<div class="nav-previous"><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module/" rel="prev"><span class="meta-nav">«</span> Siemens TC35 GSM Module – Overview</a></div>
+		<div class="nav-next"></div>
+	
+		<div class="clear"></div>
+	</div>
+
+ 
+
+		
+		</div><!-- #current-content -->
+
+		<div id="dynamic-content"></div>
+	</div><!-- #primary -->
+</div><!-- #primary-wrapper -->
+
+<hr>
+<div role="complementary" id="sidebar-1" class="secondary">
+<div id="search-4" class="widget widget_search"><form method="get" id="searchform" action="http://denhart.dk">
+	<div class="livesearch" id="search-form-wrap">
+		<label class="overlabel-apply" for="s" id="search-label">Type and Wait to Search</label>
+		<input id="s" name="s" accesskey="4" type="text">
+		<input class="hidden" id="searchsubmit" value="Search »" type="submit">
+
+					<span style="opacity: 0;" id="searchreset" title="Reset Search"></span>
+			<span style="opacity: 0;" id="searchload"></span>
+			</div>
+</form>
+</div>		<div id="recent-posts-4" class="widget widget_recent_entries">		<h4>Recent Posts</h4>		<ul>
+				<li><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module-arduino/" title="Siemens TC35 GSM Module – Arduino">Siemens TC35 GSM Module – Arduino</a></li>
+				<li><a href="http://denhart.dk/2012/01/siemens-tc35-gsm-module/" title="Siemens TC35 GSM Module – Overview">Siemens TC35 GSM Module – Overview</a></li>
+				<li><a href="http://denhart.dk/2011/12/spotify-notifier-in-c/" title="Spotify notifier in C">Spotify notifier in C</a></li>
+				<li><a href="http://denhart.dk/2011/12/updated-hotkeys-for-spotify-linux-preview-using-the-d-bus-interface/" title="Updated: Hotkeys for Spotify Linux Preview using the D-Bus interface">Updated: Hotkeys for Spotify Linux Preview using the D-Bus interface</a></li>
+				<li><a href="http://denhart.dk/2011/12/hotkeys-for-spotify-linux-preview-using-the-d-bus-interface/" title="Hotkeys for Spotify Linux Preview using the D-Bus interface">Hotkeys for Spotify Linux Preview using the D-Bus interface</a></li>
+				</ul>
+		</div><div id="categories-3" class="widget widget_categories"><h4>Categories</h4>		<ul>
+	<li class="cat-item cat-item-58"><a href="http://denhart.dk/category/linux/arch/" title="View all posts filed under Arch">Arch</a>
+</li>
+	<li class="cat-item cat-item-68"><a href="http://denhart.dk/category/c/" title="View all posts filed under C">C</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://denhart.dk/category/electronics/" title="Electronics ">Electronics</a>
+</li>
+	<li class="cat-item cat-item-69"><a href="http://denhart.dk/category/english/" title="View all posts filed under English">English</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://denhart.dk/category/ideas/" title="View all posts filed under Ideas">Ideas</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="http://denhart.dk/category/latex/" title="View all posts filed under LaTeX">LaTeX</a>
+</li>
+	<li class="cat-item cat-item-57"><a href="http://denhart.dk/category/linux/" title="View all posts filed under Linux">Linux</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://denhart.dk/category/mac-os-x/" title="View all posts filed under Mac OS X">Mac OS X</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://denhart.dk/category/note-to-self/" title="View all posts filed under Note to self">Note to self</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://denhart.dk/category/random/" title="All my random posts">Random</a>
+</li>
+		</ul>
+</div><div id="text-3" class="widget widget_text">			<div class="textwidget"><a href="http://freedomdefined.org/OSHW"><img title="oshwv1" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/OSHWv1-noText.htm" alt="" width="100"></a>
+<br>I support the <a href="http://freedomdefined.org/OSHW">Open Source Hardware Definition v1.0</a><p></p>
+</div>
+		</div></div> <!-- #sidebar-1 -->
+<hr>
+<div role="complementary" id="sidebar-2" class="secondary">
+	</div><!-- #sidebar-2 -->
+<div class="clear"></div>
+
+</div><!-- .content -->
+
+	
+	<div class="clear"></div>
+</div> <!-- Close Page -->
+
+<hr>
+
+
+<div role="contentinfo" id="footer">
+	Copyleft: Denhart.dk
+	 
+</div><!-- #footer -->
+
+                <script type="text/javascript">
+                var sub = document.getElementById('submit');
+                document.getElementById('recaptcha-submit-btn-area').appendChild (sub);
+                document.getElementById('submit').tabIndex = 6;
+                if ( typeof _recaptcha_wordpress_savedcomment != 'undefined') {
+                        document.getElementById('comment').value = _recaptcha_wordpress_savedcomment;
+                }
+                document.getElementById('recaptcha_table').style.direction = 'ltr';
+                </script>	<script type="text/javascript">
+	//<![CDATA[
+	
+		K2.AjaxURL = "http://denhart.dk/";
+		K2.Animations = 1;
+
+		jQuery(document).ready(function(){
+						K2.LiveSearch = new LiveSearch(
+				"Type and Wait to Search"
+			);
+			
+						K2.RollingArchives = new RollingArchives(
+				"Page %1$d of %2$d"
+			);
+
+			jQuery('body').addClass('rollingarchives');
+			
+			jQuery('#dynamic-content').ajaxSuccess(function () {
+				// Lightbox v2.03.3 - Adds new images to lightbox
+if (typeof myLightbox != 'undefined' && myLightbox instanceof Lightbox && myLightbox.updateImageList) {
+	myLightbox.updateImageList();
+}
+			});
+
+			initARIA();
+		});
+	//]]>
+	</script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/k2.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/k2_002.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/k2_003.js"></script>
+<script type="text/javascript" src="Siemens%20TC35%20GSM%20Module%20%E2%80%93%20Arduino%20%C2%AB%20Denhart.dk_files/k2_005.js"></script>
+
+
+ 
+<div style="display: none;" id="stimuli_overlay"></div><div style="display: none;" id="stimuli_lightbox"><div style="width: 250px; height: 250px;" id="stimuli_outerImageContainer"><div id="stimuli_imageContainer"><img id="stimuli_lightboxImage"><div id="stimuli_hoverNav"><a href="#" id="stimuli_prevLink"></a><a href="#" id="stimuli_nextLink"></a></div><div id="stimuli_loading"><a href="#" id="stimuli_loadingLink"></a></div></div></div><div id="stimuli_imageDataContainer"><div id="stimuli_imageData"><div id="stimuli_imageDetails"><span id="stimuli_caption"></span><span id="stimuli_numberDisplay"></span></div><div id="stimuli_bottomNav"><a href="#" id="stimuli_bottomNavClose"></a></div></div></div></div></body></html>
