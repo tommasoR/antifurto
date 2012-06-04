@@ -1,6 +1,35 @@
 #include <SoftwareSerial.h>  
+#include <Button.h>
+
+//VARS
+int ledPin = 13;
+
+/*
+create a Button object at pin 12
+connect button between pin 12 and GND
+*/
+Button button = Button(12,BUTTON_PULLUP);
+
+//PIRsense
+//the time we give the sensor to calibrate (10-60 secs according to the datasheet)
+int calibrationTime = 30; 
+
+//the time when the sensor outputs a low impulse
+long unsigned int lowIn;  
+
+//the amount of milliseconds the sensor has to be low 
+//before we assume all motion has stopped
+long unsigned int pause = 5000;
+
+boolean lockLow = true;
+boolean takeLowTime;  
+
+int pirPin_1 = 8;//the digital pin connected to the PIR sensor's output
+int pirPin_2 = 9;// 
+
+
+//GSM
 char gsm_char=0;      //Stores character from the gsmSerial
- 
 SoftwareSerial gsmSerial(2,3);  //Creates a software serial port. (rx,tx)
  
 void setup()
@@ -9,10 +38,20 @@ void setup()
   Serial.begin(9600);
   gsmSerial.begin(9600);
   Serial.println("Starting TC35 and debug Communication...");
+  
 }
 
 void loop() { 
   loop_gsm();
+  loop_interuttore();
+}
+
+void loop_interuttore(){
+if(button.isPressed()){
+	digitalWrite(ledPin,HIGH);
+  }else{
+	digitalWrite(ledPin,LOW);
+  }
 }
 
 void loop_gsm() {
