@@ -3,6 +3,9 @@
 
 //VARS
 int ledPin = 13;
+int releSirenaPin = 5;
+int releGSMPin =4;
+int allarme= 0;
 
 /*
 create a Button object at pin 12
@@ -38,13 +41,71 @@ void setup()
   Serial.begin(9600);
   gsmSerial.begin(9600);
   Serial.println("Starting TC35 and debug Communication...");
-  
+  setup_pir();
 }
+
+//SETUPPIR
+void setup_pir(){
+  pinMode(pirPin_1, INPUT);
+  pinMode(pirPin_2, INPUT);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(pirPin_1, LOW);
+  digitalWrite(pirPin_2, LOW);
+
+  //give the sensor some time to calibrate
+  Serial.print("calibrating sensor ");
+    for(int i = 0; i < calibrationTime; i++){
+      Serial.print(".");
+      delay(1000);
+      }
+    Serial.println(" done");
+    Serial.println("SENSOR ACTIVE");
+    delay(50);
+  }
 
 void loop() { 
   loop_gsm();
   loop_interuttore();
+  loop_pir();
 }
+
+//LOOP
+void loop_pir(){
+
+     if((digitalRead(pirPin_1) == HIGH)||(digitalRead(pirPin_2) == HIGH)){
+       digitalWrite(ledPin, HIGH);   //the led visualizes the sensors output pin state
+       if(lockLow){  
+         //makes sure we wait for a transition to LOW before any further output is made:
+         lockLow = false;            
+         Serial.println("---");
+         Serial.print("motion detected at ");
+         Serial.print(millis()/1000);
+         Serial.println(" sec"); 
+         delay(50);
+         }         
+         takeLowTime = true;
+       }
+
+     if((digitalRead(pirPin_1) == LOW)||(digitalRead(pirPin_2) == LOW)){       
+       digitalWrite(ledPin, LOW);  //the led visualizes the sensors output pin state
+
+       if(takeLowTime){
+        lowIn = millis();          //save the time of the transition from high to LOW
+        takeLowTime = false;       //make sure this is only done at the start of a LOW phase
+        }
+       //if the sensor is low for more than the given pause, 
+       //we assume that no more motion is going to happen
+       if(!lockLow && millis() - lowIn > pause){  
+           //makes sure this block of code is only executed again after 
+           //a new motion sequence has been detected
+           lockLow = true;                        
+           Serial.print("motion ended at ");      //output
+           Serial.print((millis() - pause)/1000);
+           Serial.println(" sec");
+           delay(50);
+           }
+       }
+  }
 
 void loop_interuttore(){
 if(button.isPressed()){
