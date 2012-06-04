@@ -42,6 +42,12 @@ void setup()
   gsmSerial.begin(9600);
   Serial.println("Starting TC35 and debug Communication...");
   setup_pir();
+  setup_rele();
+}
+//SETUP RELE
+void setup_rele(){
+  pinMode(releSirenaPin, OUTPUT);
+  pinMode(releGSMPin, OUTPUT);
 }
 
 //SETUPPIR
@@ -110,6 +116,7 @@ void loop_pir(){
 void loop_interuttore(){
 if(button.isPressed()){
 	digitalWrite(ledPin,HIGH);
+        attiva_sirena();
   }else{
 	digitalWrite(ledPin,LOW);
   }
@@ -140,4 +147,10 @@ void loop_gsm() {
       gsmSerial.print("\x1A"); //Send it ascii SUB
     }
   }
+}
+
+void attiva_sirena(){
+  digitalWrite(releSirenaPin, HIGH);   // sets the rele on
+  delay(10000);                        // waits for 10 seconds
+  digitalWrite(releSirenaPin, LOW);
 }
