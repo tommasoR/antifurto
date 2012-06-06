@@ -1,8 +1,8 @@
 #include <SoftwareSerial.h>  
-#include <Button.h>
 
 //VARS
 int ledPin = 13;
+int buttonPin =12;
 int releSirenaPin = 5;
 int releGSMPin =4;
 int allarme= 0;
@@ -11,7 +11,8 @@ int allarme= 0;
 create a Button object at pin 12
 connect button between pin 12 and GND
 */
-Button button = Button(12,BUTTON_PULLUP);
+//Button button = Button(12,BUTTON_PULLUP);
+
 
 //PIRsense
 //the time we give the sensor to calibrate (10-60 secs according to the datasheet)
@@ -43,14 +44,21 @@ void setup()
   Serial.println("Starting TC35 and debug Communication...");
   setup_pir();
   setup_rele();
+  setup_interuttori();
 }
+//SETUP BUTTON
+void setup_interuttori(){
+  pinMode(buttonPin, INPUT);           // set pin to input
+  digitalWrite(buttonPin, HIGH);       // turn on pullup resistors
+}
+
 //SETUP RELE
 void setup_rele(){
   pinMode(releSirenaPin, OUTPUT);
   pinMode(releGSMPin, OUTPUT);
 }
 
-//SETUPPIR
+//SETUP PIR
 void setup_pir(){
   pinMode(pirPin_1, INPUT);
   pinMode(pirPin_2, INPUT);
@@ -70,6 +78,7 @@ void setup_pir(){
   }
 
 void loop() { 
+  
   loop_gsm();
   loop_interuttore();
   loop_pir();
@@ -114,11 +123,19 @@ void loop_pir(){
   }
 
 void loop_interuttore(){
-if(button.isPressed()){
-	digitalWrite(ledPin,HIGH);
-        attiva_sirena();
-  }else{
-	digitalWrite(ledPin,LOW);
+  int buttonState = 0;
+  // read the state of the pushbutton value:
+  buttonState = digitalRead(buttonPin);
+
+  // check if the pushbutton is pressed.
+  // if it is, the buttonState is LOW:
+  if (buttonState == LOW) {    
+    // turn LED on:    
+    digitalWrite(ledPin, HIGH);  
+  }
+  else {
+    // turn LED off:
+    digitalWrite(ledPin, LOW);
   }
 }
 
