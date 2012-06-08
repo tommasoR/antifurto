@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link media="all" href="KnockSensor_files/widget083.css" type="text/css" rel="stylesheet">
+  <title>Arduino - KnockSensor </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel="stylesheet" href="KnockSensor_files/arduinoWide_SSO.css" type="text/css">
+  <link href="https://plus.google.com/114839908922424087554" rel="publisher">
+    <!--HeaderText--><style type="text/css"><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  
+span.anchor {
+	float: left;
+	font-size: 10px;
+	margin-left: -10px;
+	width: 10px;
+    position:relative; top:-0.1em;
+	text-align: center;
+}
+span.anchor a { text-decoration: none; }
+span.anchor a:hover { text-decoration: underline; }
+ol.toc { text-indent:-20px; list-style: none; }
+ol.toc ol.toc { text-indent:-40px; }
+div.tocfloat { font-size: smaller; margin-bottom: 10px;
+    border-top: 1px dotted #555555; border-bottom: 1px dotted #555555;
+    padding-top: 5px; padding-bottom: 5px; 
+    width: 38%; float: right; margin-left: 10px; clear: right;
+    margin-right:-13px; padding-right: 13px; padding-left: 13px;
+    background-color: #eeeeee; }
+div.toc { font-size: smaller; 
+    padding: 5px; border: 1px dotted #cccccc;
+    background: #f7f7f7;
+    margin-bottom: 10px; }
+div.toc p { background-color: #f9f6d6;
+    margin-top:-5px;   padding-top: 5px;
+    margin-left:-5px;  padding-left: 5px;
+    margin-right:-5px; padding-right: 5px;
+    padding-bottom: 3px;
+    border-bottom:  1px dotted #cccccc; }.editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style><script type="text/javascript">
+function toggle(obj) {
+    var elstyle = document.getElementById(obj).style;
+    var text    = document.getElementById(obj + "tog");
+    if (elstyle.display == 'none') {
+        elstyle.display = 'block';
+        text.innerHTML = "hide";
+    } else {
+        elstyle.display = 'none';
+        text.innerHTML = "show";
+    }
+}
+</script>  <meta name="robots" content="index,follow">
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=">
+  <script src="KnockSensor_files/sso_bar_js_2.php"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="KnockSensor_files/sso_bar.css">
+<div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe src="KnockSensor_files/sh089.htm" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0pt none; left: 0pt; top: 0pt;" title="AddThis utility frame" id="_atssh734"></iframe></div><script src="KnockSensor_files/core015.js" type="text/javascript"></script></head>
+<body>
+
+		<div id="ssotoolbar">
+		  <div id="al">
+			<nobr><div id="ssoNavBar"><a class="t1" href="http://arduino.cc/en/">Main Site</a> <a class="t0" href="http://arduino.cc/blog/">Blog</a> <a class="t0" href="http://arduino.cc/playground/">Playground</a> <a class="t0" href="http://arduino.cc/forum/">Forum</a> <a class="t0" href="http://labs.arduino.cc/">Labs</a> <a class="t0" href="http://store.arduino.cc/ww/">Store</a> </div></nobr>
+		  </div>
+		  <div id="ar">
+			<nobr>
+			  <div id="loginInfo"><div class="lo gh"><a class="t0" href="http://arduino.cc/help/">Help</a></div> <div class="lo sep">|</div> <div class="lo"><a href="https://id.arduino.cc/auth/login/?returnurl=http%3A%2F%2Fwww.arduino.cc%2F">Sign in</a> or <a href="https://id.arduino.cc/auth/register/?returnurl=http%3A%2F%2Fwww.arduino.cc%2F">Register</a></div></div>
+			</nobr>
+		  </div>
+		</div>
+		<script>ssoGenerateNavigationBar('');</script>
+<div id="page">
+<!--PageHeaderFmt-->
+<div id="pageheader">
+  <div class="title"><a href="http://arduino.cc/en">Arduino</a></div>
+  <div class="search">
+    <!-- SiteSearch Google -->
+    <form method="GET" action="http://www.google.com/search">
+    <input name="ie" value="UTF-8" type="hidden">
+    <input name="oe" value="UTF-8" type="hidden">
+    <input name="q" size="25" maxlength="255" type="text">
+    <input name="btnG" value="search" type="submit">
+    <input name="domains" value="http://www.arduino.cc/" type="hidden">
+    <input name="sitesearch" value="http://www.arduino.cc/" type="hidden">
+    </form>
+    <!-- SiteSearch Google -->
+  </div>
+</div>
+<!--/PageHeaderFmt-->
+<!--PageLeftFmt-->
+<div id="pagenav">
+  <div id="navbar">
+  	<p><a class="wikilink" href="http://arduino.cc/en/Main/Buy">Buy</a>
+<a class="wikilink" href="http://arduino.cc/en/Main/Software">Download</a>
+<a class="wikilink" href="http://arduino.cc/en/Guide/HomePage">Getting Started</a>
+<a class="wikilink" href="http://arduino.cc/en/Tutorial/HomePage">Learning</a>
+<a class="wikilink" href="http://arduino.cc/en/Reference/HomePage">Reference</a>
+<a class="wikilink" href="http://arduino.cc/en/Main/Hardware">Hardware</a>
+<a class="wikilink" href="http://arduino.cc/en/Main/FAQ">FAQ</a>
+</p>
+<p class="vspace"></p>
+
+  </div>
+</div>
+<!--/PageLeftFmt-->
+<div id="pagetext">
+<!--PageText-->
+<div id="wikitext">
+<p><strong>Learning</strong> &nbsp;  <a class="wikilink" href="http://arduino.cc/en/Tutorial/HomePage">Examples</a> | <a class="wikilink" href="http://arduino.cc/en/Tutorial/Foundations">Foundations</a> | <a class="wikilink" href="http://arduino.cc/en/Hacking/HomePage">Hacking</a> | <a class="wikilink" href="http://arduino.cc/en/Tutorial/Links">Links</a>
+</p>
+<p class="vspace"></p><h2>Knock Sensor</h2>
+<p>Here we use a Piezo element to detect sound, what will allow us to 
+use it as a knock sensor. We are taking advantage of the processors 
+capability to read analog signals through its ADC - analog to digital 
+converter. These converters read a voltage value and transform it into a
+ value encoded digitally. In the case of the Arduino boards, we 
+transform the voltage into a value in the range 0..1024. 0 represents 
+0volts, while 1024 represents 5volts at the input of one of the six 
+analog pins.
+</p>
+<p class="vspace"></p><p>A Piezo is nothing but an electronic device 
+that can both be used to play tones and to detect tones. In our example 
+we are plugging the Piezo on the analog input pin number 0, that 
+supports the functionality of reading a value between 0 and 5volts, and 
+not just a plain HIGH or LOW.
+</p>
+<p class="vspace"></p><p>The other thing to remember is that Piezos have
+ polarity, commercial devices are usually having a red and a black wires
+ indicating how to plug it to the board. We connect the black one to 
+ground and the red one to the input. We also have to connect a resistor 
+in the range of the Megaohms in parallel to the Piezo element; in the 
+example we have plugged it directly in the female connectors. Sometimes 
+it is possible to acquire Piezo elements without a plastic housing, then
+ they will just look like a metallic disc and are easier to use as input
+ sensors.
+</p>
+<p class="vspace"></p><p>The code example will capture the knock and if 
+it is stronger than a certain threshold, it will send the string 
+"Knock!" back to the computer over the serial port. In order to see this
+ text you could either use a terminal program, which will read data from
+ the serial port and show it in a window, or make your own program in 
+e.g. <a class="urllink" href="http://www.processing.org/" rel="nofollow">Processing</a>. Later in this article we propose a program that works for the software designed by Reas and Fry.
+</p>
+<p class="vspace"></p><div><a class="urllink" href="http://static.flickr.com/28/53535494_73f63436cb_o.jpg" rel="nofollow"><img src="KnockSensor_files/53535494_73f63436cb.jpg" alt="" title=""></a></div>
+<p class="vspace"></p><p><em>Example of connection of a Piezo to analog pin 0 with a resistor</em>
+</p>
+<p class="vspace"></p><pre> 
+/* Knock Sensor
+ * ----------------
+ *
+ * Program using a Piezo element as if it was a knock sensor.
+ *
+ * We have to basically listen to an analog pin and detect 
+ * if the signal goes over a certain threshold. It writes
+ * "knock" to the serial port if the Threshold is crossed,
+ * and toggles the LED on pin 13.
+ *
+ * (cleft) 2005 D. Cuartielles for K3
+ */
+
+int ledPin = 13;
+int knockSensor = 0;               
+byte val = 0;
+int statePin = LOW;
+int THRESHOLD = 100;
+
+void setup() {
+ pinMode(ledPin, OUTPUT); 
+ beginSerial(9600);
+}
+
+void loop() {
+  val = analogRead(knockSensor);     
+  if (val &gt;= THRESHOLD) {
+    statePin = !statePin;
+    digitalWrite(ledPin, statePin);
+    printString("Knock!");
+    printByte(10);
+    printByte(13);
+  }
+  delay(100);  // we have to make a delay to avoid overloading the serial port
+}
+
+</pre>
+<p class="vspace"></p><h3>Representing the Knock in Processing</h3>
+<p>If, e.g. we would like to capture this "knock" from the Arduino 
+board, we have to look into how the information is transferred from the 
+board over the serial port.
+First we see that whenever there is a knock bigger that the threshold, 
+the program is printing (thus sending) "Knock!" over the serial port. 
+Directly after sends the byte 10, what stands for EOLN or End Of <span class="wikiword">LiNe</span>,
+ and byte 13, or CR - Carriage Return.
+Those two symbols will be useful to determine when the message sent by 
+the board is over. Once that happens, the processing program will toggle
+ the background color of the screen and print out "Knock!" in the 
+command line.
+</p>
+<p class="vspace"></p><pre> 
+// Knock In 
+// by David Cuartielles &lt;http://www.0j0.org&gt;
+// based on Analog In by Josh Nimoy &lt;http://itp.jtnimoy.com&gt;
+
+// Reads a value from the serial port and makes the background 
+// color toggle when there is a knock on a piezo used as a knock
+// sensor. 
+// Running this example requires you have an Arduino board
+// as peripheral hardware sending values and adding an EOLN + CR 
+// in the end. More information can be found on the Arduino 
+// pages: http://www.arduino.cc
+
+// Created 23 November 2005
+// Updated 23 November 2005
+
+import processing.serial.*;
+
+String buff = "";
+int val = 0;
+int NEWLINE = 10;
+
+Serial port;
+
+void setup()
+{
+  size(200, 200);
+
+  // Open your serial port
+  port = new Serial(this, "COMXX", 9600);  // &lt;-- SUBSTITUTE COMXX with your serial port name!!
+}
+
+void draw()
+{
+  // Process each one of the serial port events
+  while (port.available() &gt; 0) {
+    serialEvent(port.read());
+  }
+  background(val);
+}
+
+void serialEvent(int serial) 
+{ 
+  if(serial != NEWLINE) { 
+    buff += char(serial);
+  } else {
+    buff = buff.substring(1, buff.length()-1);
+    // Capture the string and print it to the commandline
+    // we have to take from position 1 because 
+    // the Arduino sketch sends EOLN (10) and CR (13)
+    if (val == 0) {
+      val = 255;
+    } else {
+      val = 0;
+    }
+    println(buff);
+    // Clear the value of "buff"
+    buff = "";
+   }
+}
+
+</pre>
+</div>
+
+
+<!-- AddThis Button BEGIN -->
+<script type="text/javascript">var addthis_language = "en";
+</script>
+<div class="addthis_container addthis_toolbox addthis_default_style" addthis:url="http://arduino.cc/en/Tutorial/KnockSensor" addthis:title="Arduino Wiki English">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=arduinoteam" class="addthis_button_compact at300m"><span class="at16nc at300bs at15nc at15t_compact at16t_compact"><span class="at_a11y">More Sharing Services</span></span>Share</a><span class="addthis_separator">|</span><a href="#" title="Email" class="addthis_button_email at300b"><span class="at16nc at300bs at15nc at15t_email at16t_email"><span class="at_a11y">Share on email</span></span></a><a href="#" title="Save to Favorites" class="addthis_button_favorites at300b"><span class="at16nc at300bs at15nc at15t_favorites at16t_favorites"><span class="at_a11y">Share on favorites</span></span></a><a href="#" title="Print" class="addthis_button_print at300b"><span class="at16nc at300bs at15nc at15t_print at16t_print"><span class="at_a11y">Share on print</span></span></a><a href="#" title="Send to Facebook" class="addthis_button_facebook at300b"><span class="at16nc at300bs at15nc at15t_facebook at16t_facebook"><span class="at_a11y">Share on facebook</span></span></a><a href="#" title="Tweet This" class="addthis_button_twitter at300b"><span class="at16nc at300bs at15nc at15t_twitter at16t_twitter"><span class="at_a11y">Share on twitter</span></span></a><script type="text/javascript" src="KnockSensor_files/addthis_widget.js"></script><div class="atclear"></div></div>
+<!-- AddThis Button END -->
+
+</div>
+<!--PageFooterFmt-->
+<div id="pagefooter">
+©Arduino | 
+  <a href="http://arduino.cc/en/Tutorial/KnockSensor?action=edit">Edit Page</a> | <a href="http://arduino.cc/en/Tutorial/KnockSensor?action=diff">Page History</a> | <a href="http://arduino.cc/en/Tutorial/KnockSensor?action=print" target="_blank">Printable View</a> | <a href="http://arduino.cc/en/Site/AllRecentChanges">All Recent Site Changes</a>
+</div>
+<!--/PageFooterFmt-->
+</div>
+
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? 
+"https://stats.arduino.cc/piwik/" : "http://stats.arduino.cc/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="KnockSensor_files/piwik.js" type="text/javascript"></script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img 
+src="http://stats.arduino.cc/piwik/piwik.php?idsite=1" style="border:0" 
+alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+
+
+
+</body></html>
