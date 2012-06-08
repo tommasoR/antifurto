@@ -1,0 +1,477 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Arduino UNO Tutorial 7 - Piezo Beep</title>
+<meta name="keywords" content="Arduino, UNO, Tutorial, Piezo, Beep, buzzer, transducer, Arduino UNO tutorial, ">
+<meta name="description" content="Arduino UNO Tutorial 7 - Piezo Beep">
+<!-- base href="http://www.hobbytronics.co.uk/" -->
+<link href="http://www.hobbytronics.co.uk/image/data/ht_icon.png" rel="icon">
+<link rel="stylesheet" type="text/css" href="arduino-tutorial7-piezo-beep_files/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="arduino-tutorial7-piezo-beep_files/print.css" media="print">
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/black/stylesheet/ie6.css" />
+<script type="text/javascript" src="catalog/view/javascript/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+DD_belatedPNG.fix('img, #header .div3 a, #content .left, #content .right, .box .top');
+</script>
+<![endif]-->
+<script src="arduino-tutorial7-piezo-beep_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/jquery-1.js"></script>
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/common.js"></script>
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/jquery.js"></script>
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/jquery_002.js"></script>
+<link rel="stylesheet" type="text/css" href="arduino-tutorial7-piezo-beep_files/jquery.css" media="screen">
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/fancybox.js"></script>
+
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/tab.js"></script>
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/bookmark.js"></script>
+
+<style type="text/css">
+div#fancybox-inner { text-align: left; }
+div#fancybox-content { text-align: left; }
+</style>
+
+</head>
+<body>
+<div id="wrapper">
+<div id="container" style="width: 100%;">
+<div id="header0">
+<div id="header">
+  <div class="div1">
+    <div class="div2">
+            <a href="http://www.hobbytronics.co.uk/index.php?route=common/home"><img src="arduino-tutorial7-piezo-beep_files/ht_logo.png" title="HobbyTronics Ltd" alt="HobbyTronics Ltd" height="75"></a>
+          </div>
+    <div class="div3"><a href="http://www.hobbytronics.co.uk/index.php?route=product/special" style="background-image: url(&quot;catalog/view/theme/black/image/special.png&quot;);">Special Offers</a><a onclick="bookmark(document.location, 'Arduino UNO Tutorial 7 - Piezo Beep');" style="background-image: url(&quot;catalog/view/theme/black/image/bookmark.png&quot;);">Bookmark</a><a href="http://www.hobbytronics.co.uk/index.php?route=information/contact" style="background-image: url(&quot;catalog/view/theme/black/image/contact.png&quot;);">Contact</a><a href="http://www.hobbytronics.co.uk/index.php?route=information/sitemap" style="background-image: url(&quot;catalog/view/theme/black/image/sitemap.png&quot;);">Sitemap</a></div>
+    <div class="div-flags">
+		<a href="http://www.hobbytronics.co.uk/" title="English Website"><img src="arduino-tutorial7-piezo-beep_files/gb.png" height="15" border="0"></a>
+		<a href="http://fr.hobbytronics.co.uk/" title="Site en Francais"><img src="arduino-tutorial7-piezo-beep_files/fr.png" height="15" border="0"></a>
+		<a href="http://www.hobbytronics.co.uk/informacion-espanol" title="Informacion Espanol"><img src="arduino-tutorial7-piezo-beep_files/es.png" height="15" border="0"></a>
+		<a href="http://www.hobbytronics.co.uk/informazioni-italiano" title="Informazioni Italiano"><img src="arduino-tutorial7-piezo-beep_files/it.png" height="15" border="0"></a>
+		<a href="http://www.hobbytronics.co.uk/delivery" title="Europe Delivery"><img src="arduino-tutorial7-piezo-beep_files/eu.png" height="15" border="0"></a>
+	 </div>
+	 <div class="div4"><a class="selected" href="http://www.hobbytronics.co.uk/index.php?route=common/home" id="tab_home">Home</a>
+            <a href="https://www.hobbytronics.co.uk/index.php?route=account/login" id="tab_login">Log In</a>
+            <a href="https://www.hobbytronics.co.uk/index.php?route=account/account" id="tab_account">Account</a>
+		<a href="http://www.hobbytronics.co.uk/index.php?route=product/compare" id="tab_compare">Compare</a>		
+		<a href="http://www.hobbytronics.co.uk/index.php?route=checkout/cart" id="tab_cart">Basket</a>
+		<a href="https://www.hobbytronics.co.uk/index.php?route=checkout/shipping" id="tab_checkout">Checkout</a>
+	 </div>
+    <div class="div5">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center">
+			<div id="search">
+				<div class="div8">Search:&nbsp;</div>
+				<div class="div9">
+										<input value="Keywords" id="filter_keyword" onclick="this.value = '';" onkeydown="this.style.color = '#000000'" style="color: rgb(153, 153, 153);" type="text">
+					
+				</div>
+				<div class="div10">&nbsp;&nbsp;<a onclick="moduleSearch();" class="button"><span>Go</span></a> <a href="http://www.hobbytronics.co.uk/index.php?route=product/search">Advanced Search</a></div>
+			</div>
+							<div><p style="text-align: right; padding:0; margin:0 ; font-size: 12px;	color: #FFFFFF; font-weight: normal;"><b>All our prices include VAT</b></p><p style="text-align: right; font-size: 10px;	color: #FFFFFF; font-weight: normal;">we dont add VAT at the checkout&nbsp;</p></div>
+			      </div>
+    </div>
+  </div>
+  <div class="div6">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center">
+	        <div id="breadcrumb">
+                <a href="http://www.hobbytronics.co.uk/index.php?route=common/home">Home</a>
+                 &gt; <a href="http://www.hobbytronics.co.uk/arduino-tutorial7-piezo-beep">Arduino UNO Tutorial 7 - Piezo Beep</a>
+              </div>
+      <div class="div7">
+                <form action="http://www.hobbytronics.co.uk/index.php?route=common/home" method="post" enctype="multipart/form-data" id="currency_form">
+          <div class="switcher">
+                                                            <div class="selected"><a>Pound Sterling</a></div>
+                                                            <div class="option">
+                            <a onclick="$('input[name=\'currency_code\']').attr('value', 'EUR'); $('#currency_form').submit();">Euro</a>
+                            <a onclick="$('input[name=\'currency_code\']').attr('value', 'GBP'); $('#currency_form').submit();">Pound Sterling</a>
+                            <a onclick="$('input[name=\'currency_code\']').attr('value', 'USD'); $('#currency_form').submit();">US Dollar</a>
+                          </div>
+          </div>
+          <div style="display: inline;">
+            <input name="currency_code" value="" type="hidden">
+            <input name="redirect" value="http://www.hobbytronics.co.uk/arduino-tutorial7-piezo-beep?language=en" type="hidden">
+          </div>
+        </form>
+        		  
+		  
+		  
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div id="container">
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/header.js"></script>
+
+
+<div id="content">
+  <div class="top">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center">
+      <h1>Arduino UNO Tutorial 7 - Piezo Beep</h1>
+    </div>
+  </div>
+  <div class="middle"><p>
+	<strong>Arduino UNO Tutorial 7 - Piezo Beep<br>
+	</strong></p>
+<p>
+	In this easy Arduino UNO tutorial, we are going to use a simple Piezo 
+Transducer to create some beeps. Piezo Transducers are similar to 
+speakers in that an applied voltage causes the piezo crystal to move and
+ make a sound. In order to get a tone a square wave needs to be applied 
+usually in the range 20Hz to 20kHz.</p>
+<p>
+	Don't confuse piezo transducers with piezo sounders or piezo buzzers. 
+These behave in the same way as buzzers and have a built in oscillator 
+and are switched on by a d.c. signal voltage. They are therefore limited
+ to one frequency</p>
+<p>
+	We will use the PWM functionality of the Arduino to create a tone on the piezo transducer.</p>
+<p>
+	<u>Note:</u> For this tutorial we will <strong>not </strong>use the Arduino function <strong>tone()</strong> as this has a number of restrictions</p>
+<ul>
+	<li>
+		Can only be used on one pin at one time</li>
+	<li>
+		Use of the tone() function will interfere with PWM output on pins 3 and 11</li>
+</ul>
+<p>
+	The tone() function should be used if you require a different frequency and/or you are not using PWM on pins 3 and 11</p>
+<p>
+	The Arduino PWM runs at 500Hz so will produce a nice audible tone. We use the Piezo Transducer <a href="http://www.hobbytronics.co.uk/piezo-transducer-5v" title="Piezo Transducer">available here</a>.</p>
+<p>
+	<a href="http://www.hobbytronics.co.uk/piezo-transducer-5v" title="Piezo Transducer"><img alt="Piezo Transducer" src="arduino-tutorial7-piezo-beep_files/piezo_transducer.jpg" border="0"></a></p>
+<p>
+	Connect the transducer to pin 9 and 0V on the Arduino</p>
+<p>
+	In the Arduino Sketch shown below we have created a separate function <strong>beep()</strong>
+ which sends the PWM signal to the transducer, waits for a small delay, 
+then turns the transducer off, then has another small delay. Thus, it 
+beeps once. The delay (in milliseconds) is passed as a parameter. The 
+PWM pulse duration (20 in sketch below) should not be important as it is
+ the frequency that matters; set it to somewhere in the middle of the 
+PWM range.</p>
+<p>
+	The sketch below beeps 3 times at startup and then beeps continuously at a slower rate.</p>
+<pre><span style="color: rgb(126, 126, 126);">/*</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;Piezo</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;This&nbsp;example&nbsp;shows&nbsp;how&nbsp;to&nbsp;run&nbsp;a&nbsp;Piezo&nbsp;Buzzer&nbsp;on&nbsp;pin&nbsp;9</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;using&nbsp;the&nbsp;analogWrite()&nbsp;function.</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;It&nbsp;beeps&nbsp;3&nbsp;times&nbsp;fast&nbsp;at&nbsp;startup,&nbsp;waits&nbsp;a&nbsp;second&nbsp;then&nbsp;beeps&nbsp;continuously</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;at&nbsp;a&nbsp;slower&nbsp;pace</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;</span>
+<span style="color: rgb(126, 126, 126);">&nbsp;*/</span>
+
+<span style="color: rgb(204, 102, 0);">void</span> <span style="color: rgb(204, 102, 0);"><b>setup</b></span>()  { 
+&nbsp;&nbsp;<span style="color: rgb(126, 126, 126);">// declare pin 9 to be an output:</span>
+&nbsp;&nbsp;<span style="color: rgb(204, 102, 0);">pinMode</span>(9, <span style="color: rgb(0, 102, 153);">OUTPUT</span>);
+&nbsp;&nbsp;beep(50);
+&nbsp;&nbsp;beep(50);
+&nbsp;&nbsp;beep(50);
+&nbsp;&nbsp;<span style="color: rgb(204, 102, 0);">delay</span>(1000);
+}&nbsp;
+
+<span style="color: rgb(204, 102, 0);">void</span> <span style="color: rgb(204, 102, 0);"><b>loop</b></span>()  { 
+&nbsp;&nbsp;beep(200);&nbsp;
+}
+
+<span style="color: rgb(204, 102, 0);">void</span> beep(<span style="color: rgb(204, 102, 0);">unsigned</span> <span style="color: rgb(204, 102, 0);">char</span> delayms){
+&nbsp;&nbsp;<span style="color: rgb(204, 102, 0);">analogWrite</span>(9, 20);      <span style="color: rgb(126, 126, 126);">// Almost any value can be used except 0 and 255</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: rgb(126, 126, 126);">// experiment to get the best tone</span>
+&nbsp;&nbsp;<span style="color: rgb(204, 102, 0);">delay</span>(delayms);          <span style="color: rgb(126, 126, 126);">// wait for a delayms ms</span>
+&nbsp;&nbsp;<span style="color: rgb(204, 102, 0);">analogWrite</span>(9, 0);       <span style="color: rgb(126, 126, 126);">// 0 turns it off</span>
+&nbsp;&nbsp;<span style="color: rgb(204, 102, 0);">delay</span>(delayms);          <span style="color: rgb(126, 126, 126);">// wait for a delayms ms   </span>
+}&nbsp;&nbsp;
+
+</pre>
+<table border="0" width="100%">
+	<tbody>
+		<tr>
+			<td width="50%">
+				<p style="text-align: left;">
+					<a href="http://www.hobbytronics.co.uk/tutorials-code/arduino-tutorials/arduino-tutorial6-rotary-encoder" title="Arduino Tutorial 6 - Rotary Encoder">Tutorial 6 - Rotary Encoder</a></p>
+			</td>
+			<td width="50%">
+				<p style="text-align: right;">
+					<a href="http://www.hobbytronics.co.uk/tutorials-code/arduino-tutorials/arduino-tutorial8-nightlight" title="Arduino Tutorial 8 - Nightlight">Tutorial 8 - Nightlight</a></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+ 
+  </div>
+  <div class="bottom">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center"></div>
+  </div>
+</div>
+<div id="column_right">
+			
+	<div id="module_cart" class="box">
+  <div class="top"><img src="arduino-tutorial7-piezo-beep_files/basket.png" alt="">Shopping Cart</div>
+  <div id="module_cart_middle" class="middle">	
+
+        <div style="text-align: center;">0 items</div>
+      </div>
+  <div class="bottom">&nbsp;</div>
+</div>
+<script type="text/javascript" src="arduino-tutorial7-piezo-beep_files/ajax_add.js"></script>
+<div id="free_delivery_info" class="box">
+	<div class="top"><img src="arduino-tutorial7-piezo-beep_files/basket.png" alt="">DELIVERY</div>
+  <div class="middle">
+		<p>
+	<b>UK</b> - £2.40 for orders under £50.00 <br>
+	<b>Free</b> UK delivery on orders over £50.00<br>
+	<b>EU</b> Airmail from £3.95<br>
+	<a href="http://www.hobbytronics.co.uk/delivery" title="Delivery Infomation">More Details...</a></p>
+		
+	</div>
+  <div class="bottom">&nbsp;</div>
+</div>
+<script type="text/javascript"><!--
+
+function getUrlParam(name) {
+  var name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.href);
+  if (results == null)
+    return "";
+  else
+    return results[1];
+}
+
+$(document).ready(function () {
+	$('.cart_remove').live('click', function () {
+		if (!confirm('Confirm?')) {
+			return false;
+		}
+		$(this).removeClass('cart_remove').addClass('cart_remove_loading');
+		$.ajax({
+			type: 'post',
+			url: 'index.php?route=module/cart/callback',
+			dataType: 'html',
+			data: 'remove=' + this.id,
+			success: function (html) {
+				$('#module_cart .middle').html(html);
+				$('#module_cart').removeClass("highlightcart");
+				$("#module_cart_middle").css("background","#FFFFFF");
+				if (getUrlParam('route').indexOf('checkout') != -1) {
+					window.location.reload();
+				}
+			}
+		});
+	});
+});
+//--></script>
+		<div class="box">
+  <div class="top"><img src="arduino-tutorial7-piezo-beep_files/special.png" alt="">Specials</div>
+  <div class="middle">
+        <table style="width: 100%;" cellpadding="2" cellspacing="0">
+            <tbody><tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/android-electric-sheep"><img src="arduino-tutorial7-piezo-beep_files/android-electric-sheep-38x38.jpg" title="Android Electric Sheep" alt="Android Electric Sheep"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/android-electric-sheep" title="Android Electric Sheep">Android Electric Sheep</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900; text-decoration: line-through;">£66.00</span> <span style="font-size: 11px; color: #F00;">£54.00</span>
+                    <a class="button_add_small" href="https://www.hobbytronics.co.uk/index.php?route=checkout/cart&amp;product_id=558" title="Add to Cart">&nbsp;</a>
+       <a class="button_compare_small" onclick="addToCompare('558');" title="Add to Compare">&nbsp;</a>
+                    </td>
+      </tr>
+          </tbody></table>
+      </div>
+  <div class="bottom">&nbsp;</div>
+</div>
+		<div class="box">
+  <div class="top"><img src="arduino-tutorial7-piezo-beep_files/featured.png" alt="">Featured</div>
+  <div class="middle">
+        <table style="width: 100%;" cellpadding="2" cellspacing="0">
+            <tbody><tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/atmega328-arduino"><img src="arduino-tutorial7-piezo-beep_files/arduino-atmega328-38x38.jpg" title="ATmega328 with Arduino 16MHz Bootloader" alt="ATmega328 with Arduino 16MHz Bootloader"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/atmega328-arduino" title="ATmega328 with Arduino 16MHz Bootloader">ATmega328 with Arduino 16MHz Bootloader</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£4.66</span>
+                    <a class="button_add_small" href="http://www.hobbytronics.co.uk/atmega328-arduino" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('184');" title="Add to Compare">&nbsp;</a>
+                              <br>
+          <img src="arduino-tutorial7-piezo-beep_files/stars_5.png" alt="5 out of 5 Stars!">
+          </td>
+      </tr>
+            <tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/breadboard-830"><img src="arduino-tutorial7-piezo-beep_files/breadboard_830-38x38.jpg" title="830 point Breadboard" alt="830 point Breadboard"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/breadboard-830" title="830 point Breadboard">830 point Breadboard</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£4.69</span>
+                    <a class="button_add_small" href="https://www.hobbytronics.co.uk/index.php?route=checkout/cart&amp;product_id=130" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('130');" title="Add to Compare">&nbsp;</a>
+                    </td>
+      </tr>
+            <tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/sparkfun-inventors-kit"><img src="arduino-tutorial7-piezo-beep_files/sparkfun_arduino_inventors_kit-38x38.jpg" title="SparkFun Inventor's Kit for Arduino with Retail Case" alt="SparkFun Inventor's Kit for Arduino with Retail Case"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/sparkfun-inventors-kit" title="SparkFun Inventor's Kit for Arduino with Retail Case">SparkFun Inventor's Kit for Arduino with Retail Case</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£64.96</span>
+                    <a class="button_add_small" href="https://www.hobbytronics.co.uk/index.php?route=checkout/cart&amp;product_id=334" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('334');" title="Add to Compare">&nbsp;</a>
+                              <br>
+          <img src="arduino-tutorial7-piezo-beep_files/stars_5.png" alt="5 out of 5 Stars!">
+          </td>
+      </tr>
+            <tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/arduino-stackable-header-kit"><img src="arduino-tutorial7-piezo-beep_files/arduino_stackable_header_kit-38x38.jpg" title="Arduino Stackable Header Kit" alt="Arduino Stackable Header Kit"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/arduino-stackable-header-kit" title="Arduino Stackable Header Kit">Arduino Stackable Header Kit</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£1.25</span>
+                    <a class="button_add_small" href="https://www.hobbytronics.co.uk/index.php?route=checkout/cart&amp;product_id=205" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('205');" title="Add to Compare">&nbsp;</a>
+                              <br>
+          <img src="arduino-tutorial7-piezo-beep_files/stars_5.png" alt="5 out of 5 Stars!">
+          </td>
+      </tr>
+            <tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/usb-host-board"><img src="arduino-tutorial7-piezo-beep_files/usb-host-board-38x38.jpg" title="USB Host Controller Board" alt="USB Host Controller Board"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/usb-host-board" title="USB Host Controller Board">USB Host Controller Board</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£16.99</span>
+                    <a class="button_add_small" href="http://www.hobbytronics.co.uk/usb-host-board" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('587');" title="Add to Compare">&nbsp;</a>
+                              <br>
+          <img src="arduino-tutorial7-piezo-beep_files/stars_4.png" alt="4 out of 5 Stars!">
+          </td>
+      </tr>
+            <tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/ftdi-basic"><img src="arduino-tutorial7-piezo-beep_files/ftdi_basic_breakout-38x38.jpg" title="FTDI Basic Breakout - 5V" alt="FTDI Basic Breakout - 5V"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/ftdi-basic" title="FTDI Basic Breakout - 5V">FTDI Basic Breakout - 5V</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£9.95</span>
+                    <a class="button_add_small" href="https://www.hobbytronics.co.uk/index.php?route=checkout/cart&amp;product_id=330" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('330');" title="Add to Compare">&nbsp;</a>
+                    </td>
+      </tr>
+            <tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/arduino-pro-mini-16mhz-328-5v"><img src="arduino-tutorial7-piezo-beep_files/arduino_pro_mini_328_5v-38x38.jpg" title="Arduino Pro Mini 328 - 5V/16MHz" alt="Arduino Pro Mini 328 - 5V/16MHz"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/arduino-pro-mini-16mhz-328-5v" title="Arduino Pro Mini 328 - 5V/16MHz">Arduino Pro Mini 328 - 5V/16MHz</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£13.19</span>
+                    <a class="button_add_small" href="https://www.hobbytronics.co.uk/index.php?route=checkout/cart&amp;product_id=224" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('224');" title="Add to Compare">&nbsp;</a>
+                    </td>
+      </tr>
+            <tr>
+        <td style="width: 1px;" valign="top"><a href="http://www.hobbytronics.co.uk/st7565-128x64-graphics-lcd-rgb"><img src="arduino-tutorial7-piezo-beep_files/ST7565-128x64-graphics-lcd-2-38x38.jpg" title="Graphic ST7565 Positive LCD (128x64) with RGB backlight" alt="Graphic ST7565 Positive LCD (128x64) with RGB backlight"></a></td>
+        <td valign="top"><a href="http://www.hobbytronics.co.uk/st7565-128x64-graphics-lcd-rgb" title="Graphic ST7565 Positive LCD (128x64) with RGB backlight">Graphic ST7565 Positive LCD (128x64) with RGB backlight</a>
+                    <br>
+                    <span style="font-size: 11px; color: #900;">£17.95</span>
+                    <a class="button_add_small" href="https://www.hobbytronics.co.uk/index.php?route=checkout/cart&amp;product_id=592" title="Add to Cart">&nbsp;</a>
+          <a class="button_compare_small" onclick="addToCompare('592');" title="Add to Compare">&nbsp;</a>
+                    </td>
+      </tr>
+          </tbody></table>
+      </div>
+  <div class="bottom">&nbsp;</div>
+</div>
+	
+</div>
+<div id="column_left">
+    <div class="box">
+  <div class="top"><img src="arduino-tutorial7-piezo-beep_files/category.png" alt="">Categories</div>
+  <div id="category"><ul><li><a href="http://www.hobbytronics.co.uk/arduino">Arduino</a></li><li><a href="http://www.hobbytronics.co.uk/android">Android</a></li><li><a href="http://www.hobbytronics.co.uk/batteries">Batteries and Chargers</a></li><li><a href="http://www.hobbytronics.co.uk/books">Books</a></li><li><a href="http://www.hobbytronics.co.uk/components">Components</a></li><li><a href="http://www.hobbytronics.co.uk/lcd">Displays</a></li><li><a href="http://www.hobbytronics.co.uk/gps">GPS</a></li><li><a href="http://www.hobbytronics.co.uk/hardware">Hardware</a></li><li><a href="http://www.hobbytronics.co.uk/kits">Kits</a></li><li><a href="http://www.hobbytronics.co.uk/motor-control">Motor Control</a></li><li><a href="http://www.hobbytronics.co.uk/nxp-mbed">NXP Mbed</a></li><li><a href="http://www.hobbytronics.co.uk/orangutan">Orangutan</a></li><li><a href="http://www.hobbytronics.co.uk/pcb-design">PCB Design</a></li><li><a href="http://www.hobbytronics.co.uk/programmers">Programmers</a></li><li><a href="http://www.hobbytronics.co.uk/prototyping">Prototyping</a></li><li><a href="http://www.hobbytronics.co.uk/radio-control">Radio Control</a></li><li><a href="http://www.hobbytronics.co.uk/robotics">Robotics</a></li><li><a href="http://www.hobbytronics.co.uk/sensors">Sensors</a></li><li><a href="http://www.hobbytronics.co.uk/test-equipment">Tools / Test Equipment</a></li><li><a href="http://www.hobbytronics.co.uk/wireless">Wireless</a></li><li><a class="staffpicks" href="http://www.hobbytronics.co.uk/downloads">Downloads</a></li><li><a class="staffpicks" href="http://www.hobbytronics.co.uk/staff-picks">Staff Picks</a></li><li><a class="project" href="http://www.hobbytronics.co.uk/projects">Projects</a></li><li><a class="tutorial" href="http://www.hobbytronics.co.uk/tutorials-code">Tutorials</a></li></ul></div>
+  <div class="bottom_c">&nbsp;</div>
+</div>
+    <div class="box">
+  <div class="top"><img src="arduino-tutorial7-piezo-beep_files/brands.png" alt="">Brands</div>
+  <div class="middle" style="text-align: center;">
+    <select onchange="location = this.value">
+      <option value=""> --- Please Select --- </option>
+                  <option value="http://www.hobbytronics.co.uk/index.php?route=product/manufacturer&amp;manufacturer_id=0" selected="selected"></option>
+                        <option value="http://www.hobbytronics.co.uk/4dsystems">4D Systems</option>
+                        <option value="http://www.hobbytronics.co.uk/adafruit">Adafruit</option>
+                        <option value="http://www.hobbytronics.co.uk/allegro-microsystems">Allegro Microsystems</option>
+                        <option value="http://www.hobbytronics.co.uk/analog-devices">Analog Devices</option>
+                        <option value="http://www.hobbytronics.co.uk/manufacturer-arduino">Arduino</option>
+                        <option value="http://www.hobbytronics.co.uk/manufacturer-atmel">Atmel</option>
+                        <option value="http://www.hobbytronics.co.uk/ciseco">Ciseco</option>
+                        <option value="http://www.hobbytronics.co.uk/devantech">Devantech Ltd</option>
+                        <option value="http://www.hobbytronics.co.uk/digi">Digi</option>
+                        <option value="http://www.hobbytronics.co.uk/ftdi">FTDI</option>
+                        <option value="http://www.hobbytronics.co.uk/gameduino">Gameduino</option>
+                        <option value="http://www.hobbytronics.co.uk/ghi-electronics">GHI Electronics</option>
+                        <option value="http://www.hobbytronics.co.uk/globalsat">GlobalSat</option>
+                        <option value="http://www.hobbytronics.co.uk/manufacturer-hobbytronics">HobbyTronics</option>
+                        <option value="http://www.hobbytronics.co.uk/ikalogic">IKALogic</option>
+                        <option value="http://www.hobbytronics.co.uk/ir">International Rectifier</option>
+                        <option value="http://www.hobbytronics.co.uk/maxim">Maxim</option>
+                        <option value="http://www.hobbytronics.co.uk/mega">Mega</option>
+                        <option value="http://www.hobbytronics.co.uk/manufacturer-microchip">Microchip</option>
+                        <option value="http://www.hobbytronics.co.uk/nxp">NXP</option>
+                        <option value="http://www.hobbytronics.co.uk/manufacturer-parallax">Parallax</option>
+                        <option value="http://www.hobbytronics.co.uk/pololu">Pololu</option>
+                        <option value="http://www.hobbytronics.co.uk/power-hd">Power HD</option>
+                        <option value="http://www.hobbytronics.co.uk/seeed-studio">Seeed Studio</option>
+                        <option value="http://www.hobbytronics.co.uk/manufacturer-sparkfun">SparkFun</option>
+                        <option value="http://www.hobbytronics.co.uk/stmicroelectronics">ST Microelectronics</option>
+                        <option value="http://www.hobbytronics.co.uk/texas-instruments">Texas Instruments</option>
+                </select>
+  </div>
+  <div class="bottom">&nbsp;</div>
+</div>
+    <div class="box">
+  <div class="top"><img src="arduino-tutorial7-piezo-beep_files/information.png" alt="">Information</div>
+  <div id="information" class="middle">
+    <ul>
+            <li><a href="http://www.hobbytronics.co.uk/about-us">About Us</a></li>
+            <li><a href="http://www.hobbytronics.co.uk/privacy-policy">Privacy Policy</a></li>
+            <li><a href="http://www.hobbytronics.co.uk/terms-conditions">Terms &amp; Conditions</a></li>
+            <li><a href="http://www.hobbytronics.co.uk/delivery">Delivery and Payment</a></li>
+            <li><a href="http://www.hobbytronics.co.uk/index.php?route=information/contact/sales">Contact Sales</a></li>
+      <li><a href="http://www.hobbytronics.co.uk/index.php?route=information/contact/support">Contact Support</a></li>		
+      <li><a href="http://www.hobbytronics.co.uk/index.php?route=information/sitemap">Site Map</a></li>
+    </ul>
+  </div>
+  <div class="bottom">&nbsp;</div>
+</div>    
+  <div style="padding-left:15px">
+	Follow us on:<br>
+	<a href="http://www.facebook.com/pages/HobbyTronics/223420047699634" title="Follow us on Facebook" target="_new"><img src="arduino-tutorial7-piezo-beep_files/facebook.png"></a>
+	<a href="http://twitter.com/#%21hobbytronics" title="Follow us on Twitter" target="_new"><img src="arduino-tutorial7-piezo-beep_files/twitter2.png"></a>
+	<a href="http://www.youtube.com/hobbytronics101" title="Subscribe to our YouTube channel" target="_new"><img src="arduino-tutorial7-piezo-beep_files/youtube.png"></a>
+	</div>
+</div>
+<div id="footer">
+  <div class="div1"><a onclick="window.open('https://www.paypal.com/uk/mrb/pal=W9TBB5DTD6QJW');"><img src="arduino-tutorial7-piezo-beep_files/payment.png" alt=""></a>
+                    &nbsp;&nbsp;<a href="http://www.shopwiki.co.uk/store-841787" target="_blank" title="HobbyTronics is a ShopWiki.co.uk Approved Store"><img src="arduino-tutorial7-piezo-beep_files/StoreBadgeEN.png" alt="HobbyTronics is a ShopWiki.co.uk Approved Store" height="26" border="0"></a>
+	</div>
+
+
+  <!-- 
+OpenCart is open source software and you are free to remove the Powered By OpenCart if you want, but its generally accepted practise to make a small donatation.
+Please donate via PayPal to donate@opencart.com
+//-->
+
+  <div class="div2">Powered By <a href="http://www.opencart.com/">OpenCart</a><br> HobbyTronics Ltd © 2012</div>
+  <!-- 
+OpenCart is open source software and you are free to remove the Powered By OpenCart if you want, but its generally accepted practise to make a small donatation.
+Please donate via PayPal to donate@opencart.com
+//-->
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19652031-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> </div><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>
