@@ -1,0 +1,101 @@
+body.tb, div.tb  {
+	margin:0;
+	padding:0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	overflow:hidden;
+	background: #ffffff url('http://tb.altervista.org/themes/yellow_flash/tb_body.gif') repeat-x;
+	}
+
+.tb img {border:0}
+	
+.tb a, .tb a:visited {
+	text-decoration: none;
+	color: #fff
+	}
+	
+.tb a:hover {
+	color: #fee238
+	}
+	
+.tb form {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+	}
+
+.tb .tb_dx, .tb .tb_sx {
+	height: 32px;
+	overflow:hidden
+	}
+
+.tb .tb_dx {float: right}
+.tb .tb_sx {float: left}
+	
+.tb .tb_logo {
+	float:left;	
+	height: 32px;
+	width: 110px;
+	}
+
+.tb .tb_logo a {
+	display: block;
+	height: 32px;
+	width: 110px;
+	text-decoration: none;
+	background: url('http://tb.altervista.org/themes/yellow_flash/tb_logo.gif') no-repeat top left;
+	}
+	
+.tb .tb_tools {
+	float:left;
+	color: #fff;
+	height: 32px;
+	font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background: url('http://tb.altervista.org/themes/yellow_flash/tb_bg.jpg') no-repeat top left;
+	}
+	
+.tb .tb_item img {
+	display: block;
+	float: left;
+	margin-right: 2px;
+	margin-top: -1px;
+	}
+
+.tb .tb_search {
+	height:18px;
+	width:110px;
+	background: transparent url('http://tb.altervista.org/themes/yellow_flash/tb_search.png') no-repeat top left;
+	float:left;
+	margin: 8px 2px 0 5px
+	}
+	
+.tb .tb_search input {
+	background: transparent;
+	border:none;
+	font-size: 11px;
+	color: #161614;
+	padding: 2px 5px 1px 5px;
+	width:100px
+	}
+	
+.tb .tb_item {
+	float:left;
+	text-align: left;
+	margin: 0 0 0 12px;
+	line-height: 15px;
+	padding: 10px 0 7px 6px;
+	}
+
+.tb .like {
+	padding-right: 100px;
+	background: transparent url('http://tb.altervista.org/themes/yellow_flash/separator.gif') no-repeat top left;
+	}
+
+.tb a#like {
+	padding: 0 0 0 17px;
+	background-repeat: no-repeat;
+	height: 16px;
+	display: block;
+}
+	

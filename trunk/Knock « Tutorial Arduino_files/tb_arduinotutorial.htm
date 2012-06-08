@@ -1,0 +1,201 @@
+<!--?xml version="1.0" encoding="iso-8859-1"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+	<title>Altervista Heads</title>
+	<link href="tb_arduinotutorial_data/style.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript">
+// <![CDATA[
+var calls = [];
+
+function getContent() {
+	if (calls.length == 0) calls.push('http://tb.altervista.org/tb_js/tb_foobar.js?');
+
+	if (window.XMLHttpRequest) { // Mozilla, Safari, etc
+		xmlhttp=new XMLHttpRequest();
+	} else if (window.ActiveXObject) { //IE 
+		xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
+	}
+
+	// if we have created the xmlhttp object we can send the request
+	if(typeof(xmlhttp)=='object') {
+		startRequest(); // First JSON request
+	} else {
+		alert('Your browser is not remote scripting enabled.');
+	}
+}
+
+function startRequest() {
+	var req = calls.shift();
+
+	if (match = navigator.userAgent.match(/MSIE (\d+)/)) {
+		if (match[1] >= 6) req+='&'+document.documentElement.clientWidth+'x'+document.documentElement.clientHeight;
+		else req+='&'+document.body.clientWidth+'x'+document.body.clientHeight;
+	} else req+='&'+window.innerWidth+'x'+window.innerHeight;
+
+	xmlhttp.abort();
+	xmlhttp.onreadystatechange=function(){jsonhttpResults();};
+	xmlhttp.open('GET', req+'&'+(new Date()).getTime(), true);
+	xmlhttp.send(null);
+}
+
+// function to handle asynchronous call
+function jsonhttpResults() {
+	if(xmlhttp.readyState==4) { 
+		if(xmlhttp.status==200) {
+			var custom = eval('(' + xmlhttp.responseText + ')');
+			for(var i in custom) {
+				var el = document.getElementById(i);
+				if (el != undefined) {
+					if ((typeof custom[i]) == 'string' || (typeof custom[i]) == 'number') {
+						el.innerHTML = custom[i];
+					} else if (custom[i][0] == 'alt') {
+						el.setAttribute("alt", custom[i][1])
+					} else {
+						if (custom[i][1].charAt(0) == '"') {
+							eval('el.' + custom[i][0] + ' = '+ custom[i][1]);
+						} else {
+							eval('el.' + custom[i][0] + ' = "'+ custom[i][1] + '"');
+						}
+					}
+				}
+			}
+			if (calls.length) startRequest();
+		}
+	}
+}
+
+var likeflag = false;
+
+function like(o) {
+	if (!likeflag) {
+		o.style.backgroundPosition = '0 -16px';
+		calls.push('http://tb.altervista.org/fcgi/like.pl?url='+escape(document.referrer));
+		startRequest();
+		likeflag = true;
+	}
+	return false;
+}
+
+// ]]>
+</script>
+</head>
+
+<body onload="getContent()" class="tb">
+	<div class="tb_tools" style="background-position:110px top;width:100%;position:relative">
+		<div class="tb_dx" style="position:absolute;right:0">
+			
+				<div class="tb_item">
+	<a class="tb_a" target="_new" href="http://rss.altervista.org/rss/108/feed_arduinotutorial.xml">
+		<img src="tb_arduinotutorial_data/feed.png" alt="Feed" height="16" width="16">
+	</a>
+</div>
+
+			
+				<div class="tb_item" style="width:130px;padding-top:3px">
+	<img src="tb_arduinotutorial_data/rank.png" alt="Vota" title="Vota" style="margin-top: 6px;">
+	<ul style="list-style:none;margin:0;padding:2px 0 0 0;line-height:11px">
+		<li style="padding:0;font-size:10px">
+			<a target="_blank" href="http://it.altervista.org/rt_landing.php?rate_nick=arduinotutorial">VOTA IL SITO</a>
+		</li>
+		<li style="padding:0;font-size:11px">
+			<div id="role" style="display: none;">
+				<a target="_blank" href="http://it.altervista.org/rt_landing.php?rate_nick=arduinotutorial">
+					<img id="roleimage" src="tb_arduinotutorial_data/member.gif" alt="role" style="margin-top: 1px;" height="10" width="8">
+					<span id="roletext" class="rank">Member</span>
+				</a>
+			</div>
+			<div id="cat" style="display: none;">
+				<a target="_blank" href="http://it.altervista.org/rt_landing.php?rate_nick=arduinotutorial">
+					<img id="cattrendimage" src="tb_arduinotutorial_data/arw_up.gif" alt="trend" style="margin-top: 1px;" height="10" width="8">
+					<span class="rank">Categoria:</span>&nbsp;<span id="catpos">216</span>
+				</a>
+			</div>
+			<div id="hits" style="display: block;">
+				<a target="_blank" href="http://it.altervista.org/rt_landing.php?rate_nick=arduinotutorial">
+					<img id="hitstrendimage" src="tb_arduinotutorial_data/arw_dw.gif" alt="trend" style="margin-top: 1px;" height="10" width="8">
+					<span class="rank">Classifica:</span>&nbsp;<span id="hitspos">564</span>
+				</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+// <![CDATA[
+	if (calls != undefined) {
+		calls.push('http://tb.altervista.org/tb_js/108/tb_hits_arduinotutorial.js?');
+	}
+function rank_flip() {
+	document.getElementById(rank_divs[rank_status]).style.display = 'none';
+	rank_status = (rank_status+1)%rank_divs.length;
+	document.getElementById(rank_divs[rank_status]).style.display = 'block';
+	setTimeout("rank_flip()", 1000);
+}
+var rank_status = 0;
+var rank_divs = ['role', 'cat', 'hits'];
+rank_flip();
+
+
+// ]]>
+</script>
+			
+				<div class="tb_item" style="height:20px;overflow:hidden;margin-top:8px;padding:0;position:relative">
+	<img src="tb_arduinotutorial_data/set01.png" id="ten6" alt="Visite" title="Visite" class="tb_counter" style="position: relative; top: 0pt;"><img src="tb_arduinotutorial_data/set01.png" id="ten5" alt="Visite" title="Visite" class="tb_counter" style="position: relative; top: 0pt;"><img src="tb_arduinotutorial_data/set01.png" id="ten4" alt="Visite" title="Visite" class="tb_counter" style="position: relative; top: -40px;"><img src="tb_arduinotutorial_data/set01.png" id="ten3" alt="Visite" title="Visite" class="tb_counter" style="position: relative; top: -160px;"><img src="tb_arduinotutorial_data/set01.png" id="ten2" alt="Visite" title="Visite" class="tb_counter" style="position: relative; top: -100px;"><img src="tb_arduinotutorial_data/set01.png" id="ten1" alt="Visite" title="Visite" class="tb_counter" style="position: relative; top: -140px;"><img src="tb_arduinotutorial_data/set01.png" id="ten0" alt="Visite" title="Visite" class="tb_counter" style="position: relative; top: -100px;">
+	<div style="clear:both;"></div>
+</div>
+<script type="text/javascript">/* <![CDATA[ */
+if (calls != undefined) {
+	calls.push('http://tb.altervista.org/fcgi/counter.pl?arduinotutorial.altervista.org&arduinotutorial&01');
+}
+
+
+/* ]]> */</script>
+
+			
+			<div class="tb_item like"><a href="#" onclick="return like(this)" id="like" style="background-image: url(&quot;http://tb.altervista.org/icons/yellow/like.png&quot;);">Like</a></div>
+			<div style="clear:both"></div>
+		</div>
+
+		<div class="tb_logo"><a href="http://www.altervista.org/" target="_blank">&nbsp;</a></div>
+		<div class="tb_sx">
+			
+				<div class="tb_search">
+
+<!-- Google CSE Search Box Begins  -->
+<!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+<!-- The terms of service are available at http://www.google.com/coop/docs/cse/tos.html -->
+
+
+	
+	<form id="cref_iframe" action="http://tb.altervista.org/fcgi/search.pl" target="_blank">
+		<input name="relay" value="http://it.altervista.org/cse.php" type="hidden">
+		<input name="cref" value="http://tb.altervista.org/cgi-bin/cse_xml.pl/C/arduinotutorial" type="hidden">
+		<input name="cof" value="FORID:11" type="hidden">
+		<input value="arduinotutorial;http://arduinotutorial.altervista.org/category/analog-io/knock/" name="avref" type="hidden">
+<!--		<input type="hidden" name="google_ad_channel" value="4201839896" /> -->
+	
+
+
+<!--		<input type="hidden" name="client" value="pub-0820544532937748" />	-->
+		<input name="q" value="Cerca" onfocus="this.value=''" type="text">
+	</form>
+
+<!-- Google CSE Search Box Ends -->
+
+<script type="text/javascript">
+// <![CDATA[
+	var form = document.getElementById('cref_iframe');
+	if (form.avref) form.avref.value = "arduinotutorial;" + (document.referrer || '');
+// ]]>
+</script>
+</div>
+
+			
+		</div>
+		<div style="clear:both"></div>		
+	</div>
+
+	<div style="clear:both"></div>
+
+</body></html>

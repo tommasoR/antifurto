@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" lang="it-IT"><head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Knock «  Tutorial Arduino</title>
+
+<link rel="stylesheet" href="Knock%20%C2%AB%20Tutorial%20Arduino_files/style.css" type="text/css" media="screen">
+<link rel="pingback" href="http://arduinotutorial.altervista.org/xmlrpc.php">
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="Tutorial Arduino » Feed" href="http://arduinotutorial.altervista.org/feed/">
+<link rel="alternate" type="application/rss+xml" title="Tutorial Arduino » Feed dei commenti" href="http://arduinotutorial.altervista.org/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Tutorial Arduino » Knock Feed della categoria" href="http://arduinotutorial.altervista.org/category/analog-io/knock/feed/">
+<link rel="stylesheet" id="sociablecss-css" href="Knock%20%C2%AB%20Tutorial%20Arduino_files/sociable.css" type="text/css" media="all">
+<script src="Knock%20%C2%AB%20Tutorial%20Arduino_files/ga.js" async="" type="text/javascript"></script><script async="" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/cbgapi.loaded_0"></script><script gapi_processed="true" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/plusone.js" async="" type="text/javascript"></script><script type="text/javascript" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/sociable.js"></script>
+<script type="text/javascript" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/addtofavorites.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://arduinotutorial.altervista.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://arduinotutorial.altervista.org/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.3.1">
+
+	<!--Facebook Like Button OpenGraph Settings Start-->
+	<meta property="og:site_name" content="Tutorial Arduino">
+	<meta property="og:title" content="Knock">
+		<meta property="og:description" content="In questo tutorial  usiamo un componente piezoelettrico per rilevare il suono. Un componente piezoelettrico ">
+	
+	<meta property="og:url" content="http://arduinotutorial.altervista.org/knock/">
+	<meta property="fb:admins" content="">
+	<meta property="fb:app_id" content="">
+	<meta property="og:type" content="article">
+		<!--Facebook Like Button OpenGraph Settings End-->
+	<link href="Knock%20%C2%AB%20Tutorial%20Arduino_files/st_arduinotutorial.css" type="text/css" rel="stylesheet"></head>
+<body data-twttr-rendered="true" style="position: relative; padding-top: 0px; margin-top: 32px; background-position: 50% 32px; padding-left: 0px; padding-right: 0px; margin-right: 0pt; margin-left: 0pt;" class="archive category category-knock category-13"><!-- BEGIN AV_TOOLBAR -->
+<!-- <EdNoIndex> -->
+<div id="av_toolbar_regdiv" style="padding: 0pt; margin: 0pt; position: absolute; height: 32px; width: 100px; z-index: 10001; top: -32px; right: 0px;">
+<div class="av_site"><a target="_blank" href="http://it.altervista.org/crea-sito-web-gratis.php" title="Siti, blog e web hosting gratis">Crea sito</a></div>
+</div>
+<script type="text/javascript">
+// <![CDATA[
+
+AVToolbar = {
+	count: 10,
+	lw:0,
+	s:['width','marginLeft','marginRight','paddingLeft','paddingRight','borderLeftWidth','borderRightWidth'],
+	parse: function(i) { return isNaN(parseInt(i))?0:parseInt(i) },
+	msie: 0,
+
+	resize: function() {
+		var w=0,s;
+		if(this.count==0)this.count=3;
+		if (this.msie) {
+			if (this.msie<6||(this.msie>=6&&document.compatMode!='CSS1Compat')) {
+				this.iframe.style.width = document.body.clientWidth+'px';
+				this.crea.style.left=(document.body.clientWidth-101)+'px';
+				if(--this.count>0)setTimeout('AVToolbar.resize()',250);
+				return
+			}
+			else if (this.msie==6) w = document.documentElement.clientWidth-1;
+			else w = document.documentElement.clientWidth;
+		} else {
+			for(s in this.s)w+=this.style(this.b,this.s[s]);
+		}
+		if(this.lw!=w) {
+			this.iframe.style.left=(-this.style(this.b,'borderLeftWidth')-this.style(this.b,'marginLeft'))+'px';
+			this.crea.style.right=(-this.style(this.b,'borderRightWidth')-this.style(this.b,'marginRight'))+'px';
+			this.iframe.style.width=w+'px';
+			this.lw=w;
+		}
+		if(--this.count>0)setTimeout('AVToolbar.resize()',250);
+	},
+
+	style: function(el,pr,m) { // Passare le proprieta` CSS col nome javascript-like (es. marginLeft)
+		var v;
+		if(!el)return 0;
+		if (document.defaultView&&document.defaultView.getComputedStyle)v=document.defaultView.getComputedStyle(el,null)[pr];
+		else if(el.currentStyle)v=el.currentStyle[pr];
+		else v=el.style[pr];
+		return(m?v:this.parse(v));
+	},
+
+	init: function() {
+		this.crea=document.getElementById('av_toolbar_regdiv');
+		if((window.parent!=window&&typeof(av_toolbar_force)=='undefined'&&window.name!='XYZZY2')||typeof(av_toolbar_off)!='undefined'){this.crea.style.display='none';return}
+		var b,c=0,i,my,u,p;
+		this.b=document.getElementsByTagName('body')[0];
+		if (i=navigator.userAgent.match(/MSIE (\d+)/))this.msie=i[1];
+		if (this.msie&&document.compatMode!='CSS1Compat') {
+			document.write('<'+'div style="border:0;padding:0;margin:0;visibility:hidden;height:32px"><'+'/div>');
+			this.crea.style.top=my=0;
+		} else {
+			this.b.style.position='relative';
+			this.b.style.paddingTop=(this.style(this.b,'marginTop')+this.style(this.b,'paddingTop'))+'px';
+			this.b.style.marginTop='32px';
+			var bpym, bpyv, bpy;
+			if (bpy=this.style(this.b,'backgroundPositionY',true)) {
+				if(bpy&&(bpyv=bpy.match(/^(\d+)(px|%)$/))&&(bpyv[1]==0))this.b.style.backgroundPositionY=(parseInt(bpyv[1])+32)+'px';
+			} else if((bpy=this.style(this.b,'backgroundPosition',true))&&(bpy!='none')) {
+				bpy=this.style(this.b,'backgroundPosition',true);
+				if(bpy&&(bpym=bpy.match(/^([\w%]+) ([\w%]+)$/))&&(bpyv=bpym[2].match(/^(\d+)(px|%)$/))&&(bpyv[1]==0))this.b.style.backgroundPosition=bpym[1]+' '+(parseInt(bpyv[1])+32)+'px';
+			} else this.b.style.backgroundPosition='0 32px';
+			this.b.style.paddingLeft=(this.style(this.b,'marginLeft')+this.style(this.b,'paddingLeft'))+'px';
+			this.b.style.paddingRight=(this.style(this.b,'marginRight')+this.style(this.b,'paddingRight'))+'px';
+			this.b.style.marginLeft=this.b.style.marginRight=0;
+			if (navigator.userAgent.search(/Opera/)>-1&&document.compatMode!='CSS1Compat')my=this.crea.style.top='-32px';
+			else my=this.crea.style.top=(-this.style(this.b,'borderTopWidth')-32)+'px';
+		}
+		if (u=document.location.host.match(/([a-zA-Z0-9]+)\.altervista\.org$/)){
+			u=u[1];
+			for(i=0;i<u.length;i++)c+=u.charCodeAt(i);
+			p='tb_html/'+(c%255)+'/tb_'+u;
+			c='tb_css/'+(c%255)+'/st_'+u;
+		} else {
+			u=(document.location.host.match(/[a-zA-Z0-9_-]+\.[a-zA-Z]{2,3}$/))[0];
+			for(i=0;i<u.length;i++)c+=u.charCodeAt(i);
+			p='tb_dom_html/'+(c%255)+'/'+u;
+			c='tb_dom_css/'+(c%255)+'/'+u;
+		}
+		document.write('<'+'iframe id="av_toolbar_iframe" src="http://tb.altervista.org/'+p+'.html" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="height:32px;border:0;position:absolute;left:0;top:'+my+';z-index:10000"><'+'/iframe>');
+		this.iframe=document.getElementById('av_toolbar_iframe');
+		this.resize();
+		if (!window.onresize)window.onresize=function(){AVToolbar.resize()};
+
+		var css=document.createElement("link");
+		css.setAttribute("rel", "stylesheet");
+		css.setAttribute("type", "text/css");
+		css.setAttribute("href", "http://tb.altervista.org/"+c+".css");
+		document.getElementsByTagName("head")[0].appendChild(css);
+	}
+};
+
+AVToolbar.init();
+
+// ]]>
+</script><iframe id="av_toolbar_iframe" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/tb_arduinotutorial.htm" marginwidth="0" marginheight="0" style="height: 32px; border: 0pt none; position: absolute; left: 0px; top: -32px; z-index: 10000; width: 1255px;" frameborder="0" scrolling="no"></iframe>
+<!-- </EdNoIndex> -->
+<!-- END AV_TOOLBAR -->
+
+
+
+
+<div id="header">
+	<div id="headerimg">
+
+<div id="headtext">
+		<h1><a href="http://arduinotutorial.altervista.org/">Tutorial Arduino</a></h1>
+		<div class="description">Impariamo a programmare Arduino</div>
+</div>
+		</div>
+</div>
+	<div id="wrap">
+	<div id="pagetop" class="menulist"><ul>
+ <li><a href="http://arduinotutorial.altervista.org/">Home</a></li>
+ <li class="page_item page-item-2"><a href="http://arduinotutorial.altervista.org/info/">Informazioni</a></li><li class="page_item page-item-60"><a href="http://arduinotutorial.altervista.org/mappa-del-blog/">Mappa del blog</a></li></ul></div>
+	<div id="page">
+<hr>
+
+	<div id="content" class="narrowcolumn" role="main">
+
+		
+ 	   	  		<h2 class="pagetitle">Archive for the ‘Knock’ Category</h2>
+ 	  
+
+		<div class="navigation">
+			<div class="alignleft"></div>
+			<div class="alignright"></div>
+		</div>
+
+				<div class="post-94 post type-post status-publish format-standard hentry category-knock">
+				<h3 id="post-94"><a href="http://arduinotutorial.altervista.org/knock/" rel="bookmark" title="Permanent Link to Knock">Knock</a></h3>
+				<small>venerdì, aprile 1st, 2011</small>
+
+				<div class="entry">
+					<p style="text-align: justify;">In questo tutorial  usiamo un 
+componente piezoelettrico per rilevare il suono. Un componente 
+piezoelettrico non è altro che un dispositivo elettronico che può sia 
+essere  utilizzato per riprodurre i toni sia per rilevare i toni. Un 
+esempio é questo:</p>
+<p style="text-align: center;"><a href="http://arduinotutorial.altervista.org/wp-content/uploads/2011/04/42259024.jpg"><img class="size-full wp-image-95 aligncenter" title="42259024" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/42259024.jpg" alt="" height="200" width="207"></a></p>
+<p style="text-align: justify;">Nel nostro tutorial collegheremo  il 
+Piezo in uno dei pin di ingresso analogici. Una cosa da ricordare è la 
+loro polarità, hanno di solito un filo rosso e uno nero che indica come 
+collegarlo alla scheda. Colleghiamo il nero a GND e il rosso in un pin 
+analogico, infine dovremo anche collegare una resistenza nel range dei 
+megaohm in parallelo all’elemento piezoelettrico.</p>
+<p>Il circuito da fare è il seguente:</p>
+<p style="text-align: justify;"><a href="http://arduinotutorial.altervista.org/wp-content/uploads/2011/04/Immagine.jpg"><img class="size-medium wp-image-96 aligncenter" title="Immagine" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/Immagine-160x300.jpg" alt="" height="300" width="160"></a>La
+ resistenza in parallelo al piezo e nel range dei megaohm mentre la 
+resistenza in serie al led è sempre la solita. Il filo rosso della 
+resistenza di X megaohm và collegata al pin analogico 0.</p>
+<p style="text-align: left;">Ora dobbiamo scrivere il seguente codice:</p>
+<pre>#define ledPin 13&nbsp; //Led connesso al pin 13
+#define knockSensor 0&nbsp; //Sensore connesso al pin analogico 0
+byte val = 0;&nbsp; //Variabile per salvare il valore del sensore
+int statePin = LOW;&nbsp; //Variabile usato per salvare l'ultimo stato del led
+int THRESHOLD = 100;&nbsp; //Valore di soglia per decidere quando un suono è stato rilevato da un colpo o non
+
+void setup()
+{
+&nbsp;&nbsp;&nbsp;&nbsp; pinMode(ledPin, OUTPUT);&nbsp; //Dichiaro il ledPin come OUTPUT
+&nbsp;&nbsp;&nbsp;&nbsp; Serial.begin(9600);&nbsp; //Uso la porta seriale
+}
+
+void loop()
+{
+&nbsp;&nbsp;&nbsp;&nbsp; val = analogRead(knockSensor);&nbsp; //Legge il valore del sensore e lo salva
+&nbsp;&nbsp;&nbsp;&nbsp; if (val &gt;= THRESHOLD)
+&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; statePin = !statePin; //Inverte lo stato del pin
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(ledPin,statePin);&nbsp; //Accende o spegne il led
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Knock!");&nbsp; //Invia al terminale la scritta
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(10);
+&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+<p style="text-align: justify;">In pratica questo programma serve a 
+rilevare un suono, per esempio potremmo incollare il piezo alla porta e 
+ogni volta che qualcuno bussa, il programma scriverà sul serial monitor 
+la parola Knock! e accenderà un led.</p>
+<p style="text-align: justify;">Analisi del codice:</p>
+<p style="text-align: justify;">1-Serial(): Per questa funzione ho realizzato un tutorial a parte raggiungibile <a href="http://arduinotutorial.altervista.org/serial/" target="_blank">qui</a>.</p>
+				</div>
+
+				<p class="postmetadata"> Posted in <a href="http://arduinotutorial.altervista.org/category/analog-io/knock/" title="Visualizza tutti gli articoli in Knock" rel="category tag">Knock</a> |   <a href="http://arduinotutorial.altervista.org/knock/#comments" title="Commenti a Knock">6 Comments »</a></p>
+
+			</div>
+
+		
+		<div class="navigation">
+			<div class="alignleft"></div>
+			<div class="alignright"></div>
+		</div>
+	
+	</div>
+
+	<div id="sidebar"> <script type="text/javascript">
+//<![CDATA[
+google_color_border = "000000";
+google_color_bg = "000000";
+google_color_link = "FF9600";
+google_color_url = "FF9600";
+google_color_text = "ffffff";
+//]]>
+</script>
+<!-- alterbanner_300X250_start --><div class="alterbanner_300X250_off">&nbsp;</div><!-- alterbanner_300X250_end -->
+
+
+
+
+
+
+
+
+
+
+		<ul>
+			<li id="pages-3" class="widget widget_pages"><h2 class="widgettitle">Pagine</h2>		<ul>
+			<li class="page_item page-item-2"><a href="http://arduinotutorial.altervista.org/info/">Informazioni</a></li>
+<li class="page_item page-item-60"><a href="http://arduinotutorial.altervista.org/mappa-del-blog/">Mappa del blog</a></li>
+		</ul>
+		</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">Archivi</h2>		<ul>
+			<li><a href="http://arduinotutorial.altervista.org/2011/09/" title="settembre 2011">settembre 2011</a></li>
+	<li><a href="http://arduinotutorial.altervista.org/2011/04/" title="aprile 2011">aprile 2011</a></li>
+	<li><a href="http://arduinotutorial.altervista.org/2011/03/" title="marzo 2011">marzo 2011</a></li>
+		</ul>
+</li><li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categorie</h2>		<ul>
+	<li class="cat-item cat-item-15"><a href="http://arduinotutorial.altervista.org/category/analog-io/avarage/" title="Lettura del valore di un sensore e ne facciamo la media">Avarage</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://arduinotutorial.altervista.org/category/digital-io/debounce/" title="Antirimbalzo per gli interruttori">Debounce</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://arduinotutorial.altervista.org/category/elettronica/" title="Visualizza tutti gli articoli archiviati in Elettronica">Elettronica</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://arduinotutorial.altervista.org/category/analog-io/fading/" title="Dissolvenza di un led">Fading</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://arduinotutorial.altervista.org/category/digital-io/funzione-millis/" title="Facciamo lampeggiare un led senza la funzione delay()">Funzione millis()</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://arduinotutorial.altervista.org/category/digital-io/hello-world/" title="Visualizza tutti gli articoli archiviati in Hello World!">Hello World!</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://arduinotutorial.altervista.org/category/analog-io/ingresso-analogico/" title="Visualizza tutti gli articoli archiviati in Ingresso analogico">Ingresso analogico</a>
+</li>
+	<li class="cat-item cat-item-13 current-cat"><a href="http://arduinotutorial.altervista.org/category/analog-io/knock/" title="Visualizza tutti gli articoli archiviati in Knock">Knock</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://arduinotutorial.altervista.org/category/digital-io/loop/" title="Visualizza tutti gli articoli archiviati in Loop">Loop</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://arduinotutorial.altervista.org/category/digital-io/pulsante/" title="Visualizza tutti gli articoli archiviati in Pulsante">Pulsante</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://arduinotutorial.altervista.org/category/serial/" title="Visualizza tutti gli articoli archiviati in Serial()">Serial()</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://arduinotutorial.altervista.org/category/varie/" title="Visualizza tutti gli articoli archiviati in Varie">Varie</a>
+</li>
+		</ul>
+</li><li id="calendar-3" class="widget widget_calendar"><h2 class="widgettitle">&nbsp;</h2><div id="calendar_wrap"><table id="wp-calendar">
+	<caption>giugno: 2012</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="lunedì">L</th>
+		<th scope="col" title="martedì">M</th>
+		<th scope="col" title="mercoledì">M</th>
+		<th scope="col" title="giovedì">G</th>
+		<th scope="col" title="venerdì">V</th>
+		<th scope="col" title="sabato">S</th>
+		<th scope="col" title="domenica">D</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://arduinotutorial.altervista.org/2011/09/" title="Visualizza articoli di settembre 2011">« set</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td>
+	</tr>
+	<tr>
+		<td>4</td><td>5</td><td>6</td><td>7</td><td id="today">8</td><td>9</td><td>10</td>
+	</tr>
+	<tr>
+		<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+	</tr>
+	<tr>
+		<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+	</tr>
+	<tr>
+		<td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+		<td class="pad" colspan="1">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></li>		</ul>
+	</div>
+
+
+
+<hr></div>
+<div id="footer">
+<!-- If you'd like to support WordPress, having the "powered by" link somewhere on your blog is the best way; it's our only promotion or advertising. -->
+	<p>
+		Tutorial Arduino running
+		<a href="http://wordpress.org/">WordPress</a> using <a href="http://pretty.coolcomputerguy.com/">Aurelia.</a>
+
+		<!-- 31 queries. 0,194 seconds. -->
+	</p>
+
+</div>
+</div>
+
+
+
+				<p class="av-antipixel" style="clear: both; text-align: center; padding: 10px 0 !important; width: 100%;  margin: 0 !important;">
+				<a style="background: none repeat scroll 0% 0% transparent; border: medium none; text-decoration: none;" href="http://en.altervista.org/"><img title="Create your own free site" alt="Create your own free site" style="border: medium none ! important; background: none repeat scroll 0% 0% transparent; float: none; margin: 0pt ! important; padding: 0pt ! important;" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/80x15_alter3.gif" border="0"></a>
+				</p>
+		<script type="text/javascript">
+			//<![CDATA[
+			document.write('<s'+'cript type="text/javascript" src="http://tb.altervista.org/stats/'+escape(window.location.hostname)+'.js?p='+escape(window.location)+'&amp;r='+new Date().getTime()+'"><\/s'+'cript>');
+			//]]>
+		</script><script type="text/javascript" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/arduinotutorial.js"></script>
+			
+	<!-- AlterVista Optimizer Social JS -->
+	<div id="fb-root"></div><script src="Knock%20%C2%AB%20Tutorial%20Arduino_files/all.htm"></script>
+	<script gapi_processed="true" type="text/javascript" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/plusone.js"></script>
+	<script type="text/javascript" src="Knock%20%C2%AB%20Tutorial%20Arduino_files/widgets.js"></script>
+	<!-- /AlterVista Optimizer Social JS -->
+		
+	<!-- alterwords_0X1_start --><div class="alterbanner_0X1_off">&nbsp;</div><!-- alterwords_0X1_end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

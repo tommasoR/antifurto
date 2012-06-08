@@ -1,0 +1,33 @@
+/* normalize old styles */
+.av_site a {
+	height: 16px !important;	
+	}
+
+/* new styles */
+.av_site {
+	position: relative !important;
+	border: none !important;
+	line-height: 15px !important;
+	margin: 0 7px 0 10px !important;
+	padding: 10px 0 7px 6px !important;
+	}
+
+.av_site a {
+	display: block !important;
+	line-height: 15px !important;
+	font-size: 12px !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; 
+	text-align: left !important;
+	letter-spacing:0 !important;
+	border: none !important;
+	text-decoration: none !important;
+	cursor:pointer;
+	padding: 0 0 0 17px !important;
+	color: #fff !important;
+	background: transparent url('http://tb.altervista.org/icons/yellow/new_site.png') no-repeat 0 -1px !important;
+	}
+
+.av_site a:hover {color: #fee238 !important}
+.av_site a:focus {outline: none !important}
