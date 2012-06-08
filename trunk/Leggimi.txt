@@ -1,1 +1,6 @@
 Link utili
+
+
+Cose da fare:
+Studiare un metodo per disabilitare l'infrarosso che si occupa dell'interuttore tramite un battito su una tavola, 
+diciamo per 20 secondi, in modo che si possa usare la chiave per disabilitare l'antifurto.
