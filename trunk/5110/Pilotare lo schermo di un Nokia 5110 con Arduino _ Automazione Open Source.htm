@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html class=" js rgba boxshadow csstransitions" lang="it-IT"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/a_002.htm" async=""></script><script async="" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/cbgapi.loaded_1"></script><script async="" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/cbgapi.loaded_0"></script><script src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/ga.js" async="" type="text/javascript"></script><script src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/ga.js" async="" type="text/javascript"></script><script async="" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/adsbygoogle.js"></script>
+<!-- Automazione Open Source 2 -->
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23046052-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+	<meta charset="UTF-8">
+	<title>Pilotare lo schermo di un Nokia 5110 con Arduino | Automazione Open Source</title>
+    <meta name="description" content="">   
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://www.xploreautomation.com/xmlrpc.php">
+	
+<!-- java applet embed scripts -->
+<script src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/jae_deployJava-min.js"></script><script src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/embed.js" async="" type="text/javascript"></script><script charset="UTF-8" async="" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/alfie.js"></script></head><body data-twttr-rendered="true" class="single single-post postid-3246 single-format-standard custom-background"><embed id="jae_deployJavaPlugin" type="application/java-deployment-toolkit" hidden="true">
+
+<link rel="alternate" type="application/rss+xml" title="Automazione Open Source » Feed" href="http://www.xploreautomation.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Automazione Open Source » Feed dei commenti" href="http://www.xploreautomation.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Automazione Open Source » Pilotare lo schermo di un Nokia 5110 con Arduino Feed dei commenti" href="http://www.xploreautomation.com/arduino-nokia-3110-5110/feed/">
+<link rel="stylesheet" id="slideshow-gallery-2-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/gallery-css.css" type="text/css" media="screen">
+<link rel="stylesheet" id="wp-postratings-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/postratings-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="slider_demo-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/demo.css" type="text/css" media="all">
+<link rel="stylesheet" id="flexslider-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/flexslider.css" type="text/css" media="all">
+<link rel="stylesheet" id="shCore-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/shCore.css" type="text/css" media="all">
+<link rel="stylesheet" id="main_style-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp_dlmp_styles-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-author-bio-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/wp-about-author.css" type="text/css" media="all">
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/jquery_002.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/gallery.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/comment-reply.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/header_js.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/footer_js.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/jquery_003.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/modernizr.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/nav.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/jquery.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.xploreautomation.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.xploreautomation.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Utilizzare l’HC05: modulo Bluetooth Low Cost compatibile con Arduino" href="http://www.xploreautomation.com/lhc05-howto/">
+<link rel="next" title="Automazione Os incontra Vicenza Thunders" href="http://www.xploreautomation.com/automazione-os-incontra-vicenza-thunders/">
+<meta name="generator" content="WordPress 3.5">
+<link rel="shortlink" href="http://www.xploreautomation.com/?p=3246">
+
+<!-- All in One SEO Pack 1.6.15.3 by Michael Torbert of Semper Fi Web Design[764,845] -->
+<meta name="description" content="Breve guida sul funzionamento e utilizzo di un monitor di un Nokia 5110 con l'Arduino, per poter ottenere in poco tempo e in modo economico una piccola GUI.">
+<meta name="keywords" content="arduino, nokia, nokia 5110, 5110, 3110, arduino and nokia screen, nokia screen, pcd 8544">
+<link rel="canonical" href="http://www.xploreautomation.com/arduino-nokia-3110-5110/">
+<!-- /all in one seo pack -->
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/tw-sack.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+function alo_em_pubblic_form ()
+{
+//edit : added all this for
+  var alo_cf_array = new Array();
+      document.alo_easymail_widget_form.submit.value="invio in corso...";
+  document.alo_easymail_widget_form.submit.disabled = true;
+  document.getElementById('alo_em_widget_loading').style.display = "inline";
+  document.getElementById('alo_easymail_widget_feedback').innerHTML = "";
+  
+   var alo_em_sack = new sack("http://www.xploreautomation.com/wp-admin/admin-ajax.php" );    
+
+  alo_em_sack.execute = 1;
+  alo_em_sack.method = 'POST';
+  alo_em_sack.setVar( "action", "alo_em_pubblic_form_check" );
+  alo_em_sack.setVar( "alo_em_opt_name", document.alo_easymail_widget_form.alo_em_opt_name.value );
+  alo_em_sack.setVar( "alo_em_opt_email", document.alo_easymail_widget_form.alo_em_opt_email.value );
+    alo_em_sack.setVar( "alo_easymail_txt_generic_error", 'Errore durante l\'operazione.' );  
+  alo_em_sack.setVar( "alo_em_error_email_incorrect", "L\'indirizzo e-mail non è corretto");
+  alo_em_sack.setVar( "alo_em_error_name_empty", "Il campo nome è vuoto");
+    alo_em_sack.setVar( "alo_em_error_email_added", "Attenzione: questo indirizzo e-mail &egrave; gi&agrave; iscritto, ma non attivato. Ti stiamo inviando un\'altra e-mail di attivazione");
+  alo_em_sack.setVar( "alo_em_error_email_activated", "Attenzione: questo indirizzo e-mail &egrave; gi&agrave; iscritto");
+  alo_em_sack.setVar( "alo_em_error_on_sending", "Errore durante l\'invio: riprova");
+  alo_em_sack.setVar( "alo_em_txt_ok", "Iscrizione inviata con successo. Ora riceverai una e-mail contenente un link. Devi cliccare su questo link per attivare la tua iscrizione.");
+  alo_em_sack.setVar( "alo_em_txt_subscribe", "Iscriviti");
+  alo_em_sack.setVar( "alo_em_lang_code", "it");  
+  
+  var cbs = document.getElementById('alo_easymail_widget_form').getElementsByTagName('input');
+  var length = cbs.length;
+  var lists = "";
+  for (var i=0; i < length; i++) {
+  	if (cbs[i].name == 'alo_em_form_lists' +'[]' && cbs[i].type == 'checkbox') {
+  		if ( cbs[i].checked ) lists += cbs[i].value + ",";
+  	}
+  }
+  alo_em_sack.setVar( "alo_em_form_lists", lists );
+  alo_em_sack.setVar( "alo_em_nonce", 'c9fe004330' );  
+  //alo_em_sack.onError = function() { alert('Ajax error' )};
+  alo_em_sack.runAJAX();
+
+  return true;
+
+} 
+//]]>
+</script>
+<script language="JavaScript"><!--
+ var DevFmtUrl='http://www.xploreautomation.com/wp-content/plugins/devformatter/'; var DevFmtAjaxUrl = 'http://www.xploreautomation.com/wp-admin/admin-ajax.php'; //-->
+</script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/devfmt_common.js"></script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/devfmt_public.js"></script>
+<style type="text/css" media="screen"> @import url( 'http://www.xploreautomation.com/wp-content/plugins/devformatter/devfmt_reset.css?ver=2012.0.1.39' ); </style>
+<style type="text/css" media="screen"> @import url( 'http://www.xploreautomation.com/wp-content/plugins/devformatter/devfmt_css.php?ver=2012.0.1.39' ); </style>	<style type="text/css">
+	.download-info .download-button {
+		background-image: url(http://www.xploreautomation.com/wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(http://www.xploreautomation.com/wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+    <!--[if lt IE 9]>
+    <script src="http://www.xploreautomation.com/wp-content/themes/aos2013/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+	<!--[if (gte IE 6)&(lte IE 8)]>
+		<script type="text/javascript" src="http://www.xploreautomation.com/wp-content/themes/aos2013/js/selectivizr.js"></script>
+	<![endif]-->
+	<style>
+#content .entry p{font-family: default !Important;}
+#content .entry p{font-size: 1.4em !important ;}
+#content .entry p{color: #000000 !Important;}
+#content .post_title a{color: #525252 !Important;}
+#content .post_title{font-size: 2.9em !important ;}
+#header_title h1{font-size: 3em !important ;}
+#header_title p{font-size: 1.4em !important ;}
+#sidebar .widget h2{font-size: 2.5em !important ;}
+#sidebar{width: 28%!Important;}
+#wrapper, #footer, #top_most{width: 1100px !Important;}
+#content{width: 67% !Important;}
+</style>
+<noscript>
+<style>
+#top_most{display:block!important;}/*to accomodate people who dont have javascript enabled*/
+</style>
+</noscript>
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://www.xploreautomation.com/wp-content/themes/aos2013/images/background.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+</style>
+
+
+	
+
+<div id="wrapper">
+    <header id="header_wrapper">        	
+		
+<div style="height: 50px;" class="sticky-wrapper" id="top_most-sticky-wrapper"><div style="visibility: visible; display: block; padding-top: 10px;" id="top_most">  
+    <div class="header_nav">
+
+<ul>
+	    <a href="http://www.facebook.com/automazioneos" target="_blank"><li class="facebook_b" title="Facebook"></li></a>
+        
+	    
+    <a href="http://www.twitter.com/automazioneos" target="_blank"><li class="twitter_b" title="Twitter"></li></a>
+            
+        
+	    
+    <a href="https://plus.google.com/u/0/b/113248720458002811053/113248720458002811053/posts" target="_blank"><li class="google_b" title="Google +1"></li></a>
+	    
+	    
+    <a href="http://www.xploreautomation.com/feed/" target="_blank"><li class="rss_b" title="RSS"></li></a>
+              
+	    
+    <a href="http://www.youtube.com/user/automazioneos" target="_blank"><li class="youtube_b" title="YouTube"></li></a>
+                            
+</ul>
+    
+    </div><!--header_nav -->
+    
+
+        
+    <div class="category">
+        <li class="categories"><span class="first_cat">Categorie</span><ul>	<li class="cat-item cat-item-3"><a href="http://www.xploreautomation.com/category/arduino/" title="Visualizza tutti gli articoli archiviati in Arduino">Arduino</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.xploreautomation.com/category/automazione-2/" title="Visualizza tutti gli articoli archiviati in Automazione">Automazione</a>
+</li>
+	<li class="cat-item cat-item-52"><a href="http://www.xploreautomation.com/category/lab/" title="Visualizza tutti gli articoli archiviati in Lab">Lab</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.xploreautomation.com/category/progetti/" title="Visualizza tutti gli articoli archiviati in Progetti">Progetti</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.xploreautomation.com/category/raspberry/" title="Visualizza tutti gli articoli archiviati in Raspberry">Raspberry</a>
+</li>
+	<li class="cat-item cat-item-57"><a href="http://www.xploreautomation.com/category/sabato-di-aos/" title="Visualizza tutti gli articoli archiviati in sabato di AOS">sabato di AOS</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.xploreautomation.com/category/senza-categoria/" title="Visualizza tutti gli articoli archiviati in Senza categoria">Senza categoria</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.xploreautomation.com/category/software/" title="Visualizza tutti gli articoli archiviati in Software">Software</a>
+<ul class="children">
+	<li class="cat-item cat-item-16"><a href="http://www.xploreautomation.com/category/software/android/" title="Visualizza tutti gli articoli archiviati in Android">Android</a>
+</li>
+</ul>
+</li>
+</ul></li>    </div>
+        
+    	<div class="clearfix"></div>
+</div></div><!--top_most -->  
+         <div id="title_wrapper">
+            <hgroup id="header_title">
+
+                <h1 class="site-title"><a href="http://www.xploreautomation.com//">
+
+<img src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/logo.gif" alt="Automazione Open Source"></a>
+               </h1>
+            
+            </hgroup><!--header_title -->
+            
+            <section id="header_ad">
+                <!--Space for header ad in next version -->
+            </section>
+                                     <div class="clearfix"></div>
+        </div><!--title_wrapper -->
+    </header><!--header_wrapper ENDS -->
+               
+    <nav id="nav_wrapper">
+      <div class="menu-menuprincipale-container"><ul id="nav" class="nav"><li id="menu-item-2301" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2301"><a href="http://www.xploreautomation.com/about/">About</a></li>
+<li id="menu-item-2299" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2299"><a href="http://www.xploreautomation.com/chi-siamo/">Chi siamo</a></li>
+<li id="menu-item-2292" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2292"><a href="http://www.xploreautomation.com/ebook/">Ebook</a></li>
+<li id="menu-item-2293" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2293"><a href="http://www.xploreautomation.com/packpost/">PackPost</a>
+<ul style="display: none;" class="sub-menu">
+	<li id="menu-item-2297" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2297"><a href="http://www.xploreautomation.com/packpost/system-identification-toolbox/">System Identification Toolbox</a></li>
+	<li id="menu-item-2296" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2296"><a href="http://www.xploreautomation.com/packpost/alla-scoperta-dei-sensori/">Alla scoperta dei sensori</a></li>
+	<li id="menu-item-2295" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2295"><a href="http://www.xploreautomation.com/packpost/sicurezza-elettrica-un-viaggio-tra-fase-terra-e-neutro/">Sicurezza Elettrica: un viaggio tra fase terra e neutro</a></li>
+	<li id="menu-item-2294" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2294"><a href="http://www.xploreautomation.com/packpost/progettazione-di-un-sistema-di-controllo-per-un-rov-sottomarino/">Progettazione di un sistema di controllo per un ROV sottomarino</a></li>
+</ul>
+<span class="hasChildren"></span></li>
+<li id="menu-item-2298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2298"><a href="http://www.xploreautomation.com/partecipa-anche-tu/">Partecipa anche tu</a></li>
+<li id="menu-item-2300" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2300"><a href="http://www.xploreautomation.com/?page_id=51">Area Riservata</a></li>
+</ul></div> 
+               
+            <div id="nav_search">
+                
+<form action="http://www.xploreautomation.com/" id="searchform" method="get">
+    <div>
+        <input placeholder="Search..." id="supernova_search" name="s" class="search_input supernova-input" type="text">        
+        <input value="" id="searchsubmit" type="submit">
+    </div>
+</form>             </div><!--search form -->  
+                                                    <div class="clearfix"></div>                     
+    </nav><!--nav_wrapper ENDS -->	
+<div id="content_wrapper">
+	<section id="content">
+    	<section class="main_content">
+		    
+            <article class="post-3246 post type-post status-publish format-standard hentry category-arduino" id="post-3246">
+                <h2 class="single_heading post_title">Pilotare lo schermo di un Nokia 5110 con Arduino</h2>                
+                   <div class="entry">   
+                   	                 
+                    <a id="dd_start"></a><div class="dd_post_share"><div class="dd_buttons"><div class="dd_button"><script gapi_processed="true" type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/plusone.js"></script><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe title="+1" data-gapiattached="true" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/fastbutton.htm" name="I0_1392981087477" id="I0_1392981087477" vspace="0" tabindex="0" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div></div><div class="dd_button"><iframe style="width: 109px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/tweet_button.htm" allowtransparency="true" id="twitter-widget-0" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/widgets.js"></script></div><div class="dd_button"><script>var fbShare = {url: 'http://www.xploreautomation.com/arduino-nokia-3110-5110/',size: 'small',}</script><script src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/fbshare.js"></script><iframe src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/fbshare.htm" allowtransparency="true" frameborder="0" height="18" scrolling="no" width="80"></iframe></div></div><div style="clear:both"></div></div><div style="clear:both"></div><p>&nbsp;</p>
+<p><a href="http://www.xploreautomation.com/wp-content/uploads/2012/11/graphic_lcd_84x48_nokia_5110-e1353624779491.jpg"><img class="aligncenter size-full wp-image-3315" title="nokia_5110_arduino" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/graphic_lcd_84x48_nokia_5110-e1353624779491.jpg" alt="" height="214" width="273"></a></p>
+<p>Per aggiungere un po’ di interattività ed autonomia ad un progetto è 
+necessario spesso avere un’interfaccia grafica, che sia un semplice 
+menù, una GUI un po’ più complessa o delle schermate che ci mostrano dei
+ grafici. Per raggiungere questi scopi possiamo utilizzare alcuni 
+schermi di vecchi modelli di cellulari, che hanno un driver per 
+pilotarli all’interno semplice da accedere e utilizzare con i 
+microcontrollori.</p>
+<p>Lo schermo di cui parliamo in questo articolo e in altri a seguire è 
+lo schermo del Nokia 5110 delle dimensioni di 84×48 pixel, pilotati dal 
+driver <strong>Philips&nbsp;</strong><em><strong>PCD8544</strong>.</em>&nbsp;Questo
+ schermo, oltre ad essere economico(si può trovare per un paio di euro 
+lo schermo già sul circuito da EBay, come quello in cima a 
+quest’articolo) è molto semplice da gestire, soprattutto grazie alla 
+libreria che verrà introdotta in questo articolo.</p>
+<p>In questa prima parte parleremo di:</p>
+<ul>
+<li>Hardware: driver e schermo</li>
+<li>Come utilizzare lo schermo senza libreria</li>
+<li>La libreria&nbsp;LCD5110: come funziona e che funzioni ci mette a disposizione</li>
+</ul>
+<p style="text-align: center;"><span id="more-3246"></span><em><span style="text-align: center; font-size: large;">Hardware: driver e schermo</span></em></p>
+<div id="attachment_3248" class="wp-caption alignleft" style="width: 310px"><a href="http://www.xploreautomation.com/wp-content/uploads/2012/11/nokia_screen_rear.jpg"><img class="size-medium wp-image-3248     " style="margin-left: 0px; margin-right: 0px;" title="nokia_screen_rear" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/nokia_screen_rear-e1352758488611-300x172.jpg" alt="" height="172" width="300"></a><p class="wp-caption-text">Retro dello schermo</p></div>
+<p style="text-align: left;">Come si può vedere nel retro della scheda troviamo 8 connettori:</p>
+<address style="text-align: left;">1- VCC: alimentazione a 3.3V</address>
+<address style="text-align: left;">2- GND: massa</address>
+<address style="text-align: left;">3- SCE o CE: abilita il driver</address>
+<address style="text-align: left;">4- RST: Pin di reset.</address>
+<address style="text-align: left;">5- D/C o DC: con questo pin si dice al driver come interpretare i dati in arrivo</address>
+<address style="text-align: left;">6- DIN/MOSI: pin dove si passano le informazioni in maniera seriale.&nbsp;</address>
+<address style="text-align: left;">7- SCLK o CLK: clock della comunicazione seriale.</address>
+<address style="text-align: left;">8- LED/LIGHT: pin per abilitare la 
+retroilluminazione. Occorre collegare il pin a massa aggiungendo una 
+resistenza da circa 200Ohm</address>
+<p style="text-align: left;">&nbsp;La disposizione e/o il nome del pin 
+possono variare dai diversi modelli. Questa è la disposizione, ad 
+esempio del modello acquistabile dalla Sparkfun.</p>
+<p style="text-align: left;">Esistono due tipi di informazioni che possono essere mandati al driver:</p>
+<ul>
+<li>I comandi veri e propri.</li>
+<li>Le informazioni sui pixel da modificare.</li>
+</ul>
+<div>Quello che fa capire al driver cosa gli stiamo comunicando è il valore (HIGH o LOW) che diamo al pin <strong>D/C</strong>: infatti se impostiamo il pin a <strong>LOW</strong>&nbsp;<span style="text-align: left;">&nbsp;interpreterà le informazioni come dei comandi, settando questo pin ad <strong>HIGH</strong> le interpreterà come pixel da colorare.</span></div>
+<div>Ma come mandiamo le nostre informazioni? Qualcuno si sarà accorto 
+che alcuni nomi di alcuni pin non sono nuovi: infatti, come avevamo 
+parlato in un articolo<a href="http://www.xploreautomation.com/arduino-pilotare-un-sette-segmenti-con-il-minor-numero-di-pin/"> precedente</a> nel quale si parlava di come utilizzare un 74HC595 per pilotare in modo efficiente un sette segmenti utilizzando la funzione <strong>ShiftOut</strong> dell’Arduino si faceva riferimento a dei dei pin chiamati proprio SCLK,CE e DATA(qui DIN/MOSI)!&nbsp;</div>
+<div>Questo infatti è proprio il meccanismo che viene utilizzato: 
+mandare del byte di informazione attraverso la funzione ShitOut 
+abbassando e alzando il pin CE prima e dopo di aver chiamato questa 
+funzione.</div>
+<div>In effetti, per ottimizzare questo utilizzo invece di ragionare su una griglia di 84X48 pixel <strong>lo schermetto lavora su un area di</strong> <strong>84 pixel e 6 righe da 8 pixel</strong>.</div>
+<div>Il datasheet del driver si può trovare <a href="http://www.xploreautomation.com/arduino-nokia-3110-5110/%27http://www.datasheetcatalog.org/datasheet/philips/PCD8544U.pdf%27">qui</a>. All’interno si può trovare la lista completa dei comandi supportati.</div>
+<div>&nbsp;</div>
+<div style="text-align: center;">&nbsp;<em style="font-size: large; text-align: center;">Come utilizzare lo schermo senza libreria</em></div>
+<p style="text-align: left;">Con le poche informazioni che abbiamo siamo
+ già in grado di utilizzare il nostro schermo. Questa parte non verrà 
+approfonditamente trattata e si basa sostanzialmente sul tutorial 
+presente nel sito dell’Arduino alla pagina sul <a href="http://www.arduino.cc/playground/Code/PCD8544">PCD8544</a>, e ne verranno analizzate solo alcune parti, che sono semplici applicazioni di ciò che abbiamo appena scritto.</p>
+<p style="text-align: left;">Come si può vedere i caratteri che possiamo
+ scrivere sullo schermo sono rappresentati da una grande matrice di 
+matrice, nella quale <strong>i caratteri sono rappresentati da 5 byte</strong>(quindi occupano sullo schermo un’area di 5 pixel in larghezza e 8 in altezza).</p>
+<p style="text-align: left;">La funzione <em>LCD_Write</em> serve per 
+inviare un singolo byte allo schermo LCD e prende come primo parametro 
+un valore HIGH o LOW che verrà applicato al pin DC poco prima di fare 
+uno <strong>ShiftOut</strong>. Nella parte di inizializzazione del 
+programma si vede che questa funzione viene utilizzata per passare 
+proprio dei comandi utili per impostare ad esempio il contrasto.</p>
+<p style="text-align: left;">Infine un’altra importante funzione è quella che ci consente di spostare il cursore nello schermo chiamata in uno degli esempi <em>gotoXY</em>
+ che mostra proprio come nell’LCD sull’asse X si può utilizzare un 
+qualunque valore tra 0 e 84, mentre per l’asse Y si possono utilizzare 
+solo valori compresi tra 0 e 5 che rappresentano appunto le 6 righe da 8
+ byte.</p>
+<p style="text-align: center;"><em><span style="font-size: large;">La libreria&nbsp;LCD5110: come funziona e che funzioni ci mette a disposizione</span></em></p>
+<p style="text-align: left;">La metodologia di utilizzo spiegata poco 
+sopra può essere utile per capire come lo schermo funziona e generare un
+ codice il più compatto possibile, rendendo però il tutto ingestibile 
+appena tentiamo di disegnare qualcosa.&nbsp;</p>
+<p style="text-align: left;">Un’altra metodologia è quella che utilizza un <strong>frame buffer</strong>:
+ una matrice che andremo a pulire, aggiornare con la nostra schermata e 
+poi andremo a scrivere sullo schermo. Così si evitano ripetuti accessi e
+ spostamenti del cursore all’interno dello schermo, e si riescono a 
+implementare in maniera più efficiente alcune funzioni per disegnare, 
+poiché l’accesso allo stesso avviene solo dopo che avremo elaborato 
+questa matrice. Questa matrice, però, risiederà sulla memoria <strong>RAM</strong>.&nbsp;</p>
+<p style="text-align: left;">La libreria di cui parleremo è la libreria <strong>LCD5110_Graph</strong> che si può scaricare dal <a href="http://www.henningkarlsen.com/electronics/library.php?id=47">sito del creatore</a>. Ne esiste una versione “light”(la LCD5110_Basic) che però non mette a disposizione le funzionalità grafiche.</p>
+<p style="text-align: left;">Queste sono alcune le funzioni che ci vengono messe a disposizione:</p>
+<ul>
+<li><strong>LCD5110(SCK, MOSI, DC, RST, CS)</strong>: costruttore della classe al quale passiamo il numero dei pin dell’Arduino ai quali attacchiamo i relativi pin dello schermo.</li>
+<li><strong>InitLCD()</strong>: inizializza l’LCD, passando allo schermo alcuni comandi per impostare contrasto o altro</li>
+<li><strong>update()</strong>: scrive il framebuffer sullo schermo. 
+Questa è l’unica funzione(insieme ad invert) che va realmente a scrivere
+ sullo schermo&nbsp;</li>
+<li><strong>clrScr()</strong>: ripulisce il framebuffer(non scrive niente sullo schermo).</li>
+<li><strong>invert(mode)</strong>: abilita(true) o disabilita la modalità invertita.</li>
+<li><strong>setPixel(x, y)</strong>: imposta a nero il pixel in posizione <em>x/y</em>.</li>
+<li><strong>clrPixel(x, y)</strong>: imposta a bianco il pixel in posizione <em>x/y</em>.</li>
+<li><strong>invPixel(x, y)</strong>: inverte il valore del pixel in posizione <em>x/y.</em></li>
+<li><strong>invertText(mode)</strong>: imposta se il testo scritto da print, printNumI, printNumF sono con i colori invertiti o no.</li>
+<li><strong>print(st, x, y)</strong>: scrive una stringa(<em>st</em>) a partire dal pixel <em>x/y</em>.</li>
+<li><strong>printNumI(num, x, y)</strong>: inserisce il numero intero(<em>num</em>) a partire dalla posizione <em>x/y.</em></li>
+<li><strong>printNumF(num, dec, x, y)</strong>: inserisce il numero float(<em>num</em>) a partire dalla posizione<em> x/y</em></li>
+<li><strong>setFont(fontname)</strong>: imposta il font del testo. Questo font deve essere rappresentato da un’array(fontname).</li>
+<li><strong>drawBitmap(x, y, sx, sy, data [, flash])</strong>: disegna la bitmap sotto forma di array(<em>data</em>) richiamandola dalla flash(funzionalità di default) a partire dalla posizione <em>x/y</em>, per una lunghezza <em>sx</em> e una larghezza <em>sy.&nbsp;</em>Per
+ capire meglio come si possa salvare una variabile(che poi sarà 
+accessibile solo in lettura) nella flash si rimanda al paragrafo 
+sottostante.</li>
+<li><strong>drawLine(x1, y1, x2, y2)</strong>: disegna la retta che parte da <em>x1/y1</em> e termina in <em>x2/y2.</em></li>
+<li><strong>drawRect(x1, y1, x2, y2)</strong>: disegna un rettangolo con angolo superiore sinistro <em>x1/y1</em> e angolo inferiore destro<em> x2/y2.</em></li>
+<li><strong>drawRoundRect(x1, y1, x2, y2)</strong>: disegna un 
+rettangolo con gli angoli smussati. Questo deve avere una 
+lunghezza/larghezza minima di 5 pixel, altrimenti non verrà disegnato 
+nulla.</li>
+<li><strong>drawCircle(x, y, radius)</strong>: disegna un cerchio di centro<em> x/y</em> e di raggio <em>radius.</em></li>
+</ul>
+<p style="text-align: center;"><em><span style="font-size: medium;">Utilizzo di PROGMEM</span></em></p>
+<p style="text-align: left;">Una cosa da non trascurare quando andiamo a costruire delle GUI con delle immagini o animazioni è l’utilizzo della memoria <strong>RAM&nbsp;</strong>del nostro micro: essa nell’Arduino UNO è parecchio limitata (2kb) e quindi dobbiamo preservarne il più possibile.</p>
+<p style="text-align: left;">Per strutture dati che non vengono mai 
+modificate come le immagini o animazioni di cui parlavamo(ma anche 
+stringhe dal valore prefissato) si può utilizzare la direttiva PROGMEM 
+che ci viene messa a disposizione che ci consente di imporre di salvare 
+queste strutture dati nella flash e non nella RAM.</p>
+<p>La sintassi da utilizzare è la seguente:</p>
+<p><span style="font-family: 'andale mono', times;">dataType variableName[] PROGMEM = {dataInt0, dataInt1, dataInt3…};</span></p>
+<p>Quindi per le immagini utilizzeremo ad esempio:</p>
+<p><span style="font-family: 'andale mono', times;">byte&nbsp;hearth[] PROGMEM = { 0×06, 0x0F, 0x1E, 0x0F, 0×06};</span></p>
+<p>Con la quale riusciamo a disegnare un cuore. Come si può vedere 
+l’immagine viene organizzata in “file di byte”, comode da utilizzare sia
+ con il framebuffer sia con lo ShiftOut. Infatti la libreria 
+LCD5110_Graph nella funzione&nbsp;drawBitmap vuole proprio un’array di 
+byte che, per default, deve essere presente nella flash.&nbsp;Per poter 
+richiamare queste strutture occorrono delle funzioni apposite differenti
+ per ogni tipo di dato utilizzato. Ad esempio per estrarre un byte dalla
+ struttura heart definita poco sopra questa funzione si chiama :</p>
+<p><span style="font-family: 'andale mono', times;">byte value = pgm_read_byte_near(hearth + 2);</span></p>
+<p>Nella quale il primo parametro è un nome di una variabile creata con 
+PROGMEM mentre il secondo è un offset( in questo caso viene estratto il 
+secondo valore). Per una spiegazione più estesa si può far riferimento 
+alla pagina presente sul <a href="http://arduino.cc/en/Reference/PROGMEM">playground</a>.</p>
+<p>Nelle prossime articoli verranno mostrati alcuni utilizzi di questo schermo, da quelli più utili a quelli più “ludici”.</p>
+<p>Alla prossima!</p>
+<div class="dd_post_share"><div class="dd_buttons"><div class="dd_button"><iframe src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/like.htm" style="border:none; overflow:hidden; width:500px; height:24px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div></div><div style="clear:both"></div></div><!-- Social Buttons Generated by Digg Digg plugin v5.3.5,
+    Author : Buffer, Inc
+    Website : http://bufferapp.com/diggdigg --><a id="dd_end"></a><script type="text/javascript">var dd_offset_from_content = 40;var dd_top_offset_from_content = 0;var dd_override_start_anchor_id = "";var dd_override_top_offset = "";</script><script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/diggdigg-floating-bar.js"></script><div class="wp-about-author-containter-top" style="background-color:#FFEAA8;"><div class="wp-about-author-pic"><img src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/8.jpg" alt="Luca Panebianco" class="photo" height="80" width="64"></div><div class="wp-about-author-text"><h3><a href="http://www.xploreautomation.com/author/tr3ntdir/" title="Luca Panebianco">Luca Panebianco</a></h3><p>Ciao!
+ Mi chiamo Luca e frequento la magistrale in Ingegneria Informatica e 
+dell'Automazione all'Università Politecnica delle Marche. Qui ho 
+apprezzato pian piano la programmazione su microcontrollori oltre che la
+ canonica sul PC. Sono interessato ai vari campi della programmazione su
+ diversi dispositivi.</p><p class="wpa-nomargin"><a href="http://www.xploreautomation.com/author/tr3ntdir/" title="More posts by Luca Panebianco">More Posts</a> </p></div></div>    
+                   	                     
+                        
+                   </div>                                   
+                                
+            </article> 
+            	<div class="clearfix"></div>  
+                  
+<div class="meta">
+	<span class="left_meta">		
+		<em class="meta_by">By</em> <em class="meta_author">Luca Panebianco</em> | 
+            <em class="meta_date">novembre 23rd, 2012</em> | 
+    	<span class="leave_comment"><a href="http://www.xploreautomation.com/arduino-nokia-3110-5110/#respond" class="comments-link" title="Commenti a Pilotare lo schermo di un Nokia 5110 con Arduino"><span class="dsq-postid" rel="3246 http://www.xploreautomation.com/?p=3246">LEAVE A COMMENT</span></a></span>
+    </span>
+        <span class="social_black">
+    	<span class="sharethispost">Share this post</span>    	<ul>
+                	<a href="http://www.facebook.com/sharer.php?u=http://www.xploreautomation.com/arduino-nokia-3110-5110/&amp;t=Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino" target="_blank"><li class="facebook_b" title="Share on Facebook"></li></a>
+                   
+    		<a onclick="MyWindow=window.open('http://twitter.com/home?status=Currently Reading Pilotare lo schermo di un Nokia 5110 con Arduino (http://www.xploreautomation.com/arduino-nokia-3110-5110/)','MyWindow','width=600,height=400'); return false;" id="twitter-share"><li class="twitter_b" title="Share on Twitter"></li></a>
+                            <a href="https://plus.google.com/share?url=http://www.xploreautomation.com/arduino-nokia-3110-5110/" target="_blank"><li class="google_b" title="Share on Google"></li></a>
+                  
+    	</ul>
+    </span>     </div>
+              
+                    
+<div class="next_prev_post">    
+    <span class="prev_post"><a href="http://www.xploreautomation.com/lhc05-howto/" rel="prev">&lt;&lt; PREVIOUS POST</a></span>
+    <span class="next_post"><a href="http://www.xploreautomation.com/automazione-os-incontra-vicenza-thunders/" rel="next">NEXT POST &gt;&gt;</a></span>
+</div>        
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 643px ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" scrolling="no" width="100%"></iframe></div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var disqus_url = 'http://www.xploreautomation.com/arduino-nokia-3110-5110/';
+    var disqus_identifier = '3246 http://www.xploreautomation.com/?p=3246';
+    var disqus_container_id = 'disqus_thread';
+    var disqus_domain = 'disqus.com';
+    var disqus_shortname = 'automazioneopensource';
+    var disqus_title = "Pilotare lo schermo di un Nokia 5110 con Arduino";
+        var disqus_config = function () {
+        var config = this; // Access to the config object
+        config.language = '';
+
+        /*
+           All currently supported events:
+            * preData — fires just before we request for initial data
+            * preInit - fires after we get initial data but before we load any dependencies
+            * onInit  - fires when all dependencies are resolved but before dtpl template is rendered
+            * afterRender - fires when template is rendered but before we show it
+            * onReady - everything is done
+         */
+
+        config.callbacks.preData.push(function() {
+            // clear out the container (its filled for SEO/legacy purposes)
+            document.getElementById(disqus_container_id).innerHTML = '';
+        });
+                config.callbacks.onReady.push(function() {
+            // sync comments in the background so we don't block the page
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = '?cf_action=sync_comments&post_id=3246';
+
+            var firstScript = document.getElementsByTagName( "script" )[0];
+            firstScript.parentNode.insertBefore(script, firstScript);
+        });
+                    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var DsqLocal = {
+        'trackbacks': [
+        ],
+        'trackback_url': "http:\/\/www.xploreautomation.com\/arduino-nokia-3110-5110\/trackback\/"    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.' + 'disqus.com' + '/embed.js?pname=wordpress&pver=2.74';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+/* ]]> */
+</script>
+    
+                		
+                	</section><!--main_content ENDS -->
+		</section><!--content ENDS -->
+    
+
+<div id="sidebar">
+    <div id="authors-3" class="widget authors_widget"><h2>Blog degli autori</h2>
+			<ul>
+								<li><a href="http://www.xploreautomation.com/author/automazioneos/">automazioneos</a></li>
+								<li><a href="http://www.xploreautomation.com/author/kobrabyte/">Vincenzo</a></li>
+								<li><a href="http://www.xploreautomation.com/author/fra_celi/">fra_celi</a></li>
+								<li><a href="http://www.xploreautomation.com/author/tr3ntdir/">Luca Panebianco</a></li>
+								<li><a href="http://www.xploreautomation.com/author/matteo-napolitano/">Matteo</a></li>
+								<li><a href="http://www.xploreautomation.com/author/aliekor/">MicheleColle</a></li>
+								<li><a href="http://www.xploreautomation.com/author/matteo/">Matteo Pirro</a></li>
+								<li><a href="http://www.xploreautomation.com/author/carlopeluso/">carlopeluso</a></li>
+							</ul>
+
+		</div><div id="meta-3" class="widget widget_meta"><h2>Menu Utente</h2>			<ul>
+			<li><a href="http://www.xploreautomation.com/wp-login.php?action=register">Registrati</a></li>			<li><a href="http://www.xploreautomation.com/wp-login.php">Collegati</a></li>
+			<li><a href="http://www.xploreautomation.com/feed/" title="Abbonati a questo sito usando RSS 2.0">Voce <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://automazioneopensource.disqus.com/latest.rss" title="Gli ultimi commenti di tutti gli articoli in formato RSS"><abbr title="Really Simple Syndication">RSS</abbr> dei commenti</a></li>
+			<li><a href="http://wordpress.org/" title="Funziona con Wordpress.">WordPress.org</a></li>
+						</ul>
+</div>    	
+	<div class="clearfix"></div>
+</div><!--sidebar ENDS -->
+</div><!--content_wrapper ENDS -->
+		
+
+<div class="clearfix"></div>   
+     		</div><!--wrapper ENDS -->
+<footer id="footer_wrapper">                             	
+    <div id="footer">
+        <div id="footer_widgets">
+                        </div>  
+              					          <div class="clearfix"></div>      
+        <div id="footer_left_part">
+			<span> 2013-2014  Automazione Open Source - Tutti i diritti Riservati </span>
+            <span class="powered_by">Powered by<a href="http://wordpress.org/" target="_blank">WordPress</a></span>
+       <br>
+       <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.it"><img alt="Licenza Creative Commons" style="border-width:0" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/88x31.png"></a><br><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Blog </span> di<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xploreautomation.com/arduino-nokia-3110-5110/www.xploreautomation.com" property="cc:attributionName" rel="cc:attributionURL"> Automazione Open Source</a> � distribuito con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.it">Creative Commons Attribuzione - Non commerciale - Non opere derivate 3.0 Unported</a>.
+        </div><!--footer_left_part -->        
+        <div id="footer_right_part">
+			
+<ul>
+	    <a href="http://www.facebook.com/automazioneos" target="_blank"><li class="facebook_b" title="Facebook"></li></a>
+        
+	    
+    <a href="http://www.twitter.com/automazioneos" target="_blank"><li class="twitter_b" title="Twitter"></li></a>
+            
+        
+	    
+    <a href="https://plus.google.com/u/0/b/113248720458002811053/113248720458002811053/posts" target="_blank"><li class="google_b" title="Google +1"></li></a>
+	    
+	    
+    <a href="http://www.xploreautomation.com/feed/" target="_blank"><li class="rss_b" title="RSS"></li></a>
+              
+	    
+    <a href="http://www.youtube.com/user/automazioneos" target="_blank"><li class="youtube_b" title="YouTube"></li></a>
+                            
+</ul>
+        </div><!--footer_right_part -->
+    </div><!--footer ENDS -->             
+</footer><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/postmessageRelay.htm" id="oauth2relay424200296" name="oauth2relay424200296"></iframe><!--footer_wrapper ENDS -->
+										
+		 
+     	<img style="display: none;" id="backtotop" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/backtotop.jpg">        
+     <script>
+jQuery("#top_most").sticky({ topSpacing: 0 });
+		jQuery(window).scroll(function () {
+			if (jQuery(this).scrollTop() > 300) {
+				jQuery('#top_most').css({'padding-top':'5px'});
+			}else {
+				jQuery('#top_most').css({'padding-top':'10px'});
+			}
+		});
+</script>
+<link rel="stylesheet" id="digg-digg-css" href="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/diggdigg-style.css" type="text/css" media="screen">
+<script type="text/javascript">
+/* <![CDATA[ */
+var ratingsL10n = {"plugin_url":"http:\/\/www.xploreautomation.com\/wp-content\/plugins\/wp-postratings","ajax_url":"http:\/\/www.xploreautomation.com\/wp-admin\/admin-ajax.php","text_wait":"Please rate only 1 post at a time.","image":"stars_crystal","image_ext":"gif","max":"1","show_loading":"1","show_fading":"1","custom":"0"};
+var ratings_mouseover_image=new Image();ratings_mouseover_image.src=ratingsL10n.plugin_url+"/images/"+ratingsL10n.image+"/rating_over."+ratingsL10n.image_ext;;
+/* ]]> */
+</script>
+<script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/postratings-js.js"></script>
+	
+
+
+<div style="position: absolute;" class="dd_outer"><div style="width: 1075px;" class="dd_inner"><div style="position: absolute; top: 660px; left: -95px; display: block;" id="dd_ajax_float"><div class="dd_button_v"><script gapi_processed="true" type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/plusone.js"></script><div id="___plusone_1" style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 60px;"><iframe title="+1" data-gapiattached="true" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/fastbutton_002.htm" name="I0_1392981087822" id="I0_1392981087822" vspace="0" tabindex="0" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 60px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div></div><div style="clear:left"></div><div class="dd_button_v"><iframe style="width: 58px; height: 62px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-count-vertical" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/tweet_button_002.htm" allowtransparency="true" id="twitter-widget-1" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="Pilotare%20lo%20schermo%20di%20un%20Nokia%205110%20con%20Arduino%20_%20Automazione%20Open%20Source_files/widgets.js"></script></div><div style="clear:left"></div><div class="dd_button_extra_v"><div id="dd_print_button"><span id="dd_print_text"><a href="javascript:window:print()">print</a></span></div></div><div style="clear:left"></div></div></div></div></body><iframe src="" style="display: none;"></iframe></html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Served from: www.xploreautomation.com @ 2014-02-21 13:11:24 -->
