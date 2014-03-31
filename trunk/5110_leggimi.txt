@@ -1,0 +1,5 @@
+http://code.ohloh.net/file?fid=Xog-1zu2CXepQYtTZ1TjHOlNs2o&cid=FOfak6Eenag&s=&browser=Default&fp=276654&mp&projSelected=true#L0
+
+costruttore:
+ Adafruit_PCD8544(int8_t SCLK, int8_t DIN, int8_t DC, int8_t CS, int8_t RST);
+ Adafruit_PCD8544(int8_t SCLK, int8_t DIN, int8_t DC, int8_t RST);
