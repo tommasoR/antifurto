@@ -24,7 +24,8 @@ All text above, and the splash screen must be included in any redistribution
 // pin 5 - Data/Command select (D/C)
 // pin 4 - LCD chip select (CS)
 // pin 3 - LCD reset (RST)
-Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 13, 3);
+// tom Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 13, 3);
+Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 13);
 
 #define NUMFLAKES 10
 #define XPOS 0
