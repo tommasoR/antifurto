@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:fb="http://ogp.me/ns/fb#" lang="en"><head>        <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript"> var tref = { tok : 'GSw3f9i8HnSr9BblvafELtNQ'}; </script><title>LCD module 0 - BTEC Electronics</title>        <link rel="alternate" type="application/atom+xml" title="Web feed" href="http://ianlangelectronic.webeden.co.uk/feeds/blogposts">        <meta name="keywords" content="Electronics Education"><meta property="og:url" content="http://ianlangelectronic.webeden.co.uk"><meta property="og:image" content="http://ianlangelectronic.webeden.co.uk/communities/1/004/008/254/171/previews/xyz6zWIe6wkBNa4MuaCM_A.jpg"><meta property="og:title" content="BTEC Electronics">
+<meta property="og:type" content="website">			<link rel="shortcut icon" href="http://ianlangelectronic.webeden.co.uk/_app/1414428079/en/sharedmedia/2633462.swf" type="image/x-icon"> <link rel="contents" href="#navigation">
+<link rel="home" href="">
+<link rel="index" href="">
+<link rel="top" href="">
+<link rel="first" href="">		<link rel="help" href="http://ianlangelectronic.webeden.co.uk/_app/1414428079/en/resources/requirements.html">
+		<style type="text/css">
+			/* initialise first stylesheet. hide flash, show text */
+			.hideable { display : block;}
+			#flash_content { display: none; }
+			.full-width { width:762px; }			body { background-color: #cccccc;			}
+		</style><style type="text/css"> </style>
+		<!--[if IE]>
+		<script type="text/javascript">
+			function fixOutOfMemoryError() {
+				__flash_unloadHandler = function() {};
+				__flash_savedUnloadHandler = function() {};
+			}
+			window.attachEvent("onbeforeunload", fixOutOfMemoryError);
+		</script>
+		<![endif]--><script type="text/javascript">	/**
+	* Toggles display between text-only and flash
+	* Due to browser's differing implimentations use the www.quirksmode.org function
+	* to manipulate the stylesheet. credit to PPK.
+	* Do this as soon as the stylesheet loads (considerations for base element with IE)
+	* Added background functionality when user background is #ffffff/#000000
+	*/
+	
+	toggleTextContent = function () {
+		if (!document.styleSheets) return
+		var theRules = new Array();
+		try {
+			if (document.styleSheets[0].cssRules) {
+				theRules = document.styleSheets[0].cssRules
+			}	else if (document.styleSheets[0].rules) {
+				theRules = document.styleSheets[0].rules   
+			}	else {
+				return;
+			}
+			if ( theRules[0].style.display == "none") {
+				theRules[0].style.display = 'block';
+				theRules[1].style.display = 'none';
+				theRules[2].style.width =  '762px';
+				theRules[2].style.padding = '10px 0px 10px 0px';
+				theRules[3].style.backgroundColor = 					'#cccccc';			} else {       
+				if (theRules[1].style.display == 'none') {
+					theRules[3].style.backgroundColor = '#cccccc';	
+				}
+				theRules[0].style.display = 'none';
+				theRules[1].style.display = 'block';
+				theRules[2].style.width = '762px';
+				theRules[2].style.padding = "0";
+				
+			}
+		} catch (err) {
+			document.getElementById('skip-links').style.display='none';
+		}
+	}
+
+	var queuedToggle = function() {};
+	
+	/*@cc_on
+	var bases  = document.getElementsByTagName('base');
+	if ( bases.length ) {
+		queuedToggle = toggleTextContent;
+	}	else {
+		@*/
+		toggleTextContent();
+		/*@cc_on 
+	}
+	@*/
+	
+	var headID = document.getElementsByTagName("head")[0];         
+	var cssNode = document.createElement('link');
+	cssNode.type = 'text/css';
+	cssNode.rel = 'stylesheet';
+	cssNode.href = '/_app/1414428079/en/resources/big-web-ext.css';
+	headID.appendChild(cssNode);
+
+</script><link href="LCD%20module%200%20-%20BTEC%20Electronics_files/big-web-ext.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+	Consts = {
+		buildNumber: "1414428079",
+		respath: '/_app/1414428079/en/resources/',
+		imagespath: '/_app/1414428079/en/images/',
+		commonimagespath: '/images/',
+		cwidth: '760',
+		cheight: '2800',
+		bgcolor: '#cccccc',
+		forceWmode: 0,
+		backvis: 1,
+		valign: 'top',
+		initialPageId: '4543830483',
+		initialPageSafeName: 'technical-home',
+		template: 'sm4',
+		toolbar: '',
+		fullWidth: '762px',
+		htmlWebWidth: '774px',
+		containerOffset: '0px',			partnerCode: 'webeden',		main: {
+			appId: 'page-wrapper',
+			path: '/_app/1414428079/en/resources/container.swf',
+			flashvars_json: {
+   "s_url" : "/communities/1/004/008/254/171/",
+   "toPage" : "4543830483",
+   "terms_path" : "/partner/webeden/en/terms/",
+   "lba1" : "100",
+   "mark" : "mark_fv",
+   "community" : "4008254171",
+   "cc" : "",
+   "view" : "true",
+   "pv" : "0311",
+   "debug" : "N",
+   "ppc" : "5",
+   "load" : "n",
+   "usr_path" : "/communities/1/004/008/254/171/",
+   "fb_auth_domain" : "secure.sitemakerlive.com",
+   "imagespath" : "/_app/1414428079/en/images/",
+   "lbx" : "630",
+   "lbrgb2" : "16711680",
+   "portalpath" : "/_app/1414428079/en/resources/portal/",
+   "lbnid" : "2433941",
+   "lbys" : "100",
+   "lib_path" : "/_app/1414428079/en/sharedmedia/",
+   "mediapath" : "/_app/1414428079/en/sharedmedia/",
+   "backid" : "W2432972",
+   "lbr" : "0",
+   "faqspath" : "/en/faqs/",
+   "commonimagespath" : "/images/",
+   "lbrgb1" : "16777215",
+   "secure_host" : "https://secure.sitemakerlive.com",
+   "lbxs" : "100",
+   "basepath" : "/_app/1414428079/",
+   "lby" : "25",
+   "promospath" : "/communities/promotions/",
+   "gty_path" : "/_app/1414428079/en/simplemedia/gettyimages/",
+   "fb_app_id" : "104983919608527",
+   "uusername" : "guest",
+   "cgipath" : "/cgi-bin/",
+   "respath" : "/_app/1414428079/en/resources/",
+   "lba2" : "100",
+   "lbid" : "2433927",
+   "lbf" : "W",
+   "backd" : "000100020000000100000000040",
+   "lbvis" : "Y"
+}
+,
+			container: 'flash_content',
+			offset: '0',
+			halign: 'center',
+			border: '1'
+		},
+		topbar: {
+			show: 0,
+			flashvars: '',
+			height: 28,
+			width: 820,
+			path: '/_app/1414428079/en/resources/',
+			container: 'free-bar-flash'
+		},
+		moreover: {
+			show: 0,
+			flashvars: '',
+			path: '/_app/1414428079/en/resources/adverts.swf',
+			container: 'ads'
+		},
+		margins: {
+			top: 10,
+			right: 10,
+			bottom: 10,
+			left: 10		}
+	
+	};
+	Consts.main.flashvars_json.token = tref.tok;
+	
+	
+
+
+</script>
+	    <script src="LCD%20module%200%20-%20BTEC%20Electronics_files/swfobject.js" type="text/javascript"></script><script src="LCD%20module%200%20-%20BTEC%20Electronics_files/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="LCD%20module%200%20-%20BTEC%20Electronics_files/big.js"></script>		<link href="LCD%20module%200%20-%20BTEC%20Electronics_files/big-web.css" rel="stylesheet" type="text/css"> 
+		<!--[if lte IE 8]>
+			<script type="text/javascript">
+				SM.WebStyling.init();
+			</script>
+		<![endif]-->
+		<!--[if lte IE 7]>
+			<link rel="stylesheet" type="text/css" href="/_app/1414428079/en/resources/ie.css">
+		<![endif]--><style type="text/css">
+	/* Page structure - dynamic elements
+	------------------------------------*/
+	#content-wrapper { margin: 0 auto; /* switch auto around for left, right or centre align */ padding: 10px 10px 10px 10px;}
+    #non-flash {position: relative;left: 0px;}
+	.cheight {height: 2800px;}
+	.content {width: 760px; left: 0px;}
+	.user-content {border: 1px solid #080101;}
+	#frag_header {width: 0px; /* width of ad */height: 0px; /* height of ad */left: 0px;}
+	#frag_left {left: 10px; top: 10px; /* header_frag_height + top */ width: 0px; /* width of ad */ height: 0px; /* height of ad */}
+	#frag_right {right: 10px; width: 0px; /* width of ad */ height: 0px; /* height of ad */ top: 10px;}
+	#frag_footer {width: 0px; /* width of ad */ height: 0px; /* height of ad */ left: 0px;}
+	#free-disclaimer {left: 0px;}</style>
+
+<script type="text/javascript">
+    /* <![CDATA[ */
+    document.write('<style type="text/css">#non-flash{left: 0px;}</style>');
+    /* ]]> */
+</script><style type="text/css">#non-flash{left: 0px;}</style>
+		<script type="text/javascript">
+	SM.init(
+		SM.ViewBase.init(
+			'page-wrapper', {
+				appId:'content-wrapper',
+				activeElementId: 'flash_content_swfo'
+			}
+		),
+		'body'
+	);
+</script>
+    </head>
+
+<body>	<div style="display: block; margin-top: -1132px; height: 0px;" id="skip-links">
+		<a href="#navigation" title="Go to Navigation">Skip to navigation</a>
+	</div><div id="page-wrapper" class="switchable">
+    <div id="content-wrapper" class="full-width"><div style="padding-top: 0px; padding-bottom: 0px; height: 1800px; width: 760px;" class="user-content content cheight" id="flash_content"><object id="flash_content_swfo" data="LCD%20module%200%20-%20BTEC%20Electronics_files/container.swf" style="visibility: visible;" type="application/x-shockwave-flash" height="1800" width="760"><param value="always" name="allowScriptAccess"><param value="best" name="quality"><param value="opaque" name="wmode"><param value="http://ianlangelectronic.webeden.co.uk/_app/1414428079/en/resources/" name="base"><param value="#cccccc" name="bgcolor"><param value="lcid=xkcd1422542591346&amp;domId=flash_content_swfo" name="flashvars"></object></div>
+<div id="non-flash" class="hideable">
+	<div id="text-content" class="clearfix">
+
+		<div id="header" class="borders">
+			<span id="sitename">Technical Home - BTEC Electronics</span>
+		</div>
+		<div id="corecol" class="borders mainshadow">
+			<div id="leftcol">
+        <div class="header">
+                <div class="widecolumnitem">         <div class="containitems">        
+            <div class="BOXED_ITEMS">                        <div class="containitems">                <div class="bodytext"><p>IAN LANG ELECTRONICS<br>
+</p></div>  </div>            </div>  </div>			</div>                        <div class="widecolumnitem nobottom">         <div class="containitems">                <div class="bodytext">            <h3>This site contains 600+  pages. Should you get lost, clicking on the date brings you back here.</h3><p>            </p></div>  </div>			</div>                </div>
+        <div class="body">
+                <div class="widecolumnitem nobottom">         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">                <h1 class="titletext">
+Information for an Electronic Age..........</h1>  </div>         <div class="containitems">                <h2 class="titletext">
+&nbsp;                  Welcome to the Technical Pages</h2>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/about/4560631490" target="_self">            <span class="name"> About This Site </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/last-added/4562356904" target="_self">            <span class="name"> Last Added .... </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/other-stuff/4545831782" target="_self">            <span class="name"> OTHER STUFF </span>    </a>    </span>
+</div>  </div>         <div class="containitems">                <div class="bodytext">            <h3>Other stuff directs to part II of the site which has tons of theoretical and practical stuff on it.</h3><p>            </p></div>  </div>         <div class="containitems">                <div class="bodytext"><p><strong>Loads
+ of stuff in here about how to get your Arduino to do anything from the 
+easy to the quite hard indeed. Click for the home page and follow the 
+guide links. </strong><br>
+</p></div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/ardxhome/4554715082" target="_self">            <span class="name"> Arduino Experiments </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">                <div class="bodytext"><p>The site is getting a sibling. It's done in conjunction with some <br>
+people at Maplin and is devoted to Arduino for non-technical people. 
+It's not very big yet but it is growing. Click on the logo left to check
+ progress.</p></div>  </div>         <div class="containitems">        
+            <div class="IMAGE_WITH_CAPTION">                        <div class="imghorizontal">        <a href="http://arduinoideas.webeden.co.uk/#" target="_blank" class="imageframelink" style="width:80px;height:38px">  
+  <img src="LCD%20module%200%20-%20BTEC%20Electronics_files/sitebutton.gif" class="imageitem" alt="ideas" width="80"></a>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/xbee/4561496734" target="_self">            <span class="name"> XBee </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">                <div class="bodytext">            <h3>This article is still in the process of being written.</h3><p>            </p></div>  </div>         <div class="containitems">        
+            <div class="IMAGE_WITH_CAPTION">                                 <div class="containitems">                <div class="bodytext">            <h3>And not forgetting the important things, click on Dilbert for Dilbert.com......</h3><p>            </p></div>  </div>            </div>  </div>         <div class="containitems">                <div class="bodytext">            <h3>Still under construction- next to come will be Android control (see below)</h3><p>            </p></div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/robots-home/4578768152" target="_self">            <span class="name"> Robot Section </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/solar-power/4560280363" target="_self">            <span class="name"> Solar Power </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/wind-power/4560802838" target="_self">            <span class="name"> Wind Power </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/android-home/4582038567" target="_self">            <span class="name"> Android Apps </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/lcr-problems/4583578400" target="_self">            <span class="name"> LCR Problems </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/visual-basic-home/4580436788" target="_self">            <span class="name"> Visual Basic </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/gcse1/4563095701" target="_self">            <span class="name"> GCSE Electronics </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/a-level-home/4562686711" target="_self">            <span class="name"> A Level Electronics </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/bookshelf/4577477533" target="_self">            <span class="name"> Bookshelf </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/imform/4554285799" target="_self">            <span class="name"> IMPORTANT FORMULAE </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">                <div class="bodytext">            <h3>BTEC 3rd Assessment section begins here. Click on Other Stuff above to get information to help with the first two.</h3><p>            </p></div>  </div>         <div class="containitems">                <div class="bodytext">            <h3>Section 1. Principles of Radio.</h3><p>            </p></div>  </div>            </div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">                <div class="bodytext">            <h3>CRIB SHEETS</h3><p>            </p></div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/cribascii/4557456957" target="_self">            <span class="name"> ASCII Table </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/capacitor-crib/4550103949" target="_self">            <span class="name"> Capacitors </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/colour-temperatures/4587140308" target="_self">            <span class="name"> Colour Temperature </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/dab/4562673172" target="_self">            <span class="name"> DAB </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/falling-bodies/4587327561" target="_self">            <span class="name"> Falling Bodies </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/ip-ratings/4564117626" target="_self">            <span class="name"> IP Ratings </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/cribreactance/4554260185" target="_self">            <span class="name"> Impedance </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/crib-lightbulbs/4575564585" target="_self">            <span class="name"> Light Bulbs </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/pitch/4550436492" target="_self">            <span class="name"> Pitch to Frequency </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/cribpropagation/4554503779" target="_self">            <span class="name"> Propagation </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/cribrc/4560133833" target="_self">            <span class="name"> Radio Control </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/resistorcrib/4550031539" target="_self">            <span class="name"> Resistors </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/crib-spectrums/4554480921" target="_self">            <span class="name"> The RF Spectrum </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/tranout/4550105911" target="_self">            <span class="name"> Transistor Pinouts </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/crib-visspectrum/4559504643" target="_self">            <span class="name"> Visible Spectrum </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q3-tx-diagram/4544261900" target="_self">            <span class="name"> Transmitter Diagram </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q5-rx-diagram/4544606519" target="_self">            <span class="name"> Receiver Diagram </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q2-fm-home/4544081842" target="_self">            <span class="name"> FM </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q1-am-home/4543832920" target="_self">            <span class="name"> AM </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q4-tx-explanation/4544271209" target="_self">            <span class="name"> Explanation </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q6-rx-explanation/4544608484" target="_self">            <span class="name"> Explanation </span>    </a>    </span>
+</div>  </div>         <div class="containitems">                <div class="bodytext">            <h3>Section 2.  Optoelectronics.</h3><p>            </p></div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q7-optical-tx/4544694205" target="_self">            <span class="name"> Optical Transmission </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q8-optical-problems/4544801552" target="_self">            <span class="name"> Optical Problems </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q9-otx-aspects/4544832826" target="_self">            <span class="name"> OTX Aspects </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q10orx-aspects/4544972559" target="_self">            <span class="name"> ORX Aspects </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q12-photoemitters/4545097844" target="_self">            <span class="name"> Photoemitters </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q11optical-interfaces/4545031906" target="_self">            <span class="name"> Optical Interfacing </span>    </a>    </span>
+</div>  </div>         <div class="containitems">                <div class="bodytext">            <h3>Section 3. Integrated Circuits and Logic.</h3><p>            </p></div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/czochralski-method/4545226297" target="_self">            <span class="name"> Czochralski Method </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/making-wafers/4545228346" target="_self">            <span class="name"> Making Wafers </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q14ic-manufacture/4545223186" target="_self">            <span class="name"> IC Manufacturing </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q13-ic-resistor/4545438445" target="_self">            <span class="name"> IC Resistor </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/further-diffusion/4545274659" target="_self">            <span class="name"> Further Diffusion </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/epitaxial-layer/4545243502" target="_self">            <span class="name"> Epitaxial Layer </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/first-diffusion/4545229380" target="_self">            <span class="name"> First Diffusion </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/testing-breaking/4545340369" target="_self">            <span class="name"> Testing &amp; Breaking </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/interconnections/4545337867" target="_self">            <span class="name"> Interconnections </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/encapsulation/4545344215" target="_self">            <span class="name"> Encapsulation </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">                <h2 class="titletext">
+<strong>The YouTube Channel:</strong></h2>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q15truthtables/4545399536" target="_self">            <span class="name"> Truth Tables </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://www.youtube.com/user/IanLangElectronics/videos?view=0" target="_blank">            <span class="name"> www.youtube.com/user/IanLangElectronics/videos?view=0 </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q15truthtables/4545399536" target="_self">            <span class="name"> De Morgan's Law </span>    </a>    </span>
+</div>  </div>         <div class="containitems">                <h2 class="titletext">
+<strong>Android Apps</strong></h2>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/appsanax/4583239290" target="_self">            <span class="name"> Anax </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/appsradiophone/4586196434" target="_self">            <span class="name"> Radio_Phone </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q18-ttl/4545539761" target="_self">            <span class="name"> TTL </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q15truthtables/4545399536" target="_self">            <span class="name"> p channel MOS </span>    </a>    </span>
+</div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://ianlangelectronic.webeden.co.uk/q19darlington-pair/4545570312" target="_self">            <span class="name"> Darlington Pair </span>    </a>    </span>
+</div>  </div>         <div class="containitems">                <div class="bodytext">            <h3>Suppliers of Parts, Tools and Other Requisites</h3><p>            </p></div>  </div>         <div class="containitems">                <div class="bodytext"><p>Maplin
+ are the biggest UK chain of electronic retailers, supplying components,
+ modules, tools, enclosures etc across the spectrum of electronic 
+endeavour. Their component range is sometimes lacking in certain areas, 
+but word has it that they are set to re-expand it. They have a question 
+and answer forum which is very useful and to which I regularly 
+contribute.<br>
+</p></div>  </div>         <div class="containitems">        
+            <div class="IMAGE_WITH_CAPTION">                                 <div class="containitems">                <div class="bodytext"><p>Website<br>
+</p></div>  </div>            </div>  </div>                  <div class="containitems">        
+            <div class="IMAGE_WITH_CAPTION">                                 <div class="containitems">                <div class="bodytext"><p>Forum<br>
+</p></div>  </div>            </div>  </div>         <div class="containitems">                <div class="bodytext"><p>Mindsetsonline
+ is a mail-order business formerly known as Middlesex University 
+Teaching Resources or MUTR. It's full of stuff from components to 
+materials and is a mine of resources for D&amp;T and Physics teachers. 
+Some of the latest materials that you can't get anywhere else are here.<br>
+</p></div>  </div>                           <div class="containitems">                <div class="bodytext"><p>Rapid
+ are based in Colchester and do a wide range of components but they have
+ no shops. Farnell tend to supply high-quality components to designers 
+but again have no shops. They are based in Leeds. Both have a local 
+trade counter.</p><p>NR Bardwell have a mail order business and a shop 
+in Sheffield. It stocks a wide range of electrical, electromechanical 
+and electronic requisites and the shop is worth a visit just for the 
+quality of the service you get.</p><p>Much the same as the above can be 
+said of Bowood, which is in Chesterfield. Mainly internet orders but 
+trade is welcome Monday to Friday in office hours.</p><p>Oomlout is the definitive site for those of you who wish to master the Arduino system for microprocessors.</p></div>  </div>         <div class="containitems">        
+            <div class="IMAGE_WITH_CAPTION">                                 <div class="containitems">                <div class="bodytext"><p>The
+ Electronics Club is a UK based site which is probably the very best on 
+the internet for those finding their feet in Electronics. It features 
+components, projects, FAQs and a breathtakingly large array of links to 
+everywhere to do with Electronics.<br>
+</p></div>  </div>            </div>  </div>                  <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                                 <div class="containitems">        
+            <div class="IMAGE_WITH_CAPTION">                        <div class="imghorizontal">        <a href="http://www.conrad-uk.com/ce/en/Welcome.html" target="_blank" class="imageframelink" style="width:170px;height:53px">  
+  <img src="LCD%20module%200%20-%20BTEC%20Electronics_files/sitebutton.gif" class="imageitem" alt="conrad" width="170"></a>  </div>         <div class="containitems">                <div class="bodytext"><p>Conrad
+ are a German firm who have recently set up an internet business in the 
+UK. They run the gamut as far as electronics is concerned and there is 
+some good quality stuff for serious projects as well as toys and 
+finished products. A large range of parts for just about everything. 
+Amazingly you can actually buy a lathe here!<br>
+</p></div>  </div>                     </div>  </div>                              </div>  </div>         <div class="containitems">        
+            <div class="IMAGE_WITH_CAPTION">                                 <div class="containitems">                <div class="bodytext"><p>Inkscape
+ is a very good and completely free tool for illustration. Click on the 
+logo above to go to a page about it and see the possibilities.<br>
+</p></div>  </div>            </div>  </div>         <div class="containitems">                <div class="bodytext"><p>ATV
+ are aerial installers in Sheffield. I've never bought anything from 
+them or been to their shop, but I've made their logo so large because 
+their website is without doubt (as well as being highly informative) the
+ funniest thing I have ever read on the internet. Even if you have no 
+interest whatsoever in RF engineering, I urge you to go and read it. 
+Especially the bits about Royal Mail!<br>
+</p></div>  </div>         <div class="imghorizontal">        <a href="http://robotbits.co.uk/index.php" target="_blank" class="imageframelink" style="width:135px;height:149px">  
+  <img src="LCD%20module%200%20-%20BTEC%20Electronics_files/sitebutton.gif" class="imageitem" alt="ROBOTBITS" width="135"></a>  </div>         <div class="containitems">                <div class="bodytext"><p>Proto-Pic
+ have a breathtakingly large array of bits for sale. Good for Arduino, 
+standalone, and just about anything else. Some real goodies on here.<br>
+</p></div>  </div>                  <div class="containitems">                <div class="bodytext"><p>RF
+ Solutions of Lewes in Sussex sell a range of receivers, transmitters 
+and transceivers for just about any application you can think of. I'm 
+particularly impressed by the ZULU range (which is expensive) but 
+overwhelmed by the range of small, low power radio modules that are 
+brilliant for short-range work and take data from microcontrollers and 
+throw it over the ether. Absolutely the first choice for low-cost 
+modules for inexpensive remote control from the Arduino or other 
+systems.<br>
+</p></div>  </div>         <div class="imghorizontal">        <a href="http://www.rfsolutions.co.uk/acatalog/shop.html" target="_blank" class="imageframelink" style="width:115px;height:109px">  
+  <img src="LCD%20module%200%20-%20BTEC%20Electronics_files/sitebutton.gif" class="imageitem" alt="rfsolutions" width="115"></a>  </div>         <div class="containitems">                <div class="bodytext"><p>The first step in electronics <br>
+for many people today is no longer the traditional radio sets but the 
+fairly new science of cybernetics (the building and controlling of 
+robots).  To that end the very best site for components is <br>
+robotbits.co.uk and if you click on their picture of a robot 
+warehouseman above it takes you to their site. I like their site very 
+much just for the pictures they've drawn, the products they stock are 
+excellent too. Everthing mechanical and electronic you'll need to build 
+your bots including the Rover 5 chassis at a very reasonable price.</p></div>  </div>         <div class="imghorizontal">        <a href="https://www.kitronik.co.uk/" target="_blank" class="imageframelink" style="width:227px;height:106px">  
+  <img src="LCD%20module%200%20-%20BTEC%20Electronics_files/sitebutton.gif" class="imageitem" alt="kitronic" width="227"></a>  </div>         <div class="containitems">                <div class="bodytext"><p>Kitronic
+ are based in Nottingham and supply loads of  stuff from components to 
+tools to modules, quite a lot of which they make themselves. Their 
+website is a gold-mine if you are a teacher of Design and Technology 
+(look at the resources bit) and they sell posters to stick up in your 
+classrooms at a reasonable price. Highly recommended if you work in 
+education.<br>
+</p></div>  </div>                  <div class="containitems">                <div class="bodytext"><p>This
+ is Limor Fried, aka LadyAda (after Ada Lovelace who did some complex 
+maths whilst working with Babbage and became the first effective 
+programmer). Limor is the co-founder of Adafruit industries in the 
+United States of America, which does a lot of work in that country in 
+promoting the Arduino and electronics in general. Her website, 
+ladyada.net is well worth a visit as is Adafruit.com.<br>
+</p></div>  </div>         <div class="containitems">        
+            <div class="RELATED_BY_PROXIMITY">                        <div class="containitems">                <div class="bodytext"><p>I now have a page on linkedin and I don't know why. If you want to look at the depths of my madness, it is here:<br>
+</p></div>  </div>         <div class="containitems">        <div class="linkbuttonitem">
+    <span class="linkbutton"><a href="http://www.linkedin.com/pub/ian-lang/49/812/42a" target="_blank">            <span class="name"> www.linkedin.com/pub/ian-lang/49/812/42a </span>    </a>    </span>
+</div>  </div>            </div>  </div>         <div class="containitems">                <div class="bodytext"><p>Or if you prefer the more direct  approach <strong>ianlangelectronics@gmail.com</strong><br>
+</p></div>  </div>         <div class="containitems">                <div class="bodytext"><p>Sole Author: Ian Lang<br>
+</p></div>  </div>         <div class="containitems">                <div class="bodytext"><p>This website is growing .<br>
+</p></div>  </div>			</div>                </div>
+        <div class="footer nobottom">
+                <div class="widecolumnitem nobottom">         <div class="containitems">                <div class="bodytext"><p>This site has been written in response to the third and final assessment for BTEC Advanced Certificate Level 3.<br>
+Please click on any of the buttons to the left to go to the various 
+answers. Some buttons have a pull out menu allowing access to various 
+parts of the answer, or each part can be accessed from the preceding or 
+following. Click on the brown tabs to start the topic, the green pull 
+outs to delve in anywhere in the topic, or follow the link buttons at 
+the bottom of each page to go through subsections page by page.</p></div>  </div>			</div>                </div>			</div>
+			<div id="rightcol">
+				<ul id="menuitem" class="menu">    
+    <li class="menu selected"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/technical-home/4543830483" target="_self" class="mainhref">          <span class="name selected">Technical Home</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q1-am-home/4543832920" target="_self" class="mainhref">          <span class="name">Q1: AM (Home)</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q2-fm-home/4544081842" target="_self" class="mainhref">          <span class="name">Q2: FM (Home)</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q3-tx-diagram/4544261900" target="_self" class="mainhref">          <span class="name">Q3: TX Diagram</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q4-tx-explanation/4544271209" target="_self" class="mainhref">          <span class="name">Q4: TX Explanation</span></a>      </span>        <ul class="pageitemsubmenu">                <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/oscillator/4544272015" target="_self">                        <span class="name">Oscillator</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/class-charmonics/4544275105" target="_self">                        <span class="name">Class C_Harmonics</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/audio-amp/4544284284" target="_self">                        <span class="name">Audio Amp</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/modulator/4544399233" target="_self">                        <span class="name">Modulator</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/modulated-amp/4544423352" target="_self">                        <span class="name">Modulated Amp</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/linear-amp/4544429556" target="_self">                        <span class="name">Linear Amp</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/feedback/4544430649" target="_self">                        <span class="name">Feedback</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/aerial/4544463259" target="_self">                        <span class="name">Aerial</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/aerial2/4544463617" target="_self">                        <span class="name">Aerial2</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/final-comments/4544464460" target="_self">                        <span class="name">Final Comments</span></a>                </li>         </ul>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q5-rx-diagram/4544606519" target="_self" class="mainhref">          <span class="name">Q5: RX Diagram</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q6-rx-explanation/4544608484" target="_self" class="mainhref">          <span class="name">Q6: RX Explanation</span></a>      </span>        <ul class="pageitemsubmenu">                <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/aerial/4544610665" target="_self">                        <span class="name">Aerial</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/rf-stagemixerlo/4544614727" target="_self">                        <span class="name">RF Stage/Mixer/LO</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/if-amplifier/4544619647" target="_self">                        <span class="name">IF Amplifier</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/detector/4544630075" target="_self">                        <span class="name">Detector</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/audio-amplifier/4544633671" target="_self">                        <span class="name">Audio Amplifier</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/loudspeaker/4544639662" target="_self">                        <span class="name">Loudspeaker</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/final-comments/4544643804" target="_self">                        <span class="name">Final Comments</span></a>                </li>         </ul>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q7-optical-tx/4544694205" target="_self" class="mainhref">          <span class="name">Q7: Optical TX</span></a>      </span>        <ul class="pageitemsubmenu">                <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/optical-tx-2/4544720591" target="_self">                        <span class="name"> Optical TX 2</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/optical-tx3/4544782586" target="_self">                        <span class="name">Optical TX3</span></a>                </li>         </ul>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q8-optical-problems/4544801552" target="_self" class="mainhref">          <span class="name">Q8: Optical Problems</span></a>      </span>        <ul class="pageitemsubmenu">                <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/optcal-problems-2/4544808933" target="_self">                        <span class="name">Optcal Problems 2</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/optical-problems-3/4544810394" target="_self">                        <span class="name">Optical Problems 3</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/optical-problems-4/4544819331" target="_self">                        <span class="name">Optical Problems 4</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/optical-problems-5/4544823272" target="_self">                        <span class="name">Optical Problems 5</span></a>                </li>         </ul>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q9-otx-aspects/4544832826" target="_self" class="mainhref">          <span class="name">Q9: OTX Aspects</span></a>      </span>        <ul class="pageitemsubmenu">                <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/otx-aspects-2/4544846571" target="_self">                        <span class="name">OTX Aspects 2</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/otx-aspects-3/4544944451" target="_self">                        <span class="name">OTX Aspects 3</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/otx-aspects-4/4544951727" target="_self">                        <span class="name">OTX Aspects 4</span></a>                </li>         </ul>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q10orx-aspects/4544972559" target="_self" class="mainhref">          <span class="name">Q10:ORX Aspects</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q11optical-interfaces/4545031906" target="_self" class="mainhref">          <span class="name">Q11:Optical Interfaces</span></a>      </span>        <ul class="pageitemsubmenu">                <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/interfaces-2/4545034797" target="_self">                        <span class="name">Interfaces 2</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/interfaces-3/4545094685" target="_self">                        <span class="name">Interfaces 3</span></a>                </li>         </ul>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q12-photoemitters/4545097844" target="_self" class="mainhref">          <span class="name">Q12: Photoemitters</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q13-ic-resistor/4545438445" target="_self" class="mainhref">          <span class="name">Q13: IC Resistor</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q14ic-manufacture/4545223186" target="_self" class="mainhref">          <span class="name">Q14:IC Manufacture</span></a>      </span>        <ul class="pageitemsubmenu">                <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/czochralski-method/4545226297" target="_self">                        <span class="name">Czochralski Method</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/making-wafers/4545228346" target="_self">                        <span class="name">Making Wafers</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/first-diffusion/4545229380" target="_self">                        <span class="name">First Diffusion</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/epitaxial-layer/4545243502" target="_self">                        <span class="name">Epitaxial Layer</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/further-diffusion/4545274659" target="_self">                        <span class="name">Further Diffusion</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/interconnections/4545337867" target="_self">                        <span class="name">Interconnections</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/testing-breaking/4545340369" target="_self">                        <span class="name">Testing &amp; Breaking</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/encapsulation/4545344215" target="_self">                        <span class="name">Encapsulation</span></a>                </li>                 <li class="submenu"><a href="http://ianlangelectronic.webeden.co.uk/final-comments/4545345550" target="_self">                        <span class="name">Final Comments</span></a>                </li>         </ul>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q15truthtables/4545399536" target="_self" class="mainhref">          <span class="name">Q15:TruthTables</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q16-de-morgans-law/4545438596" target="_self" class="mainhref">          <span class="name">Q16: De Morgan's Law</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q17p-channel-mos/4545510927" target="_self" class="mainhref">          <span class="name">Q17:p Channel MOS</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q18-ttl/4545539761" target="_self" class="mainhref">          <span class="name">Q18: TTL</span></a>      </span>
+    </li>    
+    <li class="menu"> 
+      <span class="menucontent">       <a href="http://ianlangelectronic.webeden.co.uk/q19darlington-pair/4545570312" target="_self" class="mainhref">          <span class="name">Q19:Darlington Pair</span></a>      </span>
+    </li>				</ul>	<div id="get-flash">
+            
+        <p>You are viewing the text version of this site.</p>        <p>To view the full version please install the Adobe Flash Player and ensure your web browser has JavaScript enabled.</p>		<p>Need help? check the <a href="http://ianlangelectronic.webeden.co.uk/_app/1414428079/en/resources/requirements.html" title="Check requirements for Flash version of this site">requirements</a> page.</p>		<br>
+		<p>
+			<a href="http://www.adobe.com/go/getflashplayer" title="Get latest Adobe Flash Player">
+			<img src="LCD%20module%200%20-%20BTEC%20Electronics_files/sitebutton.gif" alt="Get Flash Player"></a>
+		</p>    </div>			</div>
+		</div>
+	</div>
+</div>    </div><div id="dotlinks"></div></div><div class="lightbox" id="njq-notsupported">
+	<div class="light"></div>
+	<div style="left: 513.5px; top: 335px; position: fixed; z-index: 9999999;" class="box"><p>You need Flash to use this feature</p>
+
+		<a href="#njq-close" class="nslclosebox"></a>
+	</div>
+</div>  
+	
+    
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>
