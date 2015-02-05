@@ -1,0 +1,657 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" lang="en-US"><head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Seeing the Light: Using Photoresistors (LDRs) with an Arduino</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- All in One SEO Pack 2.2.5.1 by Michael Torbert of Semper Fi Web Design[399,469] -->
+<meta name="description" content="A tutorial guide to using light dependent resistors (LDRs, photocells, photoresistors) with an Arduino - including circuit schematics and sketch code.">
+
+<meta name="keywords" content="arduino,ldr,photocell,photoresistor,ldrs,photocells,photoresistors,sketch,code,circuit,schematic,diagram,for students,technology">
+
+<link rel="canonical" href="https://blog.udemy.com/arduino-ldr/">
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="Udemy Blog » Feed" href="https://blog.udemy.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Udemy Blog » Comments Feed" href="https://blog.udemy.com/comments/feed/">
+<!-- This site is powered by Shareaholic - https://shareaholic.com -->
+<script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/o" async="" type="text/javascript"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/sholic.js" async="" type="text/javascript"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/o.js" async="" type="text/javascript"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/vglnk.js" async="" type="text/javascript"></script><script async="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/cbgapi.loaded_1"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/6GL.js" async="" type="text/javascript"></script><script data-analytics-script-placeholder="true" id="shr-analytics"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ga.js" async="" type="text/javascript"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/fbds.js" async=""></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ga.js" async="" type="text/javascript"></script><script async="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/cbgapi.loaded_0"></script><script async="" type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/shareaholic.js" data-cfasync="false"></script><script type="text/javascript" data-cfasync="false">
+  //<![CDATA[
+    (function() {
+      var shr = document.createElement('script');
+      shr.setAttribute('data-cfasync', 'false');
+      shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+      shr.type = 'text/javascript'; shr.async = 'true';
+      shr.onload = shr.onreadystatechange = function() {
+        var rs = this.readyState;
+        if (rs && rs != 'complete' && rs != 'loaded') return;
+        var site_id = 'c6fe6c191302e91808fdf06127767340';
+        var page_config = {"apps":{"share_buttons":{"get_share_counts":  function(url, services, cb) {
+    Shareaholic.Utils.ajax({
+      cache: true,
+      cache_ttl: '1 minute',
+      url: 'https://blog.udemy.com/wp-admin/admin-ajax.php',
+      data: { action: 'shareaholic_share_counts_api', url: url, services: services },
+      success: function(res) {
+        if(res && res.data) {
+          cb(res.data, true);
+        }
+      }
+    })
+  }}},"endpoints":{"local_recs_url":"https:\/\/blog.udemy.com\/wp-admin\/admin-ajax.php?action=shareaholic_permalink_related","share_counts_url":"https:\/\/blog.udemy.com\/wp-admin\/admin-ajax.php?action=shareaholic_share_counts_api"},"user":[]};
+        try { Shareaholic.init(site_id, page_config); } catch (e) {}
+      };
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(shr, s);
+    })();
+  //]]>
+</script>
+
+<!-- Shareaholic Content Tags -->
+<meta name="shareaholic:site_name" content="Udemy Blog">
+<meta name="shareaholic:language" content="en-US">
+<meta name="shareaholic:url" content="https://blog.udemy.com/arduino-ldr/">
+<meta name="shareaholic:keywords" content="arduino, ldr, photocell, photoresistor, ldrs, photocells, photoresistors, sketch, code, circuit, schematic, diagram, for students, technology">
+<meta name="shareaholic:article_published_time" content="2014-05-15T23:09:55+00:00">
+<meta name="shareaholic:article_modified_time" content="2015-02-02T23:59:37+00:00">
+<meta name="shareaholic:shareable_page" content="true">
+<meta name="shareaholic:article_author_name" content="Karl Von Dyson">
+<meta name="shareaholic:site_id" content="c6fe6c191302e91808fdf06127767340">
+<meta name="shareaholic:wp_version" content="7.5.0.1">
+<meta name="shareaholic:image" content="https://blog.udemy.com/wp-content/uploads/2014/05/shutterstock_1907131341-620x413.jpg">
+<!-- Shareaholic Content Tags End -->
+
+<!-- Shareaholic Open Graph Tags -->
+<meta property="og:image" content="https://blog.udemy.com/wp-content/uploads/2014/05/shutterstock_1907131341-620x413.jpg">
+<!-- Shareaholic Open Graph Tags End -->
+<link rel="stylesheet" id="epik-theme-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="digg-digg-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/diggdigg-style.css" type="text/css" media="screen">
+<link rel="stylesheet" id="wp-pagenavi-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="udemy-blog-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/udemy-blog.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/font-awesome.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/jetpack.css" type="text/css" media="all">
+<link rel="stylesheet" id="button-shortcode-styles-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/buttons-style.css" type="text/css" media="all">
+<link rel="stylesheet" id="fbSEOStylesheet-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/fbseo-style.css" type="text/css" media="all">
+<link rel="stylesheet" id="fbSEOwpcomments-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/wpcomments.css" type="text/css" media="all">
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/jquery_002.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/core.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/widget.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/jquery_003.js"></script>
+<script gapi_processed="true" type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/clientplusone.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ud_005.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ud_006.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ud_004.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ud.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ud_003.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ud_002.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/external-tracking.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.udemy.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.udemy.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Effective Classroom Management: How to Maintain Discipline In A Classroom" href="https://blog.udemy.com/effective-classroom-management-2/">
+<link rel="next" title="Java Programming: Exploring Arrays in Java" href="https://blog.udemy.com/array-in-java/">
+<meta name="generator" content="WordPress 4.1">
+<link rel="shortlink" href="http://wp.me/p4Crag-qYq">
+<style>.bk-button-wrapper .customButtonA {
+-moz-box-shadow:inset 0px 1px 2px 0px #d9fbbe;
+	-webkit-box-shadow:inset 0px 1px 2px 0px #d9fbbe;
+	box-shadow:inset 0px 1px 2px 0px #d9fbbe;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52) );
+	background:-moz-linear-gradient( center top, #b8e356 5%, #a5cc52 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'#b8e356\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\', endColorstr=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'#a5cc52\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
+	background-color:#b8e356;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0;
+	border:1px solid #83c41a;
+	display:inline-block;
+	color:#ffffff;
+        padding: 0px 10px;
+	font-family:Arial;
+	font-size:21px;
+	font-weight:bold;
+	font-style:normal;
+	height:49px;
+	line-height:49px;
+	width:168px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #86ae47;
+}</style><link rel="Shortcut Icon" href="https://blog.udemy.com/wp-content/themes/epik/images/favicon.ico" type="image/x-icon">
+<link rel="pingback" href="https://blog.udemy.com/xmlrpc.php">
+<!-- Start BounceX tag. Deploy at the beginning of document head. -->
+
+        <script>
+        (function(d) {
+            var e = d.createElement('script');
+            e.src = d.location.protocol + '//bounceexchange.com/tag/858/i.js';
+            e.async = true;
+            d.getElementsByTagName("head")[0].appendChild(e);
+        }(document));
+        </script><script async="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/i.js"></script>
+
+<!-- End BounceX Tag-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12366301-1']);
+  _gaq.push(['_trackPageview']);
+   setTimeout("_gaq.push(['_trackEvent', '15_seconds', 'read'])",15000);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script>(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+  _fbq.push(['addPixelId', "1457291081167286"]);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(["track", "PixelInitialized", {}]);
+</script>
+<noscript><img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=1457291081167286&amp;ev=NoScript" /></noscript><!-- All in one Favicon 4.3 --><link rel="shortcut icon" href="https://blog.udemy.com/wp-content/uploads/2014/05/favicon1.png">
+<link rel="icon" href="https://blog.udemy.com/wp-content/uploads/2014/05/favicon.png" type="image/png">
+<!-- Google Analytics Tracking by Google Analyticator 6.4.8: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'enabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+  
+	_gaq.push(['_setAccount', 'UA-12366301-2']);
+    _gaq.push(['_addDevId', 'i9k95']); // Google Analyticator App ID with Google
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+		<link rel="stylesheet" id="custom-css-css" type="text/css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/a.css">
+		<script data-cfasync="false" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/ga_002.js" id="shr-google-analytics" type="text/javascript"></script><script data-cfasync="false" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/jquery.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/services.css"><script data-cfasync="false" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/shareaholic_tools.js" type="text/javascript"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/hellobar-68118-112497.js" type="text/javascript"></script><script data-cfasync="false" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/partners.js" id="shareaholic-partners" type="text/javascript"></script><style id="ki-bnr-bn" type="text/css"></style><style id="ki-bnr-bv" type="text/css"></style><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/roundtrip.js" type="text/javascript" async="true"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/hellobar-68118-104827.js" type="text/javascript"></script><script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/init1.js"></script><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/OKLCQMMNANCRNGGEOKKR5M" type="text/javascript" async="true"></script><style type="text/css">#hellobar-wrapper{height:30px;margin:0;overflow:visible;padding:0;position:relative;width:100%;z-index:2}#hellobar-pusher{height:30px;position:relative;overflow:hidden}#hellobar-wrapper.hellobar-button-default.hellobar-button #hellobar-container a.hellobar-cta-link,#hellobar-wrapper.hellobar-button-default.hellobar-button #hellobar-container a.hellobar-cta-link:link,#hellobar-wrapper.hellobar-button-default.hellobar-button #hellobar-container a.hellobar-cta-link:visited{position:relative;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;padding:2px 8px 1px 8px;margin:0 0 0 7px;text-decoration:none;cursor:pointer;font-size:0.854em}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link:link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link:visited{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRhNDg0NCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyZDJjMjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#4a4844; /* Old browsers */background:-moz-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#4a4844),color-stop(100%,#2d2c29)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* IE10+ */background:linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* W3C */box-shadow:1px 1px 3px rgba(0,0,0,0.28);-moz-box-shadow:1px 1px 3px rgba(0,0,0,0.28);-webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.28);color:#fff}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link:hover{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY3NjQ1ZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0ZjRkNDciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#67645f; /* Old browsers */background:-moz-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#67645f),color-stop(100%,#4f4d47)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* IE10+ */background:linear-gradient(top,#67645f 0%,#4f4d47 100%); /* W3C */border-color:#414141}#hellobar-wrapper.hellobar-dark-images #hellobar-container a.hellobar-cta-link:active{top:1px}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:visited{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjYmNiY2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#ffffff; /* Old browsers */background:-moz-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ffffff),color-stop(100%,#cbcbcb)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* IE10+ */background:linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* W3C */box-shadow:1px 1px 3px rgba(0,0,0,0.28);-moz-box-shadow:1px 1px 3px rgba(0,0,0,0.28);-webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.28);color:#333}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:hover{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYmRiZGIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#ffffff; /* Old browsers */background:-moz-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ffffff),color-stop(100%,#dbdbdb)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* IE10+ */background:linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* W3C */}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:active{top:1px}#hellobar-container{font-size:14px;font-weight:normal;height:30px;line-height:30px;margin:0;overflow:visible;padding:0;position:relative;text-align:center;width:100%;z-index:1000;border-bottom-width:3px;border-bottom-style:solid;border-bottom-color:#fff}#hellobar-container.texture{background-image:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/textures.png);background-repeat:repeat-x}#hellobar-container.texture.noise{background-position:0 0}#hellobar-container.texture.hard-shine{background-position:0 -30px}#hellobar-container.texture.light-gradient{background-position:0 -60px}#hellobar-container.texture.dark-gradient{background-position:0 -90px}#hellobar-container.texture.carbon{background-position:0 -120px}#hellobar-container.texture.paper{background-position:0 -150px}#hellobar-container.texture.diagonal{background-position:0 -180px}#hellobar-container.texture.linen{background-position:0 -210px}#hellobar-container.texture.stitch{background-position:0 -240px}#hellobar-container.texture.diamond{background-position:0 -270px}#hellobar-container a,#hellobar-container a:link,#hellobar-container a:visited,#hellobar-container a:hover{font-size:14px;padding:0;border:none;text-decoration:underline}#hellobar-container a:hover{text-decoration:none}#hellobar-shadow{position:absolute;bottom:-8px;left:0;width:100%;height:8px;line-height:8px;overflow:hidden;background:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png)}a#hellobar-logo,a#hellobar-logo:link,a#hellobar-logo:visited{background:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png) 0 -172px;height:0;left:20px;overflow:hidden;padding:22px 0 0;position:absolute;top:3px;width:44px}.hellobar-light-images a#hellobar-logo,.hellobar-light-images a#hellobar-logo:link,.hellobar-light-images a#hellobar-logo:visited{background-position:0 -202px}#hellobar-wrapper.hellobar-left a#hellobar-logo,#hellobar-wrapper.hellobar-left a#hellobar-logo:link,#hellobar-wrapper.hellobar-left a#hellobar-logo:visited{left:auto;right:20px}a#hellobar-close,a#hellobar-close:link,a#hellobar-close:visited{background-image:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png);background-position:0 58px;display:block;height:0;overflow:hidden;padding:19px 0 0 0;position:absolute;right:20px;top:6px;width:18px;z-index:10;border:none}.hellobar-light-images a#hellobar-close,.hellobar-light-images a#hellobar-close:link,.hellobar-light-images a#hellobar-close:visited{background-position:0 19px}#hellobar-wrapper.hellobar-left a#hellobar-close,#hellobar-wrapper.hellobar-left a#hellobar-close:link,#hellobar-wrapper.hellobar-left a#hellobar-close:visited{right:auto;left:20px}a#hellobar-close:hover{background-position:0 77px;padding:20px 0 0;border:none}.hellobar-light-images a#hellobar-close:hover{background-position:0 38px}a#hellobar-open,a#hellobar-open:link,a#hellobar-open:visited{background-image:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png);background-repeat:no-repeat;background-position:0 -8px;display:block;height:0;overflow:hidden;padding:80px 0 0;position:absolute;right:10px;top:-96px;width:35px;z-index:100;box-shadow:0 0 5px rgba(0,0,0,0.35);-moz-box-shadow:0 0 5px rgba(0,0,0,0.35);-webkit-box-shadow:0 0 5px rgba(0,0,0,0.35);-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Color=#e5e5e5,direction=120,strength=3)";filter:progid:DXImageTransform.Microsoft.Shadow(Color=#e5e5e5,direction=120,strength=3);-webkit-border-bottom-right-radius:5px;-webkit-border-bottom-left-radius:5px;-moz-border-radius-bottomright:5px;-moz-border-radius-bottomleft:5px;border-bottom-right-radius:5px;border-bottom-left-radius:5px;border-width:3px;border-style:solid}.hellobar-light-images a#hellobar-open,.hellobar-light-images a#hellobar-open:link,.hellobar-light-images a#hellobar-open:visited{background-position:0 -88px}#hellobar-wrapper.hellobar-left a#hellobar-open,#hellobar-wrapper.hellobar-left a#hellobar-open:link,#hellobar-wrapper.hellobar-left a#hellobar-open:visited{right:auto;left:10px}a#hellobar-open:hover{padding:80px 0 0;border-width:3px;border-style:solid}#hellobar-container{font-family:Georgia,Times New Roman,Times,serif;background:#ededed;color:#2b2b2b;border-bottom-color:#fff;}#hellobar-container a,#hellobar-container a:link,#hellobar-container a:visited{color:#298aba}a#hellobar-open,a#hellobar-open:link,a#hellobar-open:visited{background-color:#ededed;border-color: #fff}a#hellobar-open:hover{background-color:rgb(255,255,255)}</style><div style="width: 1px; height: 1px; display: inline;"><img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/out_006.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/out.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/out.htm" height="1" width="1">
+<img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/out_003.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/out_004.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/out_002.gif" height="1" width="1">
+<img alt="" style="display:none" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/tr.gif" height="1" width="1"><img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/a.gif" height="1" width="1">
+<img style="border-style:none;" alt="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/out_005.gif" height="1" width="1">
+<!-- rmx placeholder -->
+<img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/seg.gif" height="1" width="1">
+</div></head>
+<body style="margin-right: 17px;" data-twttr-rendered="true" class="single single-post postid-103690 single-format-standard custom-header content-sidebar for-students technology-for-students fancybox-lock"><div id="hellobar-pusher"></div><div class=" hellobar-right hellobar-dark-images hellobar-button-default hellobar-button" id="hellobar-wrapper" style="display: block; position: fixed; width: 100%; top: 0px; left: 0px; z-index: 5000;"><div id="hellobar-container"><span>Special offer for Udemy blog readers! Save 50% on any Udemy course.</span> <a class="hellobar-cta-link" href="https://www.udemy.com/collection/save-50-on-any-udemy-course/?tc=blog.notificationtop50off&amp;popup=no&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog">Start Learning Today!</a><a id="hellobar-close" href="#close">Close</a><div id="hellobar-shadow"></div></div><a style="top: -96px;" id="hellobar-open" href="#close">Open</a></div><div id="wrap"><span style="display: none !important;" class="ud-signup-popup-hook" data-post-id="103690" data-post-url="https://blog.udemy.com/arduino-ldr/"></span><div id="head-wrap"><div id="header"><div class="wrap">
+    <div class="fxac">
+        <div id="header-menu" class="fx">
+            <div class="btn-group cats-dropdown">
+                <div data-toggle="dropdown" class="dropdown-toggle cats-toggle fxac">
+                    <a href="#" class="white-link sb mt0">
+                        <i class="fa fa-bars"></i>
+                        Course Categories
+                    </a>
+                </div>
+                <div style="display: none;" class="dropdown-menu">
+                    <div class="fxw">
+                        <div class="menu-bottom-container"><ul id="menu-bottom" class="list-unstyled"><li id="menu-item-100046" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100046"><a href="https://www.udemy.com/teach?tc=blog.discover.teach&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span>Create a Course</span></a></li>
+<li id="menu-item-100048" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100048"><a href="https://www.udemy.com/organizations/?ref=dropdown&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span>Corporate Learning</span></a></li>
+<li id="menu-item-100050" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100050"><a href="https://www.udemy.com/mobile/?tc=blog.discover.mobile&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span>Mobile</span></a></li>
+</ul></div>                        <div class="menu-second-container"><ul id="menu-second" class="list-unstyled"><li id="menu-item-100024" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100024"><a href="https://www.udemy.com/courses/Lifestyle?tc=blog.discover.lifestyle&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-smile-o"></i>  Lifestyle</span></a></li>
+<li id="menu-item-100028" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100028"><a href="https://www.udemy.com/courses/Teacher-Training?tc=blog.discover.education&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-magic"></i> Education</span></a></li>
+<li id="menu-item-100030" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100030"><a href="https://www.udemy.com/courses/Language?tc=blog.discover.languages&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-globe"></i> Languages</span></a></li>
+<li id="menu-item-100034" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100034"><a href="https://www.udemy.com/courses/Lifestyle&amp;tc=blog.discover.socialsciences?utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-users"></i> Lifestyle</span></a></li>
+<li id="menu-item-143916" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-143916"><a href="https://www.udemy.com/courses/Health-and-Fitness?tc=blog.discover.healthandfitness&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-heart"></i> Health and Fitness</span></a></li>
+</ul></div>                        <div class="menu-third-container"><ul id="menu-third" class="list-unstyled"><li id="menu-item-100036" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100036"><a href="https://www.udemy.com/courses/Music?tc=blog.discover.music&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-music"></i> Music</span></a></li>
+<li id="menu-item-100040" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100040"><a href="https://www.udemy.com/courses/Sports?tc=blog.discover.sports&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-trophy"></i>  Sports</span></a></li>
+<li id="menu-item-100042" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100042"><a href="https://www.udemy.com/courses/Games?tc=blog.discover.games&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-gamepad"></i>  Games</span></a></li>
+<li id="menu-item-100044" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100044"><a href="https://www.udemy.com/courses/Marketing?tc=blog.discover.other&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span><i class="fa fa-th-large"></i>  Marketing</span></a></li>
+</ul></div>                    </div>
+                    <div class="footer"><div class="menu-bottom-container"><ul id="menu-bottom-1" class="nav group"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100046"><a href="https://www.udemy.com/teach?tc=blog.discover.teach&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span>Create a Course</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100048"><a href="https://www.udemy.com/organizations/?ref=dropdown&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span>Corporate Learning</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100050"><a href="https://www.udemy.com/mobile/?tc=blog.discover.mobile&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><span>Mobile</span></a></li>
+</ul></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="logo-area">
+            <a id="logo" href="https://blog.udemy.com/">
+                <img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/udemy_blog.svg" alt="Udemy Blog. Learn anything. Anywhere.">
+            </a>
+
+        </div>
+
+        <div id="discoverLink" class="fx">
+            <div class="search-v4 fr">
+                <form id="searchbox" action="https://www.udemy.com/courses/search/">
+                    <input placeholder="Search for Courses" autocomplete="off" name="q" class="search-input quick-search" type="text">
+                    <input name="utm_source" value="blog" type="hidden">
+                    <input name="utm_medium" value="udemyads" type="hidden">
+                    <input name="utm_content" value="post0" type="hidden">
+                    <input name="utm_campaign" value="content-marketing-blog" type="hidden">
+                    <input name="xref" value="blog" type="hidden">
+                    <input name="tc" value="blog.search" type="hidden">
+                    <button type="submit" class="icon-search search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div></div></div><div id="inner"><div class="wrap"><div id="content-sidebar-wrap"><div id="content" class="hfeed"><div class="post-103690 post type-post status-publish format-standard has-post-thumbnail hentry category-for-students category-technology-for-students entry"><h1 class="entry-title">Seeing the Light: Using Photoresistors (LDRs) with an Arduino</h1> 
+<div class="post-info"><span class="date published time" title="2014-05-15T16:09:55+00:00">May 15, 2014</span>  by <span class="author vcard"><span class="fn"><a href="https://blog.udemy.com/author/karlvondyson/" rel="author">Karl Von Dyson</a></span></span>  </div><div class="entry-content"><a id="dd_start"></a><p><a href="https://www.udemy.com/arduino-sbs/?tc=blog.arduinoldr&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post103690&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><img class="alignright size-medium wp-image-105680" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/shutterstock_1907131341-300x200.jpg" alt="arduino ldr" height="200" width="300"></a>Photoresistors,
+ also known as light dependent resistors (LDRs) or photocells, are 
+low-cost variable resistors where the resistance changes depending on 
+the amount of light hitting its surface. In dark environments the 
+resistance is high; in light environments the resistance is lower. Due 
+to the imprecise nature of photoresistors, they are unsuitable for 
+measuring exact levels of light but are capable of detecting changes. 
+They can be used to respond to events such as the transition from 
+daytime to night-time (and vice versa) for home automation and gardening
+ applications, and are often used to control street lighting. 
+Photoresistors placed inside an enclosure can detect when it is opened 
+or, with careful design, detect the presence of objects that block the 
+sensor when inserted.<span id="more-103690"></span></p>
+<p>The code and circuits below describe the use of a photoresistor with 
+an Arduino. Although a straightforward process, this is not an in-depth 
+guide and beginners who are unfamiliar with that platform may wish to 
+look at a <a href="http://www.udemy.com/arduino-sbs/?tc=blog.arduinoldr&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post103690&amp;utm_campaign=content-marketing-blog&amp;xref=blog">step-by-step guide to learning the basics of the Arduino</a>. People from an electronic engineering background might prefer a more advanced course that covers <a href="http://www.udemy.com/learn-arduino-in-a-day/?tc=blog.arduinoldr&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post103690&amp;utm_campaign=content-marketing-blog&amp;xref=blog">wiring, installation and programming of the Arduino and interfacing with LabView</a>.</p>
+<p>To complete the tutorial, you will need:</p>
+<ul>
+<li>An Arduino or Arduino-compatible board with analog inputs.</li>
+<li>The Arduino IDE (integrated development environment).</li>
+<li>A photoresistor (photocell/light dependent resistor) such as the ones from <a href="http://www.adafruit.com/products/161?&amp;main_page=product_info&amp;cPath=35&amp;products_id=161">Adafruit</a> (USA) or <a href="http://www.maplin.co.uk/p/70k-200k-ohm-light-dependent-resistor-n54ay">Maplin</a> (UK).</li>
+<li>One 10Ko resistor.</li>
+<li>One 10Ko potentiometer (variable resistor).</li>
+<li>A breadboard and connecting wires (or suitable stripboard and soldering equipment).</li>
+</ul>
+<p><strong>Working with electricity, even at low voltages, can be 
+dangerous – follow the connection diagrams and instructions carefully, 
+and always seek advice from a qualified and experienced adult if you are
+ unsure.</strong></p>
+<h2>Theory of Operation</h2>
+<p>Shown below is a diagram of a breadboard circuit that you can use to 
+begin experimenting. The photoresistor and the 10Ko resistor are powered
+ by the Arduino’s 5V power supply and form a potential divider, which 
+protects the Arduino from short circuits and ensures that at least some 
+resistance is always present on the line.</p>
+<p>A wire is connected from this circuit to analog input 0 on the 
+Arduino. Resistors lower the voltage passing through them, and so to 
+read changes in light from this circuit, you can use the Arduino’s 
+analog to digital converters (ADCs) to measure the voltage level of the 
+input. The ADCs convert the analog value to an integer in the range 0 
+through 1023.</p>
+<p>When the photoresistor is exposed to light, its resistance decreases 
+and so the voltage reading will be higher. When light is blocked, the 
+resistance of the photoresistor increases and so the voltage reading 
+will be lower.</p>
+<p><img class="aligncenter size-large wp-image-103698" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/LDR1-1-620x436.png" alt="LDR1-1" height="436" width="620"></p>
+<p>The photoresistor is a simple two-terminal passive&nbsp;component and
+ has no polarity – it does not matter which way round you place it in 
+the circuit.</p>
+<h2>Programming the Arduino</h2>
+<p>To check that everything is functioning correctly, you can create a 
+basic sketch that reads the voltage level and outputs the value to the 
+serial port. By covering the photoresistor you will see this reading 
+change.</p>
+<p>To create the voltmeter sketch:</p>
+<ol>
+<li>Open the Arduino IDE.</li>
+<li>Paste in the following code:
+<pre>/*
+ *
+ * Udemy.com
+ * Using Photoresistors (LDRs) with an Arduino
+ *
+ */
+ 
+ // pin assignments
+ int LDR = 0;
+ 
+ // initialize the serial port
+ // and declare inputs and outputs
+ void setup() {
+   pinMode(LDR, INPUT);
+   Serial.begin(9600);
+ }
+ 
+ // read from the analog input connected to the LDR
+ // and print the value to the serial port.
+ // the delay is only to avoid sending so much data
+ // as to make it unreadable.
+ void loop() {
+   int v = analogRead(LDR);
+   Serial.println(v);
+   delay(1000);
+ }
+</pre>
+</li>
+<li>Save the sketch. On the <strong>File</strong> menu, click <strong>Save As…</strong></li>
+</ol>
+<p>To upload the sketch to your Arduino and watch the output:</p>
+<ol>
+<li>Connect your Arduino to your computer with the USB cable.</li>
+<li>In the IDE, on the toolbar, click the <strong>Upload</strong> button.</li>
+<li>On the toolbar, click the <strong>Serial Monitor</strong> button.</li>
+</ol>
+<h2>Detecting Changes</h2>
+<p>The exact values output from the sketch above will vary depending on several factors:</p>
+<ul>
+<li>The power supply of the Arduino. Particularly when powered over a 
+USB cable, it is common for the Arduino’s 5V power supply to be a little
+ less than that ideal;</li>
+<li>The minimum and maximum resistance values of the photoresistor used;</li>
+<li>The accuracy of the 10Ko resistor;</li>
+<li>The construction of the breadboard and wires used – both of these have small levels of resistance that can affect the ADCs;</li>
+<li>And the amount of ambient light in the room.</li>
+</ul>
+<p>It is more important to detect changes in the light level than to be concerned with the actual numbers.</p>
+<p>The sketch below reads the light level in the setup routine, to 
+use&nbsp;as a baseline measurement, and then detects when the 
+photoresistor is obscured. When that happens, a call to digitalWrite() 
+lights the Arduino’s built-in LED on digital pin 13.</p>
+<pre>/*
+ *
+ * Udemy.com
+ * Using Photoresistors (LDRs) with an Arduino
+ *
+ */
+ 
+ // pin assignments
+ int LED = 13;
+ int LDR = 0;
+ 
+ // variables
+ int base;
+ int threshold = 100;
+ 
+ // declare inputs and outputs
+ // and take a baseline reading
+ void setup() {
+   pinMode(LED, OUTPUT);
+   pinMode(LDR, INPUT);
+   base = analogRead(LDR);
+ }
+ 
+ // read from the analog input connected to the LDR
+ // and print the value to the serial port.
+ // the delay is only to avoid sending so much data
+ // as to make it unreadable.
+ void loop() {
+   int v = analogRead(LDR);
+   if ((base - v) &gt; threshold) {
+     digitalWrite(LED, HIGH);
+   } else {
+     digitalWrite(LED, LOW);
+   }
+ }</pre>
+<h2>Setting Thresholds in Hardware</h2>
+<p>The sketch above set a threshold – a value that defines how much 
+change is expected before something happens – in the program code. 
+Depending on your environment and application, it may be necessary to 
+adjust that threshold. To avoid having to connect the Arduino back to 
+the computer and reprogram it, you can use a potentiometer (“pot”) to 
+adjust the amount of resistance in the circuit.</p>
+<p>You can connect a pot in many ways, an example of which is shown below:</p>
+<p><img class="aligncenter size-large wp-image-103710" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/LDR2-1-620x516.htm" alt="LDR2-1" height="516" width="620"></p>
+<p>Potentiometers are another type of variable resistor – they are 
+usually attached to a knob and their resistance is set by turning the 
+knob left and right. In this diagram, a trim pot is used to change the 
+voltage feeding in to the photoresistor. This affects its ability to 
+detect light and alters the balance of the potential divider, so that 
+the amount of change registered by the sketch (<em>base – v</em>, in the code above) can be increased or decreased.</p>
+<p>For a more digital approach, you can instead wire the pot in the same
+ way as a photoresistor and read it using a second analog input. You can
+ then use that measurement in the sketch to determine a new value for 
+the variable <em>threshold</em>.</p>
+<h2>Other Applications</h2>
+<p>The two example circuits here demonstrate the basic steps involved in
+ detecting changes in light levels with a photoresistor and an Arduino. 
+More interesting projects, such as for home automation and alarm 
+systems, can be constructed using additional components like relays, 
+motors, and wireless communication devices.</p>
+<p><a href="http://www.udemy.com/arduino-sbs/?tc=blog.arduinoldr&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post103690&amp;utm_campaign=content-marketing-blog&amp;xref=blog">Learn more about the Arduino and useful components at Udemy.com</a>.</p>
+<a id="dd_end"></a><script type="text/javascript">var dd_offset_from_content = 43;var dd_top_offset_from_content = 0;var dd_override_start_anchor_id = "";var dd_override_top_offset = "";</script><script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/diggdigg-floating-bar.js"></script></div><div class="post-meta"><span class="categories">Filed Under: <a href="https://blog.udemy.com/category/for-students/" rel="category tag">For Students</a>, <a href="https://blog.udemy.com/category/for-students/technology-for-students/" rel="category tag">Technology</a></span> </div></div></div><div id="sidebar" class="sidebar widget-area"><div id="text-11" class="widget widget_text"><div class="widget-wrap"><h4 class="widget-title widgettitle">Top Udemy Courses:</h4>
+			<div class="textwidget"><div class="featured-posts">
+<ul class="wpp-list">
+<li><a href="https://www.udemy.com/topic/java?utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog">Top Java Courses</a></li>
+<li><a href="https://www.udemy.com/topic/python/?utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog">Top Python Courses</a></li>
+<li><a href="https://www.udemy.com/topic/excel/?utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog">Top Excel Courses</a></li>
+<li><a href="https://www.udemy.com/how-to-become-a-web-developer-from-scratch/?tc=blog.widget.webdev.p&amp;couponCode=blog13&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/webdeveloper.png" alt="" class="wpp-thumbnail wpp_cached_thumb wpp_featured" border="0" width="15">Become a Web Developer from Scratch! (8100+ students)</a></li>
+<li><a href="https://www.udemy.com/excel-mastery-course-part-1-of-5-calculate/?tc=blog.widget.excel.p&amp;couponCode=blog13&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/excelmastery.png" alt="" class="wpp-thumbnail wpp_cached_thumb wpp_featured" border="0" width="15">Excel Mastery Course (1010+ students)</a></li>
+<li><a href="https://www.udemy.com/advanced-excel/?tc=blog.widget.excel.p&amp;couponCode=blog13&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/advancedexcel.png" alt="" class="wpp-thumbnail wpp_cached_thumb wpp_featured" border="0" width="15">Advanced Excel Training (42,660+ students)</a></li>
+<li><a href="https://www.udemy.com/coding-for-entrepreneurs/?tc=blog.widget.coding.p&amp;couponCode=blog13&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/coding.png" alt="" class="wpp-thumbnail wpp_cached_thumb wpp_featured" border="0" width="15">Coding for Entrepreneurs (4810+ students)</a></li>
+<li><a href="https://www.udemy.com/ios-development-code-camp/?tc=blog.widget.ios.p&amp;couponCode=blog13&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/iosdev.png" alt="" class="wpp-thumbnail wpp_cached_thumb wpp_featured" border="0" width="15">iOS Development Code Camp (1155+ students)</a></li>
+<li><a href="https://www.udemy.com/advanced-java-programming/?tc=blog.widget.java.p&amp;couponCode=blog13&amp;utm_source=blog&amp;utm_medium=udemyads&amp;utm_content=post0&amp;utm_campaign=content-marketing-blog&amp;xref=blog"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/advancedjavaprogramming.png" alt="" class="wpp-thumbnail wpp_cached_thumb wpp_featured" border="0" width="15">Advanced Java Programming (735+ students)</a></li>
+</ul>
+</div>
+</div>
+		</div></div>
+<div id="text-12" class="widget widget_text"><div class="widget-wrap"><h4 class="widget-title widgettitle">Popular Posts</h4>
+			<div class="textwidget"><ul class="wpp-list popular-posts">
+<li><a href="https://blog.udemy.com/how-to-build-an-iphone-app-from-scratch-for-non-technical-people/" title="How to Build an iPhone App from Scratch for Non-Technical People: Your quick and dirty guide" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/Build-iphone-app-15x15.jpg" title="How to Build an iPhone App from Scratch for Non-Technical People: Your quick and dirty guide" alt="How to Build an iPhone App from Scratch for Non-Technical People: Your quick and dirty guide" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/how-to-build-an-iphone-app-from-scratch-for-non-technical-people/" title="How to Build an iPhone App from Scratch for Non-Technical People: Your quick and dirty guide" class="wpp-post-title" target="_self">How to Build an iPhone App from Scratch for Non-Technical People: Your quick and dirty guide</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/excel-formulas/" title="Excel Formulas: 10 Formulas That Helped Me Keep My Job" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/no_thumb.jpg" title="Excel Formulas: 10 Formulas That Helped Me Keep My Job" alt="Excel Formulas: 10 Formulas That Helped Me Keep My Job" class="wpp-thumbnail wpp_def_noPath wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/excel-formulas/" title="Excel Formulas: 10 Formulas That Helped Me Keep My Job" class="wpp-post-title" target="_self">Excel Formulas: 10 Formulas That Helped Me Keep My Job</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/modern-language-wars/" title="Code Wars: Ruby vs Python vs PHP [Infographic]" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/PROGRAMMING-LANGUAGE-3-e1326262537447-15x15.png" title="Code Wars: Ruby vs Python vs PHP [Infographic]" alt="Code Wars: Ruby vs Python vs PHP [Infographic]" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/modern-language-wars/" title="Code Wars: Ruby vs Python vs PHP [Infographic]" class="wpp-post-title" target="_self">Code Wars: Ruby vs Python vs PHP [Infographic]</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/best-programming-language/" title="Top 10 Programming Languages to Learn in 2014" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/21-15x15.jpg" title="Top 10 Programming Languages to Learn in 2014" alt="Top 10 Programming Languages to Learn in 2014" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/best-programming-language/" title="Top 10 Programming Languages to Learn in 2014" class="wpp-post-title" target="_self">Top 10 Programming Languages to Learn in 2014</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/how-to-add-ringtones-to-iphone/" title="How to Add Ringtones To Your iPhone (Updated for iOS 7)" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/howtoaddringtonestoiphone-15x15.jpg" title="How to Add Ringtones To Your iPhone (Updated for iOS 7)" alt="How to Add Ringtones To Your iPhone (Updated for iOS 7)" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/how-to-add-ringtones-to-iphone/" title="How to Add Ringtones To Your iPhone (Updated for iOS 7)" class="wpp-post-title" target="_self">How to Add Ringtones To Your iPhone (Updated for iOS 7)</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/best-powerpoint-presentations/" title="8 Best PowerPoint Presentations: How To Create Engaging Presentations" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/no_thumb.jpg" title="8 Best PowerPoint Presentations: How To Create Engaging Presentations" alt="8 Best PowerPoint Presentations: How To Create Engaging Presentations" class="wpp-thumbnail wpp_def_noPath wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/best-powerpoint-presentations/" title="8 Best PowerPoint Presentations: How To Create Engaging Presentations" class="wpp-post-title" target="_self">8 Best PowerPoint Presentations: How To Create Engaging Presentations</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/java-interview-questions/" title="Java Interview Questions: How to crack the TOP 15 questions" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/photodune-4652712-occupation-s-15x15.jpg" title="Java Interview Questions: How to crack the TOP 15 questions" alt="Java Interview Questions: How to crack the TOP 15 questions" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/java-interview-questions/" title="Java Interview Questions: How to crack the TOP 15 questions" class="wpp-post-title" target="_self">Java Interview Questions: How to crack the TOP 15 questions</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/drupal-vs-joomla-vs-wordpress/" title="Drupal vs Joomla vs WordPress: CMS Showdown [infographic]" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/CMSShowdown_final2-15x15.jpg" title="Drupal vs Joomla vs WordPress: CMS Showdown [infographic]" alt="Drupal vs Joomla vs WordPress: CMS Showdown [infographic]" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/drupal-vs-joomla-vs-wordpress/" title="Drupal vs Joomla vs WordPress: CMS Showdown [infographic]" class="wpp-post-title" target="_self">Drupal vs Joomla vs WordPress: CMS Showdown [infographic]</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/making-an-app/" title="Making an App: 6 Things You Should Consider Before Getting Started" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/bigstock-Icons-in-a-tablet-Vector-33670934-15x15.jpg" title="Making an App: 6 Things You Should Consider Before Getting Started" alt="Making an App: 6 Things You Should Consider Before Getting Started" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/making-an-app/" title="Making an App: 6 Things You Should Consider Before Getting Started" class="wpp-post-title" target="_self">Making an App: 6 Things You Should Consider Before Getting Started</a>  <span class="post-stats"></span> </li>
+<li><a href="https://blog.udemy.com/10-formulas-de-excel/" title="10 Fórmulas de Excel para ser Más Productivo" target="_self"><img src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/advancedexceltutorial-15x15.jpg" title="10 Fórmulas de Excel para ser Más Productivo" alt="10 Fórmulas de Excel para ser Más Productivo" class="wpp-thumbnail wpp_cached_thumb wpp_featured" scale="0" height="15" width="15"></a><a href="https://blog.udemy.com/10-formulas-de-excel/" title="10 Fórmulas de Excel para ser Más Productivo" class="wpp-post-title" target="_self">10 Fórmulas de Excel para ser Más Productivo</a>  <span class="post-stats"></span> </li>
+
+</ul></div>
+		</div></div>
+</div></div></div></div><div id="footer" class="footer"><div class="wrap"><div class="gototop"><p><a href="#wrap" rel="nofollow">Return to top of page</a></p></div><div class="creds"><p>Copyright ©&nbsp;2015 · <a href="http://appfinite.com/themes/epik">Epik Theme</a> on <a href="http://www.studiopress.com/">Genesis Framework</a> · <a href="http://wordpress.org/">WordPress</a> · <a href="https://blog.udemy.com/wp-login.php">Log in</a></p></div></div></div></div><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/postmessageRelay.htm" id="oauth2relay302356590" name="oauth2relay302356590"></iframe><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/DU1Ia251o0y.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>	<div style="display:none">
+	</div>
+<script type="text/javascript">
+adroll_adv_id = "554CPNW4XBAX5EYKBL4HVU";
+adroll_pix_id = "OKLCQMMNANCRNGGEOKKR5M";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+<!-- Qualaroo for udemy.com -->
+<!-- Paste this code right after the <body> tag on every page of your site. -->
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+    s.async = true; s.src = '//s3.amazonaws.com/ki.js/34436/6GL.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/hellobar.js"></script>
+<script type="text/javascript">
+    new HelloBar(68118,112497);
+</script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/wpgroho.js"></script>
+
+<script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/hellobar.js"></script>
+<script type="text/javascript">
+    new HelloBar(68118,104827);
+</script>
+
+	<script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/e-201506.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:3.3',blog:'68266232',post:'103690',tz:'-8'});
+	var load_cmc = function(){linktracker_init(68266232,103690,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script><img id="wpstats" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/g.gif"><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/uri.js"></script>
+<script>
+
+    jQuery( document ).ready(function( $ ) {
+        {
+            $('body').click(function(){
+                $(".cats-dropdown").removeClass('open');
+                $(".dropdown-menu").hide();
+            });
+
+            $('[data-toggle="dropdown"]').toggle(
+                    function(){
+                        $(this).parent().addClass('open');
+                    },
+                    function(){
+                        $(this).parent().removeClass('open');
+                    }
+            );
+            $('a').filter('[href^="http://www.udemy.com/"],[href^="https://www.udemy.com/"]').not('[href^="https://blog.udemy.com/"]').each(function () {
+                var h = this.href;
+                var p = $(this).closest(".post");
+                if (p.length) {
+                    if (matches = p.attr("class").match(/post-([0-9]+)/)) {
+                        var id = matches[1];
+                    }
+                } else {
+                    var id = 0;
+                }
+                var uri = new Uri(h)
+                        .addQueryParam('utm_source', 'blog')
+                        .addQueryParam('utm_medium', 'udemyads')
+                        .addQueryParam('utm_content', 'post' + id)
+                        .addQueryParam('utm_campaign', 'content-marketing-blog')
+                        .addQueryParam('xref', 'blog');
+
+                                this.href = uri.toString();
+
+
+            });
+
+//            $(".menu-courses-container a").each(function(){
+//                $(this).attr("href",function(){
+//                    return this.href+"&tc=blog.discover";
+//                })
+//            })
+
+        }
+    });
+</script>
+
+
+
+<div style="position: fixed;" class="dd_outer"><div style="width: 1106px;" class="dd_inner"><div style="position: absolute; top: 30px; left: -98px; display: block;" id="dd_ajax_float"><div class="dd_button_v"><iframe style="width: 58px; height: 62px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-vertical" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/tweet_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe><script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/widgets.js"></script></div><div style="clear:left"></div><div class="dd_button_v"><script type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/button.js"></script><iframe src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/a.htm" style="border: medium none; width: 55px; height: 62px;" class="buffer-button" scrolling="no" frameborder="0"></iframe></div><div style="clear:left"></div><div class="dd_button_v"><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/all.js"></script><fb:like fb-iframe-plugin-query="app_id=&amp;container_width=0&amp;href=https%3A%2F%2Fblog.udemy.com%2Farduino-ldr%2F&amp;layout=box_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=50" fb-xfbml-state="rendered" class=" fb_iframe_widget" href="https://blog.udemy.com/arduino-ldr/" send="false" show_faces="false" layout="box_count" width="50"><span style="vertical-align: bottom; width: 49px; height: 61px;"><iframe class="" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/like.htm" style="border: medium none; visibility: visible; width: 49px; height: 61px;" title="fb:like Facebook Social Plugin" scrolling="no" allowtransparency="true" name="f22121291f1f51e" frameborder="0" height="1000px" width="50px"></iframe></span></fb:like></div><div style="clear:left"></div><div class="dd_button_v"><script src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/a.js" async="" type="text/javascript"></script><script gapi_processed="true" type="text/javascript" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/plusone.js"></script><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 60px;"><iframe title="+1" data-gapiattached="true" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/fastbutton.htm" name="I0_1423063777687" id="I0_1423063777687" vspace="0" tabindex="0" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 60px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div></div><div style="clear:left"></div></div></div></div><iframe style="display: none;" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/analytics_frame.htm" id="shr_oven"></iframe><a class="ud-popup" data-timedelay="20000" data-autoopen="true" data-type="ajax" data-modal="false" data-closebtn="true" href="https://www.udemy.com/join/signup-popup/?xref=internalblog&amp;returnUrlAfterLogin=https%3A%2F%2Fblog.udemy.com%2Farduino-ldr%2F" style="display:none;"></a><iframe style="width: 0px; height: 0px; border: 0px none; display: none;" name="__dxframe" src="Seeing%20the%20Light%20%20Using%20Photoresistors%20%28LDRs%29%20with%20an%20Arduino_files/cms-sh2c.htm"></iframe><div style="width: auto; height: auto; display: block;" class="fancybox-overlay fancybox-overlay-fixed"><div style="width: 680px; height: auto; position: absolute; top: 118px; left: 275px; opacity: 1; overflow: visible;" class="fancybox-wrap fancybox-desktop fancybox-type-ajax static-content-wrapper fancybox-opened" tabindex="-1"><div style="padding: 0px; width: auto; height: auto;" class="fancybox-skin"><div class="fancybox-outer"><div style="overflow: auto; width: 680px; height: auto;" class="fancybox-inner"><div class="loginbox-v4 js-signin-box">
+    <h2 class="box-heading">
+        Iscriviti ad Udemy e accedi a oltre 1000 corsi online gratuiti.    </h2>
+    <div class="fxw box-wrapper ud-usertracker" data-namespace="">
+                    <div class="box-left box-col fx">
+    <h4>Registrati via social</h4>
+    <div class="ud-facebook-signup" data-signin-box-class-name="js-signin-box" data-redirecturl="https://www.udemy.com/login/fb-connect-login/">
+        <a href="javascript:void(0)" class="social-btn facebook-btn js-facebook-btn shadowed-btn fxac">
+            <i class="icon-facebook social-icon"></i>
+            <span class="btn-text">
+                Connettiti con Facebook            </span>
+            <span class="ajax-loader-tiny hidden"></span>
+        </a>
+    </div>
+
+    <div class="ud-google-plus-signup" data-signin-box-class-name="js-signin-box" data-serverurl="https://www.udemy.com/join/google-plus-signup-submit/" data-clientid="700206021005-ufdmcl539s7ai8gb96lefbc6st0f0cev.apps.googleusercontent.com" data-returnurl="https://blog.udemy.com/arduino-ldr/">
+        <a href="javascript:void(0)" class="social-btn google-btn shadowed-btn fxac">
+            <i class="icon-google-plus social-icon"></i>
+            <span class="btn-text">
+                Connettiti con Google            </span>
+            <span class="ajax-loader-tiny hidden"></span>
+        </a>
+    </div>
+</div>
+            <div class="box-separator"></div>
+                <div class="box-right box-col fx">
+            <div class="usertracker-command" data-usertracker-type="" data-namespace="">
+            </div>
+            <h4>Registrati con il tuo indirizzo email</h4>
+                        <form id="signup-form" name="signup-form" action="https://www.udemy.com/join/signup-submit/" method="post" class="ud-signin-form" data-signin-box-class-name="js-signin-box"><input name="locale" value="it_IT" id="locale" type="hidden">
+<input name="isSubmitted" value="1" type="hidden">
+<input name="csrf" value="24fcb83896306dc60aedcc86cdb03a81" type="hidden">
+            <div class="js-form-error form-errors alert alert-danger m10-0 none" role="alert">
+                <div class="msg"></div>
+            </div>
+                            <div class="manage-fields-wrapper ">
+                                                        <div class=" non-labeled" id="form-item-fullName">
+
+                
+                
+                <div id="tooltip-reference-fullName" class="tooltip-reference
+                                                " style=" ">
+                    <input id="fullName" name="fullName" class="text-input  " placeholder="Nome completo" type="text">
+                    
+                                        
+                                    </div>
+            </div>
+                                                                <div class=" non-labeled" id="form-item-email">
+
+                
+                
+                <div id="tooltip-reference-email" class="tooltip-reference
+                                                " style=" ">
+                    <input id="email" name="email" class="text-input  " rel="isEmailValid" placeholder="E-mail" type="email">
+                    
+                                        
+                                    </div>
+            </div>
+                                                                <div class=" non-labeled" id="form-item-password">
+
+                
+                
+                <div id="tooltip-reference-password" class="tooltip-reference
+                                                " style=" ">
+                    <input id="password" name="password" class="text-input  " placeholder="Password" type="password">
+                    
+                                        
+                                    </div>
+            </div>
+                                            </div>
+                        <div class="submit-row">
+                                    <input value="Voglio corsi gratuiti!" class="btn btn-success" data-loading-text="Voglio corsi gratuiti!" type="submit">
+                                                <span class="ajax-loader-tiny js-bottom-loader hidden"></span>
+            </div>
+            </form>                    
+            <p class="secondary-text mt10 fs10">
+                Iscrivendoti, accetti la nostra <a href="https://www.udemy.com/static/terms/" target="_blank">Condizioni di utilizzo</a> e <a href="https://www.udemy.com/static/privacy/" target="_blank">Norme sulla privacy</a>.         </p></div>
+
+    </div>
+    <div class="box-footer">
+        Hai già un account?        <a class="sign-link
+            ud-popup" href="https://www.udemy.com/join/login-popup/">
+            Accedi        </a>
+            </div>
+</div>
+</div></div><a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a></div></div></div></body></html>
