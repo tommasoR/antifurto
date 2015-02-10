@@ -5,6 +5,8 @@
    1 foto resistenza per luce notturna
    2 rele per azionamento sirena e luce di cortesia
 */
+
+unsigned long currentMillis = 0L;
 //5110
 #define PIN_SCE   7 //Pin 3 on LCD
 #define PIN_RESET 6 //Pin 4 on LCD
@@ -31,7 +33,28 @@
 ----------------------------------------------------
 */
 int LIGHT_PIN = 0; //define a pin for Photo resistor
+long sogliaGiornoNotte = 512;//da verificare con metodo empirico
+long pollingPhotoR = 300000;//5 minuti
+unsigned long previousMillisPhotoR = 0L;
+unsigned long lastPowerON =0L;
+unsigned long lastPowerOFF =0L;
 
+
+/*Contatti magnetici normalmente chiusi*/
+#define NC_CONT_1  8
+#define NC_CONT_2  9
+#define NC_CONT_3 10
+
+/* array "zona" degli eventi di allarme
+contiene il valore in millis degli eventi dei contatti NC                       
+              d8 d9 d10 */
+typedef struct 
+{
+  unsigned long eventMillis;
+  boolean  consumato;
+} zona ;
+
+zona zonas[3];
 
 //The DC pin tells the LCD if we are sending a command or data
 #define LCD_C     LOW
@@ -200,11 +223,26 @@ void setup(void)
   Serial.begin(9600);  //Begin serial communcation
   LcdInitialise();
   LcdClear();
-  LcdString("Hello World!");
+  LcdString("Ciao!");
+  
+  // setto i contatti NC 
+  pinMode(NC_CONT_1, INPUT);           // set pin to input
+  digitalWrite(NC_CONT_1, HIGH);       // turn on pullup resistors
+  pinMode(NC_CONT_2, INPUT);           // set pin to input
+  digitalWrite(NC_CONT_2, HIGH);       // turn on pullup resistors
+  pinMode(NC_CONT_3, INPUT);           // set pin to input
+  digitalWrite(NC_CONT_3, HIGH);       // turn on pullup resistors
+  
+  // initialize the digital pin's as an output.
+  pinMode(PIN_RELE_SIRENA, OUTPUT);            // Relay 1 
+  pinMode(PIN_RELE_LUCE_NOTTURNA, OUTPUT);     // Relay 2
+
+  resetVariabili();
 }
 
 void loop(void)
 {
+  currentMillis = millis();
 }
 
 /* Questa funzione restituisce una stringa che riporta l'ora minuti e secondi dall'evento*/
@@ -213,6 +251,9 @@ String getTimebyMillis(long m){
   unsigned int seconds = 0; 
   unsigned int minutes = 0; 
   unsigned int hours = 0; 
+  /* se valore in millis è negativo lo riporto a positivo*/
+  if (m<0)
+    m*=-1;
   seconds += m / 1000; 
   m = m % 1000; 
   minutes += seconds / 60; 
@@ -226,5 +267,29 @@ String getTimebyMillis(long m){
 
 void leggiPhotoRes(void){
   Serial.println(analogRead(LIGHT_PIN)); //Write the value of the photoresistor to the serial monitor.
+   
+  if(currentMillis - previousMillisPhotoR > pollingPhotoR) {
+    // save the last time control
+    previousMillisPhotoR = currentMillis;  
+
+    if(analogRead(LIGHT_PIN)>sogliaGiornoNotte && lastPowerOFF >=lastPowerON ){
+      // Accendo luce nottura soglia superata 
+      digitalWrite(PIN_RELE_LUCE_NOTTURNA, HIGH);
+      lastPowerON=previousMillisPhotoR;
+    } else if(lastPowerON > lastPowerOFF){
+      //spengo luce notturna
+      digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);
+      lastPowerOFF=previousMillisPhotoR;
+    }
+
+    
+  }
+}
+
+void resetVariabili(void){
+   for (int i = 0; i < sizeof(zonas); i++) {
+           zonas[i].eventMillis=0L;
+           zonas[i].consumato=false;
+        }
 }
 	
