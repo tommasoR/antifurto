@@ -1,3 +1,4 @@
+#include <SPI.h>
 /* Antifuto giardino versione alpha 0.1
    comprende:
    1 display 5110
@@ -7,7 +8,10 @@
 */
 
 unsigned long currentMillis = 0L;
-//5110
+/*5110 collegare resistenze 10K
+http://forum.arduino.cc/index.php?topic=254284.0
+BL 100ohm
+*/
 #define PIN_SCE   7 //Pin 3 on LCD
 #define PIN_RESET 6 //Pin 4 on LCD
 #define PIN_DC    5 //Pin 5 on LCD
@@ -218,6 +222,33 @@ void LcdWrite(byte dc, byte data)
   digitalWrite(PIN_SCE, HIGH);
 }
 
+void resetVariabili(void){
+   for (int i = 0; i < sizeof(zonas); i++) {
+           zonas[i].eventMillis=0L;
+           zonas[i].consumato=false;
+        }
+}
+
+/* Questa funzione restituisce una stringa che riporta l'ora minuti e secondi dall'evento*/
+String getTimebyMillis(long m){
+  char evento[50];
+  unsigned int seconds = 0; 
+  unsigned int minutes = 0; 
+  unsigned int hours = 0; 
+  /* se valore in millis è negativo lo riporto a positivo*/
+  if (m<0)
+    m*=-1;
+  seconds += m / 1000; 
+  m = m % 1000; 
+  minutes += seconds / 60; 
+  seconds = seconds % 60; 
+  hours += minutes / 60; 
+  minutes = minutes % 60; 
+  hours = hours % 24; 
+  sprintf(evento,"Ore:%s Minuti:%s Secondi:%s",hours,minutes,seconds);
+  return evento;
+}
+
 void setup(void)
 {
   Serial.begin(9600);  //Begin serial communcation
@@ -243,29 +274,10 @@ void setup(void)
 void loop(void)
 {
   currentMillis = millis();
+  PhotoRes();
 }
 
-/* Questa funzione restituisce una stringa che riporta l'ora minuti e secondi dall'evento*/
-String getTimebyMillis(long m){
-  char evento[50];
-  unsigned int seconds = 0; 
-  unsigned int minutes = 0; 
-  unsigned int hours = 0; 
-  /* se valore in millis è negativo lo riporto a positivo*/
-  if (m<0)
-    m*=-1;
-  seconds += m / 1000; 
-  m = m % 1000; 
-  minutes += seconds / 60; 
-  seconds = seconds % 60; 
-  hours += minutes / 60; 
-  minutes = minutes % 60; 
-  hours = hours % 24; 
-  sprintf(evento,"Ore:%s Minuti:%s Secondi:%s",hours,minutes,seconds);
-  return evento;
-}
-
-void leggiPhotoRes(void){
+void PhotoRes(void){
   Serial.println(analogRead(LIGHT_PIN)); //Write the value of the photoresistor to the serial monitor.
    
   if(currentMillis - previousMillisPhotoR > pollingPhotoR) {
@@ -281,15 +293,7 @@ void leggiPhotoRes(void){
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);
       lastPowerOFF=previousMillisPhotoR;
     }
-
-    
   }
 }
 
-void resetVariabili(void){
-   for (int i = 0; i < sizeof(zonas); i++) {
-           zonas[i].eventMillis=0L;
-           zonas[i].consumato=false;
-        }
-}
 	
