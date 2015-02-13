@@ -1,5 +1,5 @@
 #include <SPI.h>
-/* Antifuto giardino versione alpha 0.1
+/* Antifuto giardino versione alpha 1.0 del Febbraio 2015 by Tom
    comprende:
    1 display 5110
    3 ingressi NC a calamita
