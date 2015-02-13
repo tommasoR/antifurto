@@ -39,9 +39,11 @@ BL 100ohm
 int LIGHT_PIN = 0; //define a pin for Photo resistor
 long sogliaGiornoNotte = 512;//da verificare con metodo empirico
 long pollingPhotoR = 300000;//5 minuti
+long pollingMonitor = 5000;// 5 secondi
 unsigned long previousMillisPhotoR = 0L;
-unsigned long lastPowerON =0L;
-unsigned long lastPowerOFF =0L;
+unsigned long previousMillisMonitor = 0L;
+unsigned long lastPowerON_LIGHT =0L;
+unsigned long lastPowerOFF_LIGHT =0L;
 
 
 /*Contatti magnetici normalmente chiusi*/
@@ -230,7 +232,7 @@ void resetVariabili(void){
 }
 
 /* Questa funzione restituisce una stringa che riporta l'ora minuti e secondi dall'evento*/
-String getTimebyMillis(long m){
+char*  getTimebyMillis(unsigned long m){
   char evento[50];
   unsigned int seconds = 0; 
   unsigned int minutes = 0; 
@@ -254,7 +256,7 @@ void setup(void)
   Serial.begin(9600);  //Begin serial communcation
   LcdInitialise();
   LcdClear();
-  LcdString("Ciao!");
+  LcdString("Ciao Mondo!!!");
   
   // setto i contatti NC 
   pinMode(NC_CONT_1, INPUT);           // set pin to input
@@ -274,24 +276,37 @@ void setup(void)
 void loop(void)
 {
   currentMillis = millis();
-  PhotoRes();
+  photoRes();
+  monitor();
 }
 
-void PhotoRes(void){
+void monitor(void){
+  if(currentMillis - previousMillisMonitor > pollingMonitor) {
+    // save the last time control
+    previousMillisMonitor= currentMillis;
+    LcdClear();
+    LcdString(strcat("Acceso da:",getTimebyMillis(currentMillis)));
+    LcdString(strcat("Valore letto da fotoResistenza:",((char*)((int)'0')+analogRead(LIGHT_PIN))));
+    LcdString(strcat("Ultima accensione Luce:",getTimebyMillis(lastPowerON_LIGHT)));
+    LcdString(strcat("Ultimo spegnimento Luce:",getTimebyMillis(lastPowerOFF_LIGHT)));
+  }
+}
+
+void photoRes(void){
   Serial.println(analogRead(LIGHT_PIN)); //Write the value of the photoresistor to the serial monitor.
    
   if(currentMillis - previousMillisPhotoR > pollingPhotoR) {
     // save the last time control
     previousMillisPhotoR = currentMillis;  
 
-    if(analogRead(LIGHT_PIN)>sogliaGiornoNotte && lastPowerOFF >=lastPowerON ){
+    if(analogRead(LIGHT_PIN)>sogliaGiornoNotte && lastPowerOFF_LIGHT >= lastPowerON_LIGHT ){
       // Accendo luce nottura soglia superata 
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, HIGH);
-      lastPowerON=previousMillisPhotoR;
-    } else if(lastPowerON > lastPowerOFF){
+      lastPowerON_LIGHT=previousMillisPhotoR;
+    } else if(lastPowerON_LIGHT > lastPowerOFF_LIGHT){
       //spengo luce notturna
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);
-      lastPowerOFF=previousMillisPhotoR;
+      lastPowerOFF_LIGHT=previousMillisPhotoR;
     }
   }
 }
