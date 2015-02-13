@@ -18,9 +18,6 @@ BL 100ohm
 #define PIN_SDIN  4 //Pin 6 on LCD
 #define PIN_SCLK  3 //Pin 7 on LCD
 
-//interuttori NC
-
-
 //rele
 #define PIN_RELE_SIRENA 11
 #define PIN_RELE_LUCE_NOTTURNA 12
@@ -247,7 +244,7 @@ char*  getTimebyMillis(unsigned long m){
   hours += minutes / 60; 
   minutes = minutes % 60; 
   hours = hours % 24; 
-  sprintf(evento,"Ore:%s Minuti:%s Secondi:%s",hours,minutes,seconds);
+  sprintf(evento," Ore:%s Minuti:%s Secondi:%s",hours,minutes,seconds);
   return evento;
 }
 
