@@ -288,8 +288,11 @@ void monitor(void){
     
     LcdInitialise();
     LcdClear();
-    Serial.println(currentMillis);
     LcdString(getTimebyMillis(currentMillis));
+    /*
+    delay(1000);
+    LcdInitialise();
+    LcdClear();*/
     
     //LcdString(strcat("Acceso da ",getTimebyMillis(currentMillis)));
     //LcdString(strcat("Valore letto da fotoResistenza:",((char*)((int)'0')+analogRead(LIGHT_PIN))));
