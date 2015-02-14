@@ -4,7 +4,7 @@
    1 display 5110
    3 ingressi NC a calamita
    1 foto resistenza per luce notturna
-   2 rele per azionamento sirena e luce di cortesia
+   2 rele per azionamento sirena e luce di notturna di cortesia
 */
 
 unsigned long currentMillis = 0L;
@@ -12,15 +12,15 @@ unsigned long currentMillis = 0L;
 http://forum.arduino.cc/index.php?topic=254284.0
 BL 100ohm
 */
-#define PIN_SCE   7 //Pin 3 on LCD
-#define PIN_RESET 6 //Pin 4 on LCD
-#define PIN_DC    5 //Pin 5 on LCD
-#define PIN_SDIN  4 //Pin 6 on LCD
-#define PIN_SCLK  3 //Pin 7 on LCD
+#define PIN_SCE   7 //Pin X on LCD
+#define PIN_RESET 6 //Pin X on LCD
+#define PIN_DC    5 //Pin X on LCD
+#define PIN_SDIN  4 //Pin X on LCD
+#define PIN_SCLK  3 //Pin X on LCD
 
 //rele
 #define PIN_RELE_SIRENA 11
-#define PIN_RELE_LUCE_NOTTURNA 12
+#define PIN_RELE_LUCE_NOTTURNA 13//12
 
 //fotoresistenza
 /*
@@ -34,8 +34,8 @@ BL 100ohm
 ----------------------------------------------------
 */
 int LIGHT_PIN = 0; //define a pin for Photo resistor
-long sogliaGiornoNotte = 512;//da verificare con metodo empirico
-long pollingPhotoR = 300000;//5 minuti
+long sogliaGiornoNotte = 100;//da verificare con metodo empirico
+long pollingPhotoR = 10000;//5 minuti 300000
 long pollingMonitor = 5000;// 5 secondi
 unsigned long previousMillisPhotoR = 0L;
 unsigned long previousMillisMonitor = 0L;
@@ -230,7 +230,7 @@ void resetVariabili(void){
 
 /* Questa funzione restituisce una stringa che riporta l'ora minuti e secondi dall'evento*/
 char*  getTimebyMillis(unsigned long m){
-  char evento[50];
+  char evento[100];
   unsigned int seconds = 0; 
   unsigned int minutes = 0; 
   unsigned int hours = 0; 
@@ -244,7 +244,8 @@ char*  getTimebyMillis(unsigned long m){
   hours += minutes / 60; 
   minutes = minutes % 60; 
   hours = hours % 24; 
-  sprintf(evento," Ore:%s Minuti:%s Secondi:%s",hours,minutes,seconds);
+  
+  sprintf(evento,"H:%i M:%i S:%i",hours,minutes,seconds);
   return evento;
 }
 
@@ -253,7 +254,7 @@ void setup(void)
   Serial.begin(9600);  //Begin serial communcation
   LcdInitialise();
   LcdClear();
-  LcdString("Ciao Mondo!!!");
+  LcdString("Ciao Mondo!");
   
   // setto i contatti NC 
   pinMode(NC_CONT_1, INPUT);           // set pin to input
@@ -281,28 +282,38 @@ void monitor(void){
   if(currentMillis - previousMillisMonitor > pollingMonitor) {
     // save the last time control
     previousMillisMonitor= currentMillis;
+
+    //char buffer[21];
+    //sprintf(buffer,"%lu", currentMillis);
+    
+    LcdInitialise();
     LcdClear();
-    LcdString(strcat("Acceso da:",getTimebyMillis(currentMillis)));
-    LcdString(strcat("Valore letto da fotoResistenza:",((char*)((int)'0')+analogRead(LIGHT_PIN))));
-    LcdString(strcat("Ultima accensione Luce:",getTimebyMillis(lastPowerON_LIGHT)));
-    LcdString(strcat("Ultimo spegnimento Luce:",getTimebyMillis(lastPowerOFF_LIGHT)));
+    Serial.println(currentMillis);
+    LcdString(getTimebyMillis(currentMillis));
+    
+    //LcdString(strcat("Acceso da ",getTimebyMillis(currentMillis)));
+    //LcdString(strcat("Valore letto da fotoResistenza:",((char*)((int)'0')+analogRead(LIGHT_PIN))));
+    //LcdString(strcat("Ultima accensione Luce:",getTimebyMillis(lastPowerON_LIGHT)));
+    //LcdString(strcat("Ultimo spegnimento Luce:",getTimebyMillis(lastPowerOFF_LIGHT)));
   }
 }
 
 void photoRes(void){
-  Serial.println(analogRead(LIGHT_PIN)); //Write the value of the photoresistor to the serial monitor.
-   
+  int valphotoRes=analogRead(LIGHT_PIN);// 0 senza luce; max 1023 piena luce o sensore disabilitato
+  
   if(currentMillis - previousMillisPhotoR > pollingPhotoR) {
     // save the last time control
     previousMillisPhotoR = currentMillis;  
-
-    if(analogRead(LIGHT_PIN)>sogliaGiornoNotte && lastPowerOFF_LIGHT >= lastPowerON_LIGHT ){
+    Serial.println(valphotoRes); //Write the value of the photoresistor to the serial monitor.
+    if(valphotoRes<sogliaGiornoNotte && lastPowerOFF_LIGHT >= lastPowerON_LIGHT ){
       // Accendo luce nottura soglia superata 
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, HIGH);
+      Serial.println("accendo");
       lastPowerON_LIGHT=previousMillisPhotoR;
-    } else if(lastPowerON_LIGHT > lastPowerOFF_LIGHT){
+    } else if(valphotoRes>sogliaGiornoNotte && lastPowerON_LIGHT > lastPowerOFF_LIGHT){
       //spengo luce notturna
-      digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);
+      digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);      
+Serial.println("spengo");
       lastPowerOFF_LIGHT=previousMillisPhotoR;
     }
   }
