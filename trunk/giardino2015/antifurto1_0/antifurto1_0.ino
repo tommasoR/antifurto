@@ -350,6 +350,11 @@ void monitor(void){
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
       LcdString(strcat("Val fotoRes:",(char *)&(String(analogRead(LIGHT_PIN), DEC))));
+      for (int i = 0; i < sizeof(zonas); i++) {
+           if(zonas[i].eventMillis!=0){
+             Serial.println(i+"="+(zonas[i].eventMillis));
+           }
+        }
     }
   }
 }
