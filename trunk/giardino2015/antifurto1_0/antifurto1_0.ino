@@ -20,7 +20,7 @@ BL 100ohm
 
 //rele
 #define PIN_RELE_SIRENA 11
-#define PIN_RELE_LUCE_NOTTURNA 12
+#define PIN_RELE_LUCE_NOTTURNA 13//12
 
 //fotoresistenza
 /*
@@ -34,8 +34,8 @@ BL 100ohm
 ----------------------------------------------------
 */
 const int LIGHT_PIN = 0; //define a pin for Photo resistor
-const int PAGINA1 = 5000;// 5 secondi per pagina 1 
-const int PAGINA2 = 3000;// dopo 3 secondi pagina 2 i valori DEVONO essere differenti
+const int PAGINA1 = 15000;// 15 secondi per pagina 1 
+const int PAGINA2 = 13000;// dopo 13 secondi pagina 2 i valori DEVONO essere differenti
 
 //Variabili
 unsigned long currentMillis = 0L;
@@ -254,7 +254,7 @@ char*  getTimebyMillis(unsigned long m){
   minutes = minutes % 60; 
   hours = hours % 24; 
   
-  sprintf(evento,"%.2luH %.2luM %.2luS",hours,minutes,seconds);
+  sprintf(evento,"%.2luH%.2luM%.2luS",hours,minutes,seconds);
   return evento;
 }
 
@@ -286,7 +286,7 @@ void loop(void)
 {
   currentMillis = millis();
   photoRes();
-  contattiNC();
+  //contattiNC();
   monitor();
   sirena();
 }
@@ -327,7 +327,7 @@ void monitor(void){
     LcdInitialise();
     LcdClear();
     
-    LcdString("A:");
+    LcdString("A :");
     LcdString(getTimebyMillis(currentMillis));
     
     if(pollingMonitor==PAGINA1){
@@ -335,26 +335,37 @@ void monitor(void){
       pollingMonitor=PAGINA2;//prossimo giro fai vedere seconda pagina
       //ultima accensione Luce
       if(lastPowerON_LIGHT>0){
-        LcdString(strcat("LOff:",getTimebyMillis(currentMillis-lastPowerON_LIGHT)));
+        LcdString("L1:");
+        LcdString(getTimebyMillis(currentMillis-lastPowerON_LIGHT));
       } 
       //ultimo spegnimento luce
       if(lastPowerOFF_LIGHT>0){
-        LcdString(strcat("LoN :",getTimebyMillis(currentMillis-lastPowerOFF_LIGHT)));
+        LcdString("L0:");
+        LcdString(getTimebyMillis(currentMillis-lastPowerOFF_LIGHT));
       }
       
       //ultima volta che ha suonato la sirena
       if(startMillisSirena>0){
-        LcdString(strcat("S 1:",getTimebyMillis(currentMillis-startMillisSirena)));
+        LcdString("S 1:");
+        LcdString(getTimebyMillis(currentMillis-startMillisSirena));
       }
     } else {
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
-      LcdString(strcat("Val fotoRes:",(char *)&(String(analogRead(LIGHT_PIN), DEC))));
+      LcdString("val=");
+      //LcdString(analogRead(LIGHT_PIN));
+      
+      String t=(String(analogRead(LIGHT_PIN), DEC));
+      char charBuf[50];
+      t.toCharArray(charBuf,t.length());
+      LcdString(charBuf);
+      //LcdString(strcat("Val fRes:",));
+      /*
       for (int i = 0; i < sizeof(zonas); i++) {
-           if(zonas[i].eventMillis!=0){
-             Serial.println(i+"="+(zonas[i].eventMillis));
+           if(zonas[i].eventMillis > 0){
+             Serial.println(i);
            }
-        }
+      }*/
     }
   }
 }
