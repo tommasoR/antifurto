@@ -33,14 +33,16 @@ BL 100ohm
 
 ----------------------------------------------------
 */
-int LIGHT_PIN = 0; //define a pin for Photo resistor
+const int LIGHT_PIN = 0; //define a pin for Photo resistor
+const int PAGINA1 = 5000;// 5 secondi per pagina 1 
+const int PAGINA2 = 3000;// dopo 3 secondi pagina 2 i valori DEVONO essere differenti
 
 //Variabili
 unsigned long currentMillis = 0L;
 int sogliaGiornoNotte = 100;//da verificare con metodo empirico
 unsigned long pollingPhotoR = 10000;//5 minuti 300000
-int pollingMonitor = 5000;// 5 secondi
-unsigned long durataSirena = 300000;// 5 minuti
+int pollingMonitor = PAGINA1;
+unsigned long durataSirena = 0;// ogni allarme definisce la durata in millisecondi
 unsigned long startMillisSirena = 0L;
 unsigned long previousMillisPhotoR = 0L;
 unsigned long previousMillisMonitor = 0L;
@@ -296,6 +298,7 @@ void contattiNC(void){
       if(digitalRead(i)&& zonas[i-NC_CONT_1].consumato==false){
         zonas[i-NC_CONT_1].eventMillis=currentMillis;
         startMillisSirena = currentMillis; 
+        durataSirena=300000;//imposta durata a 5 minuti
         zonas[i-NC_CONT_1].consumato==true; 
       }
     }
@@ -303,13 +306,13 @@ void contattiNC(void){
 }
 
 void sirena(void){
-  if((startMillisSirena > 0) && (currentMillis - startMillisSirena < durataSirena)) {
+  if(currentMillis - startMillisSirena < durataSirena) {
     //accendi sirena e tieni accesa
     digitalWrite(PIN_RELE_SIRENA, HIGH);
-  } else if(startMillisSirena > 0){
+  } else if(durataSirena > 0){
     //spegni sirena
     digitalWrite(PIN_RELE_SIRENA, LOW);
-    startMillisSirena=0L;
+    durataSirena=0L;
   }
 }
 
@@ -323,19 +326,31 @@ void monitor(void){
     
     LcdInitialise();
     LcdClear();
-    LcdString("1:");
-    LcdString(getTimebyMillis(currentMillis));
-    /*
-    delay(1000);
-    LcdInitialise();
-    LcdClear();*/
     
-    //LcdString(strcat("Acceso da ",getTimebyMillis(currentMillis)));
-    //LcdString(strcat("Valore letto da fotoResistenza:",((char*)((int)'0')+analogRead(LIGHT_PIN))));
-    //ultima accensione Luce
-    LcdString(strcat("2:",getTimebyMillis(currentMillis-lastPowerON_LIGHT)));
-    //ultimo spegnimento luce
-    LcdString(strcat("3:",getTimebyMillis(currentMillis-lastPowerOFF_LIGHT)));
+    LcdString("A:");
+    LcdString(getTimebyMillis(currentMillis));
+    
+    if(pollingMonitor==PAGINA1){
+      //pagina 1
+      pollingMonitor=PAGINA2;//prossimo giro fai vedere seconda pagina
+      //ultima accensione Luce
+      if(lastPowerON_LIGHT>0){
+        LcdString(strcat("LOff:",getTimebyMillis(currentMillis-lastPowerON_LIGHT)));
+      } 
+      //ultimo spegnimento luce
+      if(lastPowerOFF_LIGHT>0){
+        LcdString(strcat("LoN :",getTimebyMillis(currentMillis-lastPowerOFF_LIGHT)));
+      }
+      
+      //ultima volta che ha suonato la sirena
+      if(startMillisSirena>0){
+        LcdString(strcat("S 1:",getTimebyMillis(currentMillis-startMillisSirena)));
+      }
+    } else {
+      //pagina 2
+      pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
+      LcdString(strcat("Val fotoRes:",(char *)&(String(analogRead(LIGHT_PIN), DEC))));
+    }
   }
 }
 
