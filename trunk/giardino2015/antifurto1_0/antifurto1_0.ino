@@ -7,8 +7,8 @@
    2 rele per azionamento sirena e luce di notturna di cortesia
 */
 
-unsigned long currentMillis = 0L;
-/*5110 collegare resistenze 10K
+
+/*5110 collegare resistenze 10K i pin del 5110  non sono standard
 http://forum.arduino.cc/index.php?topic=254284.0
 BL 100ohm
 */
@@ -20,7 +20,7 @@ BL 100ohm
 
 //rele
 #define PIN_RELE_SIRENA 11
-#define PIN_RELE_LUCE_NOTTURNA 13//12
+#define PIN_RELE_LUCE_NOTTURNA 12
 
 //fotoresistenza
 /*
@@ -34,16 +34,23 @@ BL 100ohm
 ----------------------------------------------------
 */
 int LIGHT_PIN = 0; //define a pin for Photo resistor
-long sogliaGiornoNotte = 100;//da verificare con metodo empirico
-long pollingPhotoR = 10000;//5 minuti 300000
-long pollingMonitor = 5000;// 5 secondi
+
+//Variabili
+unsigned long currentMillis = 0L;
+int sogliaGiornoNotte = 100;//da verificare con metodo empirico
+unsigned long pollingPhotoR = 10000;//5 minuti 300000
+int pollingMonitor = 5000;// 5 secondi
+unsigned long durataSirena = 300000;// 5 minuti
+unsigned long startMillisSirena = 0L;
 unsigned long previousMillisPhotoR = 0L;
 unsigned long previousMillisMonitor = 0L;
+unsigned long previousMillisSirena = 0L;
 unsigned long lastPowerON_LIGHT =0L;
 unsigned long lastPowerOFF_LIGHT =0L;
 
 
-/*Contatti magnetici normalmente chiusi*/
+/*Contatti magnetici normalmente chiusi
+DEVONO essere consecutivi i pin altrimenti modificare il CICLO FOR*/
 #define NC_CONT_1  8
 #define NC_CONT_2  9
 #define NC_CONT_3 10
@@ -231,9 +238,9 @@ void resetVariabili(void){
 /* Questa funzione restituisce una stringa che riporta l'ora minuti e secondi dall'evento*/
 char*  getTimebyMillis(unsigned long m){
   char evento[100];
-  unsigned int seconds = 0; 
-  unsigned int minutes = 0; 
-  unsigned int hours = 0; 
+  unsigned long seconds = 0; 
+  unsigned long minutes = 0; 
+  unsigned long hours = 0; 
   /* se valore in millis è negativo lo riporto a positivo*/
   if (m<0)
     m*=-1;
@@ -245,7 +252,7 @@ char*  getTimebyMillis(unsigned long m){
   minutes = minutes % 60; 
   hours = hours % 24; 
   
-  sprintf(evento,"H:%i M:%i S:%i",hours,minutes,seconds);
+  sprintf(evento,"%.2luH %.2luM %.2luS",hours,minutes,seconds);
   return evento;
 }
 
@@ -266,8 +273,10 @@ void setup(void)
   
   // initialize the digital pin's as an output.
   pinMode(PIN_RELE_SIRENA, OUTPUT);            // Relay 1 
+  digitalWrite(PIN_RELE_SIRENA, LOW);
   pinMode(PIN_RELE_LUCE_NOTTURNA, OUTPUT);     // Relay 2
-
+  digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);
+  
   resetVariabili();
 }
 
@@ -275,7 +284,33 @@ void loop(void)
 {
   currentMillis = millis();
   photoRes();
+  contattiNC();
   monitor();
+  sirena();
+}
+
+void contattiNC(void){
+  for (int i=NC_CONT_1; i <= NC_CONT_3; i++){
+    if (digitalRead(i)){
+      delay(15);
+      if(digitalRead(i)&& zonas[i-NC_CONT_1].consumato==false){
+        zonas[i-NC_CONT_1].eventMillis=currentMillis;
+        startMillisSirena = currentMillis; 
+        zonas[i-NC_CONT_1].consumato==true; 
+      }
+    }
+  }  
+}
+
+void sirena(void){
+  if((startMillisSirena > 0) && (currentMillis - startMillisSirena < durataSirena)) {
+    //accendi sirena e tieni accesa
+    digitalWrite(PIN_RELE_SIRENA, HIGH);
+  } else if(startMillisSirena > 0){
+    //spegni sirena
+    digitalWrite(PIN_RELE_SIRENA, LOW);
+    startMillisSirena=0L;
+  }
 }
 
 void monitor(void){
@@ -288,6 +323,7 @@ void monitor(void){
     
     LcdInitialise();
     LcdClear();
+    LcdString("1:");
     LcdString(getTimebyMillis(currentMillis));
     /*
     delay(1000);
@@ -296,8 +332,10 @@ void monitor(void){
     
     //LcdString(strcat("Acceso da ",getTimebyMillis(currentMillis)));
     //LcdString(strcat("Valore letto da fotoResistenza:",((char*)((int)'0')+analogRead(LIGHT_PIN))));
-    //LcdString(strcat("Ultima accensione Luce:",getTimebyMillis(lastPowerON_LIGHT)));
-    //LcdString(strcat("Ultimo spegnimento Luce:",getTimebyMillis(lastPowerOFF_LIGHT)));
+    //ultima accensione Luce
+    LcdString(strcat("2:",getTimebyMillis(currentMillis-lastPowerON_LIGHT)));
+    //ultimo spegnimento luce
+    LcdString(strcat("3:",getTimebyMillis(currentMillis-lastPowerOFF_LIGHT)));
   }
 }
 
