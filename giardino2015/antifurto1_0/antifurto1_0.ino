@@ -20,13 +20,13 @@ BL 100ohm
 
 //rele
 #define PIN_RELE_SIRENA 11
-#define PIN_RELE_LUCE_NOTTURNA 13//12
+#define PIN_RELE_LUCE_NOTTURNA 12
 
 //fotoresistenza
 /*
 ----------------------------------------------------
 
-           PhotoR     10K
+           PhotoR     50K
  +5    o---/\/\/--.--/\/\/---o GND
                   |
  Pin 0 o-----------
@@ -34,14 +34,14 @@ BL 100ohm
 ----------------------------------------------------
 */
 const int LIGHT_PIN = 0; //define a pin for Photo resistor
-const int PAGINA1 = 15000;// 15 secondi per pagina 1 
-const int PAGINA2 = 13000;// dopo 13 secondi pagina 2 i valori DEVONO essere differenti
+const word PAGINA1 = 15000;// 15 secondi per pagina 1 
+const word PAGINA2 = 13000;// dopo 13 secondi pagina 2 i valori DEVONO essere differenti
 
 //Variabili
 unsigned long currentMillis = 0L;
-int sogliaGiornoNotte = 100;//da verificare con metodo empirico
-unsigned long pollingPhotoR = 10000;//5 minuti 300000
-int pollingMonitor = PAGINA1;
+word sogliaGiornoNotte = 100;//da verificare con metodo empirico
+unsigned long pollingPhotoR = 300000;//5 minut1 300.000
+word pollingMonitor = PAGINA1;
 unsigned long durataSirena = 0;// ogni allarme definisce la durata in millisecondi
 unsigned long startMillisSirena = 0L;
 unsigned long previousMillisPhotoR = 0L;
@@ -286,7 +286,7 @@ void loop(void)
 {
   currentMillis = millis();
   photoRes();
-  //contattiNC();
+  contattiNC();
   monitor();
   sirena();
 }
@@ -346,26 +346,26 @@ void monitor(void){
       
       //ultima volta che ha suonato la sirena
       if(startMillisSirena>0){
-        LcdString("S 1:");
+        LcdString("S1:");
         LcdString(getTimebyMillis(currentMillis-startMillisSirena));
       }
     } else {
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
-      LcdString("val=");
-      //LcdString(analogRead(LIGHT_PIN));
-      
-      String t=(String(analogRead(LIGHT_PIN), DEC));
+      String t;
       char charBuf[50];
-      t.toCharArray(charBuf,t.length());
-      LcdString(charBuf);
-      //LcdString(strcat("Val fRes:",));
-      /*
       for (int i = 0; i < sizeof(zonas); i++) {
            if(zonas[i].eventMillis > 0){
-             Serial.println(i);
+             LcdString("z");
+             LcdString(itoa(i,charBuf,10));
+             LcdString(":");
+             LcdString(getTimebyMillis(currentMillis-zonas[i].eventMillis));
            }
-      }*/
+      }
+      LcdString("Luce_= ");
+      t=(String(analogRead(LIGHT_PIN), DEC));
+      t.toCharArray(charBuf,t.length());
+      LcdString(charBuf);
     }
   }
 }
