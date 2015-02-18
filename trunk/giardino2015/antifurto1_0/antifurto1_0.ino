@@ -293,13 +293,13 @@ void loop(void)
 
 void contattiNC(void){
   for (int i=NC_CONT_1; i <= NC_CONT_3; i++){
-    if (digitalRead(i)){
-      delay(15);
-      if(digitalRead(i)&& zonas[i-NC_CONT_1].consumato==false){
+    if (digitalRead(i) && zonas[i-NC_CONT_1].consumato==false){
+      delay(150);//anti rimbalzo per i pulsanti a membrana bastano 15  millis x quelli a lamella meglio 150
+      if(digitalRead(i)){
         zonas[i-NC_CONT_1].eventMillis=currentMillis;
         startMillisSirena = currentMillis; 
         durataSirena=300000;//imposta durata a 5 minuti
-        zonas[i-NC_CONT_1].consumato==true; 
+        zonas[i-NC_CONT_1].consumato=true; 
       }
     }
   }  
