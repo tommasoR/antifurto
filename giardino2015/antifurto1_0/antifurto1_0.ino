@@ -260,7 +260,7 @@ char*  getTimebyMillis(unsigned long m){
 
 void setup(void)
 {
-  Serial.begin(9600);  //Begin serial communcation
+//Serial.begin(9600);  //Begin serial communcation
   LcdInitialise();
   LcdClear();
   LcdString("Ciao Mondo!");
@@ -376,16 +376,16 @@ void photoRes(void){
   if(currentMillis - previousMillisPhotoR > pollingPhotoR) {
     // save the last time control
     previousMillisPhotoR = currentMillis;  
-    Serial.println(valphotoRes); //Write the value of the photoresistor to the serial monitor.
+//Serial.println(valphotoRes); //Write the value of the photoresistor to the serial monitor.
     if(valphotoRes<sogliaGiornoNotte && lastPowerOFF_LIGHT >= lastPowerON_LIGHT ){
       // Accendo luce nottura soglia superata 
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, HIGH);
-      Serial.println("accendo");
+//Serial.println("accendo");
       lastPowerON_LIGHT=previousMillisPhotoR;
     } else if(valphotoRes>sogliaGiornoNotte && lastPowerON_LIGHT > lastPowerOFF_LIGHT){
       //spengo luce notturna
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);      
-Serial.println("spengo");
+//Serial.println("spengo");
       lastPowerOFF_LIGHT=previousMillisPhotoR;
     }
   }
