@@ -231,7 +231,7 @@ void LcdWrite(byte dc, byte data)
 }
 
 void resetVariabili(void){
-   for (int i = 0; i < sizeof(zonas); i++) {
+   for (int i = 0; i < 3; i++) {
            zonas[i].eventMillis=0L;
            zonas[i].consumato=false;
         }
@@ -260,7 +260,7 @@ char*  getTimebyMillis(unsigned long m){
 
 void setup(void)
 {
-//Serial.begin(9600);  //Begin serial communcation
+Serial.begin(9600);  //Begin serial communcation
   LcdInitialise();
   LcdClear();
   LcdString("Ciao Mondo!");
@@ -292,14 +292,14 @@ void loop(void)
 }
 
 void contattiNC(void){
-  for (int i=NC_CONT_1; i <= NC_CONT_3; i++){
-    if (digitalRead(i) && (zonas[i-NC_CONT_1].consumato == false)){
+  for (int i=0; i < 3; i++){
+    if (digitalRead(i+NC_CONT_1) && !(zonas[i].consumato)){    
       delay(150);//anti rimbalzo per i pulsanti a membrana bastano 15  millis x quelli a lamella meglio 150
-      if(digitalRead(i)){
-        zonas[i-NC_CONT_1].eventMillis = currentMillis;
+      if(digitalRead(i+NC_CONT_1)){
+        zonas[i].consumato = true; 
+        zonas[i].eventMillis = currentMillis;
         startMillisSirena = currentMillis; 
-        durataSirena = 300000;//imposta durata a 5 minuti
-        zonas[i-NC_CONT_1].consumato = true; 
+        durataSirena = 30000;//imposta durata a 5 minuti  
       }
     }
   }  
@@ -353,11 +353,12 @@ void monitor(void){
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
       String t;
-      char charBuf[50];
-      for (int i = 0; i < sizeof(zonas); i++) {
+      char charBuf[10];
+      for (int i = 0; i < 3; i++) {
            if(zonas[i].eventMillis > 0){
              LcdString("z");
-             LcdString(itoa(i,charBuf,10));
+             itoa(i,charBuf,10);
+             LcdString(charBuf);
              LcdString(":");
              LcdString(getTimebyMillis(currentMillis-zonas[i].eventMillis));
            }
@@ -376,16 +377,16 @@ void photoRes(void){
   if(currentMillis - previousMillisPhotoR > pollingPhotoR) {
     // save the last time control
     previousMillisPhotoR = currentMillis;  
-//Serial.println(valphotoRes); //Write the value of the photoresistor to the serial monitor.
+Serial.println(valphotoRes); //Write the value of the photoresistor to the serial monitor.
     if(valphotoRes<sogliaGiornoNotte && lastPowerOFF_LIGHT >= lastPowerON_LIGHT ){
       // Accendo luce nottura soglia superata 
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, HIGH);
-//Serial.println("accendo");
+Serial.println("accendo");
       lastPowerON_LIGHT=previousMillisPhotoR;
     } else if(valphotoRes>sogliaGiornoNotte && lastPowerON_LIGHT > lastPowerOFF_LIGHT){
       //spengo luce notturna
       digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);      
-//Serial.println("spengo");
+Serial.println("spengo");
       lastPowerOFF_LIGHT=previousMillisPhotoR;
     }
   }
