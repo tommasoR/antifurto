@@ -19,7 +19,7 @@ BL 100ohm
 #define PIN_SCLK  3 //Pin X on LCD
 
 //rele
-#define PIN_RELE_SIRENA 11
+#define PIN_RELE_SIRENA 13 //TODO
 #define PIN_RELE_LUCE_NOTTURNA 12
 
 //fotoresistenza
@@ -34,13 +34,16 @@ BL 100ohm
 ----------------------------------------------------
 */
 const int LIGHT_PIN = 0; //define a pin for Photo resistor
+int valphotoRes=0; //variabile con valore luce 0 senza luce; max 1023 piena luce o sensore disabilitato
+
+
 const word PAGINA1 = 15000;// 15 secondi per pagina 1 
 const word PAGINA2 = 13000;// dopo 13 secondi pagina 2 i valori DEVONO essere differenti
 
 //Variabili
 unsigned long currentMillis = 0L;
 word sogliaGiornoNotte = 100;//da verificare con metodo empirico
-unsigned long pollingPhotoR = 300000;//5 minut1 300.000
+unsigned long pollingPhotoR = 30000;//5 minut1 300.000 TODO
 word pollingMonitor = PAGINA1;
 unsigned long durataSirena = 0;// ogni allarme definisce la durata in millisecondi
 unsigned long startMillisSirena = 0L;
@@ -286,9 +289,9 @@ void loop(void)
 {
   currentMillis = millis();
   photoRes();
-  contattiNC();
+  //contattiNC();
   monitor();
-  sirena();
+  //sirena();
 }
 
 void contattiNC(void){
@@ -299,20 +302,20 @@ void contattiNC(void){
         zonas[i].consumato = true; 
         zonas[i].eventMillis = currentMillis;
         startMillisSirena = currentMillis; 
-        durataSirena = 30000;//imposta durata a 5 minuti  
+        durataSirena = 300000;//imposta durata sirena a 5 minuti  300000millis
       }
     }
   }  
 }
 
 void sirena(void){
-  if(currentMillis - startMillisSirena < durataSirena) {
+  if((durataSirena != 0) && (currentMillis - startMillisSirena < durataSirena)) {
     //accendi sirena e tieni accesa
     digitalWrite(PIN_RELE_SIRENA, HIGH);
   } else if(durataSirena > 0){
     //spegni sirena
     digitalWrite(PIN_RELE_SIRENA, LOW);
-    durataSirena=0L;
+    durataSirena=0L;// metto a zero così non setto più la porta della sirena
   }
 }
 
@@ -320,9 +323,6 @@ void monitor(void){
   if(currentMillis - previousMillisMonitor > pollingMonitor) {
     // save the last time control
     previousMillisMonitor= currentMillis;
-
-    //char buffer[21];
-    //sprintf(buffer,"%lu", currentMillis);
     
     LcdInitialise();
     LcdClear();
@@ -330,6 +330,9 @@ void monitor(void){
     LcdString("A :");
     LcdString(getTimebyMillis(currentMillis));
     
+    String t;
+    char charBuf[10];
+      
     if(pollingMonitor==PAGINA1){
       //pagina 1
       pollingMonitor=PAGINA2;//prossimo giro fai vedere seconda pagina
@@ -343,40 +346,42 @@ void monitor(void){
         LcdString("L0:");
         LcdString(getTimebyMillis(currentMillis-lastPowerOFF_LIGHT));
       }
-      
-      //ultima volta che ha suonato la sirena
-      if(startMillisSirena>0){
-        LcdString("S1:");
-        LcdString(getTimebyMillis(currentMillis-startMillisSirena));
-      }
+      //valore letto dalla photoresist
+      LcdString("Luce_= ");
+Serial.println(analogRead(LIGHT_PIN));  
+      t=(String(analogRead(LIGHT_PIN), DEC));
+Serial.println("t.length()");
+Serial.println(t.length());
+      t.toCharArray(charBuf,t.length()+1);
+      LcdString(charBuf);
+Serial.println(charBuf);
     } else {
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
-      String t;
-      char charBuf[10];
       for (int i = 0; i < 3; i++) {
            if(zonas[i].eventMillis > 0){
-             LcdString("z");
+             LcdString("Z");
              itoa(i,charBuf,10);
              LcdString(charBuf);
              LcdString(":");
              LcdString(getTimebyMillis(currentMillis-zonas[i].eventMillis));
            }
       }
-      LcdString("Luce_= ");
-      t=(String(analogRead(LIGHT_PIN), DEC));
-      t.toCharArray(charBuf,t.length());
-      LcdString(charBuf);
+      //ultima volta che ha suonato la sirena
+      if(startMillisSirena>0){
+        LcdString("S1:");
+        LcdString(getTimebyMillis(currentMillis-startMillisSirena));
+      }
     }
   }
 }
 
 void photoRes(void){
-  int valphotoRes=analogRead(LIGHT_PIN);// 0 senza luce; max 1023 piena luce o sensore disabilitato
-  
   if(currentMillis - previousMillisPhotoR > pollingPhotoR) {
+Serial.println("photoRes");
     // save the last time control
     previousMillisPhotoR = currentMillis;  
+    valphotoRes=analogRead(LIGHT_PIN);// 0 senza luce; max 1023 piena luce o sensore disabilitato
 Serial.println(valphotoRes); //Write the value of the photoresistor to the serial monitor.
     if(valphotoRes<sogliaGiornoNotte && lastPowerOFF_LIGHT >= lastPowerON_LIGHT ){
       // Accendo luce nottura soglia superata 
