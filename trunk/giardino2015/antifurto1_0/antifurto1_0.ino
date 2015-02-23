@@ -353,16 +353,19 @@ void monitor(void){
     if(pollingMonitor==PAGINA1){
       //pagina 1
       pollingMonitor=PAGINA2;//prossimo giro fai vedere seconda pagina
+      
       //ultima accensione Luce
       if(lastPowerON_LIGHT>0){
         LcdString("L1:");
         LcdString(getTimebyMillis(currentMillis-lastPowerON_LIGHT));
       } 
+      
       //ultimo spegnimento luce
       if(lastPowerOFF_LIGHT>0){
         LcdString("L0:");
         LcdString(getTimebyMillis(currentMillis-lastPowerOFF_LIGHT));
       }
+      
       //valore letto dalla photoresist
       LcdString("Luce_= ");
 Serial.println(analogRead(LIGHT_PIN));  
@@ -372,12 +375,14 @@ Serial.println(t.length());
       t.toCharArray(charBuf,10);
       LcdString(charBuf);
 Serial.println(charBuf);
+
      //valore letto per la temperatura
-     snprintf(tempBuf, 10, "%.f\0", temperatureC);
+     dtostrf(temperatureC , 2, 2, tempBuf);
 Serial.print("valore che dovrei mandare su lcd tempBuf=");Serial.println(tempBuf);
     } else {
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
+      
       for (int i = 0; i < 3; i++) {
            if(zonas[i].eventMillis > 0){
              LcdString("Z");
@@ -387,6 +392,7 @@ Serial.print("valore che dovrei mandare su lcd tempBuf=");Serial.println(tempBuf
              LcdString(getTimebyMillis(currentMillis-zonas[i].eventMillis));
            }
       }
+      
       //ultima volta che ha suonato la sirena
       if(startMillisSirena>0){
         LcdString("S1:");
