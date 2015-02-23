@@ -1,10 +1,12 @@
 #include <SPI.h>
-/* Antifuto giardino versione alpha 1.0 del Febbraio 2015 by Tom
+
+/* Antifurto giardino versione 1.0 del Febbraio 2015 by Tom
    comprende:
    1 display 5110
    3 ingressi NC a calamita
    1 foto resistenza per luce notturna
    2 rele per azionamento sirena e luce di notturna di cortesia
+   1 TMP 36 sensore di temperatura
 */
 
 
@@ -19,7 +21,7 @@ BL 100ohm
 #define PIN_SCLK  3 //Pin X on LCD
 
 //rele
-#define PIN_RELE_SIRENA 13 //TODO
+#define PIN_RELE_SIRENA 13 //TODO mettere a 11
 #define PIN_RELE_LUCE_NOTTURNA 12
 
 //fotoresistenza
@@ -34,7 +36,7 @@ BL 100ohm
 ----------------------------------------------------
 */
 const int LIGHT_PIN = 0; //define a pin for Photo resistor
-int valphotoRes=0; //variabile con valore luce 0 senza luce; max 1023 piena luce o sensore disabilitato
+int valphotoRes=1023; //variabile con valore luce 0 senza luce; max 1023 piena luce o sensore disabilitato
 
 
 const word PAGINA1 = 15000;// 15 secondi per pagina 1 
@@ -50,6 +52,7 @@ unsigned long startMillisSirena = 0L;
 unsigned long previousMillisPhotoR = 0L;
 unsigned long previousMillisMonitor = 0L;
 unsigned long previousMillisSirena = 0L;
+unsigned long previousMillisTemp = 0L;
 unsigned long lastPowerON_LIGHT =0L;
 unsigned long lastPowerOFF_LIGHT =0L;
 
@@ -71,6 +74,17 @@ typedef struct
 
 zona zonas[3];
 
+
+/* Sensor test sketch
+    for more information see http://www.ladyada.net/make/logshield/lighttemp.html
+    */
+//TMP36 Pin Variables
+    int tempPin = 1; //the analog pin the TMP36's Vout (sense) pin is connected to
+    //the resolution is 10 mV / degree centigrade with a
+    //500 mV offset to allow for negative temperatures
+    float temperatureC = 0.0; // the analog reading from the sensor
+
+//
 //The DC pin tells the LCD if we are sending a command or data
 #define LCD_C     LOW
 #define LCD_D     HIGH
@@ -282,6 +296,7 @@ Serial.begin(9600);  //Begin serial communcation
   pinMode(PIN_RELE_LUCE_NOTTURNA, OUTPUT);     // Relay 2
   digitalWrite(PIN_RELE_LUCE_NOTTURNA, LOW);
   
+  //
   resetVariabili();
 }
 
@@ -289,9 +304,10 @@ void loop(void)
 {
   currentMillis = millis();
   photoRes();
-  //contattiNC();
+  contattiNC();
+  readTemp();
   monitor();
-  //sirena();
+  sirena();
 }
 
 void contattiNC(void){
@@ -332,7 +348,8 @@ void monitor(void){
     
     String t;
     char charBuf[10];
-      
+    char tempBuf[10];
+    
     if(pollingMonitor==PAGINA1){
       //pagina 1
       pollingMonitor=PAGINA2;//prossimo giro fai vedere seconda pagina
@@ -352,9 +369,12 @@ Serial.println(analogRead(LIGHT_PIN));
       t=(String(analogRead(LIGHT_PIN), DEC));
 Serial.println("t.length()");
 Serial.println(t.length());
-      t.toCharArray(charBuf,t.length()+1);
+      t.toCharArray(charBuf,10);
       LcdString(charBuf);
 Serial.println(charBuf);
+     //valore letto per la temperatura
+     snprintf(tempBuf, 10, "%.f\0", temperatureC);
+Serial.print("valore che dovrei mandare su lcd tempBuf=");Serial.println(tempBuf);
     } else {
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
@@ -394,6 +414,24 @@ Serial.println("accendo");
 Serial.println("spengo");
       lastPowerOFF_LIGHT=previousMillisPhotoR;
     }
+  }
+}
+
+void readTemp() {
+  if(currentMillis - previousMillisTemp > 20000) {
+    // save the last time control
+    previousMillisTemp = currentMillis;
+    //getting the voltage reading from the temperature sensor
+    int reading = analogRead(tempPin);
+    // converting that reading to voltage, for 3.3v arduino use 3.3
+    float voltage = reading * 5.0;
+    voltage /= 1024.0;
+    // print out the voltage
+Serial.print(voltage); Serial.println(" volts");
+    // now print out the temperature
+    temperatureC = (voltage - 0.5) * 100 ; //converting from 10 mv per degree with 500 mV offset
+    //to degrees ((voltage - 500mV) times 100)
+Serial.print(temperatureC); Serial.println(" degrees C");
   }
 }
 
