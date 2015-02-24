@@ -36,7 +36,7 @@ BL 100ohm
 
 ----------------------------------------------------
 */
-const int LIGHT_PIN = 0; //define a pin for Photo resistor
+#define LIGHT_PIN  0 //define a pin for Photo resistor
 int valphotoRes=1023; //variabile con valore luce 0 senza luce; max 1023 piena luce o sensore disabilitato
 
 
@@ -80,7 +80,7 @@ zona zonas[3];
     for more information see http://www.ladyada.net/make/logshield/lighttemp.html
     */
 //LM35 Pin Variables
-  int tempPin = 1; //the analog pin the LM35's Vout (sense) pin is connected to
+#define tempPin 1 //the analog pin the LM35's Vout (sense) pin is connected to
     //the resolution is 10 mV / degree centigrade with a
     //500 mV offset to allow for negative temperatures
   float temperatureC = 0.0; // the analog reading from the sensor
