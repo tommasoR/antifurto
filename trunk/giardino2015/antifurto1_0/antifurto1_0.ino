@@ -1,4 +1,6 @@
 #include <SPI.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
 
 /* Antifurto giardino versione 1.0 del Febbraio 2015 by Tom
    comprende:
@@ -8,7 +10,6 @@
    2 rele per azionamento sirena e luce di notturna di cortesia
    1 TMP 36 sensore di temperatura
 */
-
 
 /*5110 collegare resistenze 10K i pin del 5110  non sono standard
 http://forum.arduino.cc/index.php?topic=254284.0
@@ -78,8 +79,8 @@ zona zonas[3];
 /* Sensor test sketch
     for more information see http://www.ladyada.net/make/logshield/lighttemp.html
     */
-//TMP36 Pin Variables
-    int tempPin = 1; //the analog pin the TMP36's Vout (sense) pin is connected to
+//LM35 Pin Variables
+    int tempPin = 1; //the analog pin the LM35's Vout (sense) pin is connected to
     //the resolution is 10 mV / degree centigrade with a
     //500 mV offset to allow for negative temperatures
     float temperatureC = 0.0; // the analog reading from the sensor
@@ -428,17 +429,19 @@ void readTemp() {
     // save the last time control
     previousMillisTemp = currentMillis;
     //getting the voltage reading from the temperature sensor
-    int reading = analogRead(tempPin);
-    // converting that reading to voltage, for 3.3v arduino use 3.3
-    float voltage = reading * 5.0;
-    voltage /= 1024.0;
+    int LM35sensor = analogRead(tempPin);
+    //lettura valore del sensore LM35 messo sull'ingresso
+    //analogico A1
+    float millivolts = ( LM35sensor/1023.0)*5000; //formula per ottenere la tensione di uscita dell'LM35 in millivolts
+    temperatureC =millivolts/10;// valore espresso in gradi Celsius (l'out del sensore è 10mv per grado) 
     // print out the voltage
-Serial.print(voltage); Serial.println(" volts");
+Serial.print(millivolts); Serial.println(" millivolts");
     // now print out the temperature
-    temperatureC = (voltage - 0.5) * 100 ; //converting from 10 mv per degree with 500 mV offset
-    //to degrees ((voltage - 500mV) times 100)
 Serial.print(temperatureC); Serial.println(" degrees C");
   }
 }
-
-	
+/*
+LM35reading=analogRead(LM35sensor);    // reads the LM35 output
+LM35voltage = (LM35reading/1024.0)*5.0;
+LM35degreesC=LM35voltage*100.0;    
+	*/
