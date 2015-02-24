@@ -80,12 +80,19 @@ zona zonas[3];
     for more information see http://www.ladyada.net/make/logshield/lighttemp.html
     */
 //LM35 Pin Variables
-    int tempPin = 1; //the analog pin the LM35's Vout (sense) pin is connected to
+  int tempPin = 1; //the analog pin the LM35's Vout (sense) pin is connected to
     //the resolution is 10 mV / degree centigrade with a
     //500 mV offset to allow for negative temperatures
-    float temperatureC = 0.0; // the analog reading from the sensor
+  float temperatureC = 0.0; // the analog reading from the sensor
+  int LM35sensor = 0;
+  float volts = 0.0;
 
 //
+//variabili per  monitor
+  String t;
+  char charBuf[10];
+  char tempBuf[10];
+
 //The DC pin tells the LCD if we are sending a command or data
 #define LCD_C     LOW
 #define LCD_D     HIGH
@@ -347,9 +354,6 @@ void monitor(void){
     LcdString("A :");
     LcdString(getTimebyMillis(currentMillis));
     
-    String t;
-    char charBuf[10];
-    char tempBuf[10];
     
     if(pollingMonitor==PAGINA1){
       //pagina 1
@@ -429,19 +433,15 @@ void readTemp() {
     // save the last time control
     previousMillisTemp = currentMillis;
     //getting the voltage reading from the temperature sensor
-    int LM35sensor = analogRead(tempPin);
+    LM35sensor = analogRead(tempPin);
     //lettura valore del sensore LM35 messo sull'ingresso
     //analogico A1
-    float millivolts = ( LM35sensor/1023.0)*5000; //formula per ottenere la tensione di uscita dell'LM35 in millivolts
-    temperatureC =millivolts/10;// valore espresso in gradi Celsius (l'out del sensore è 10mv per grado) 
+    volts = ( LM35sensor/1024.0)*5.0; //formula per ottenere la tensione di uscita dell'LM35 in volts
+    temperatureC =volts*100.0;// valore espresso in gradi Celsius (l'out del sensore è 10mv per grado) 
     // print out the voltage
-Serial.print(millivolts); Serial.println(" millivolts");
+Serial.print(volts); Serial.println(" volts");
     // now print out the temperature
 Serial.print(temperatureC); Serial.println(" degrees C");
   }
 }
-/*
-LM35reading=analogRead(LM35sensor);    // reads the LM35 output
-LM35voltage = (LM35reading/1024.0)*5.0;
-LM35degreesC=LM35voltage*100.0;    
-	*/
+
