@@ -22,7 +22,7 @@ BL 100ohm
 #define PIN_SCLK  3 //Pin X on LCD
 
 //rele
-#define PIN_RELE_SIRENA 13 //TODO mettere a 11
+#define PIN_RELE_SIRENA 11 //TODO mettere a 11
 #define PIN_RELE_LUCE_NOTTURNA 12
 
 //fotoresistenza

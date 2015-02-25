@@ -1,0 +1,181 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"><title>March Madness - Arduino Memory Usage</title>
+</head><body bgcolor="#cccccc">
+
+<center>
+<table border="1" bgcolor="#329700" width="100%">
+	<tbody><tr>
+		<td>
+			<center>
+<h1>March Madness - Arduino Memory Usage</h1>
+			<center>
+		</center></center></td>
+	</tr>
+
+</tbody></table>
+</center>
+Thanks to John O for the insperation and the direction to get this strarted. He wrote the
+code that this is based on for the AVR and I have adpted it to Arduino.<p>
+</p><p>
+This program displays the memory map of the machine. This sample was run on a 644P (Sanguino)
+which has a total of 4K ram.
+</p><p>
+A very good reference for this is <a href="http://www.nongnu.org/avr-libc/user-manual/malloc.html">
+AVR LibC manual</a>
+
+<table border="1" width="70%">
+<tbody><tr>
+
+	<td>
+	<pre>CPU USAGE
++----------------+  __data_start  =256
++      data      +
++    variables   +  data_size     =540
++                +
++----------------+  __data_end    =796
++----------------+  __bss_start   =796
++       bss      +
++    variables   +  bss_size      =315
++                +
++----------------+  __bss_end     =1111
++----------------+  __heap_start  =1111
++                +
++       heap     +  heap_size     =2427
++                +
++----------------+  heap_end      =3538
++----------------+  Current STACK =4317
++                +
++      stack     +  stack_size    =35
++                +
++----------------+  RAMEND        =4351
+available =779
+
+
+
+Free memory3233
+
+
+	</pre>	
+	
+	</td>
+</tr>
+
+
+<tr>
+
+
+
+</tr><tr>
+	<td>
+		<hr color="RED" size="10">
+	</td>
+</tr>
+
+
+
+<tr>
+	<td colspan="3">
+<pre>//************************************************************************
+//*	http://www.nongnu.org/avr-libc/user-manual/malloc.html
+//*	thanks to John O for the pointer to this info and the insperation to do it
+void	Ram_TableDisplay(void) 
+{
+char stack = 1;
+extern char *__data_start;
+extern char *__data_end;
+
+extern char *__bss_start;
+extern char *__bss_end;
+//extern char *__brkval;
+extern char *__heap_start;
+extern char *__heap_end;
+//extern char *__malloc_heap_end;
+//extern size_t __malloc_margin;
+
+
+	int	data_size	=	(int)&amp;__data_end - (int)&amp;__data_start;
+	int	bss_size	=	(int)&amp;__bss_end - (int)&amp;__data_end;
+	int	heap_end	=	(int)&amp;stack - (int)&amp;__malloc_margin;
+//	int	heap_size	=	(int)__brkval - (int)&amp;__bss_end;
+	int	heap_size	=	heap_end - (int)&amp;__bss_end;
+	int	stack_size	=	RAMEND - (int)&amp;stack + 1;
+	int	available	=	(RAMEND - (int)&amp;__data_start + 1);
+	
+	available	-=	data_size + bss_size + heap_size + stack_size;
+
+	Serial.print("+----------------+  __data_start  =");	Serial.println((int)&amp;__data_start);
+	Serial.print("+      data      +");						Serial.println();
+	Serial.print("+    variables   +  data_size     =");	Serial.println(data_size);
+	Serial.print("+                +");						Serial.println();
+	Serial.print("+----------------+  __data_end    =");	Serial.println((int)&amp;__data_end);
+	Serial.print("+----------------+  __bss_start   =");	Serial.println((int)&amp;__bss_start);
+	Serial.print("+       bss      +");						Serial.println();
+	Serial.print("+    variables   +  bss_size      =");	Serial.println(bss_size);
+	Serial.print("+                +");						Serial.println();
+	Serial.print("+----------------+  __bss_end     =");	Serial.println((int)&amp;__bss_end);
+	Serial.print("+----------------+  __heap_start  =");	Serial.println((int)&amp;__heap_start);
+	Serial.print("+                +");						Serial.println();
+	Serial.print("+       heap     +  heap_size     =");	Serial.println(heap_size);
+	Serial.print("+                +");						Serial.println();
+	Serial.print("+----------------+  heap_end      =");	Serial.println(heap_end);
+	Serial.print("+----------------+  Current STACK =");	Serial.println((int)&amp;stack);
+	Serial.print("+                +");						Serial.println();
+	Serial.print("+      stack     +  stack_size    =");	Serial.println(stack_size);
+	Serial.print("+                +");						Serial.println();
+	Serial.print("+----------------+  RAMEND        =");	Serial.println(RAMEND);
+
+//	Serial.print("__brkval      =");
+//	Serial.println((int)__brkval);
+
+	Serial.print("available =");
+	Serial.println(available);
+
+	Serial.println();
+	Serial.println();
+}
+
+int get_free_memory()
+{
+extern char __bss_end;
+extern char *__brkval;
+
+  int free_memory;
+
+  if((int)__brkval == 0)
+    free_memory = ((int)&amp;free_memory) - ((int)&amp;__bss_end);
+  else
+    free_memory = ((int)&amp;free_memory) - ((int)__brkval);
+
+  return free_memory;
+}
+
+//************************************************************************
+void setup()
+{
+
+	Serial.begin(9600);
+	
+	Serial.println("CPU USAGE");
+	Ram_TableDisplay();
+	
+	Serial.println();
+	Serial.print("Free memory");
+	Serial.println(get_free_memory());
+	
+}
+
+
+//************************************************************************
+void loop()
+{
+
+
+}
+
+</pre>
+
+
+</td></tr></tbody></table>
+
+
+</p></body></html>
