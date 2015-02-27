@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Calibri';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Calibri'), url(http://fonts.gstatic.com/l/font?kit=OFGrPxRCHuS74TTXlqi_Iw) format('woff');
+}
+@font-face {
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Indie Flower'), local('IndieFlower'), url(http://fonts.gstatic.com/s/indieflower/v7/10JVD_humAd5zP2yrFqw6nhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Walter Turncoat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Walter Turncoat'), local('WalterTurncoat'), url(http://fonts.gstatic.com/s/walterturncoat/v6/sG9su5g4GXy1KP73cU3hvf-Xg5uhy57aq-Akr_1zBcg.woff) format('woff');
+}
