@@ -1,0 +1,21 @@
+#icc_message {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	min-height: 28px;
+	line-height: 28px;
+}
+
+.icc_dismiss_button {
+	font-size: 160%;
+	vertical-align: middle;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.icc_delete_button {
+	cursor: pointer;
+}

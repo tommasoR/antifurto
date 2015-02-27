@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--[if !IE]>
+	<html class="no-js non-ie" lang="en-US"> <![endif]-->
+<!--[if IE 7 ]>
+	<html class="no-js ie7" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>
+	<html class="no-js ie8" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>
+	<html class="no-js ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html style="margin-top: 29px; height: 100%;" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en-US"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>ESP8266 connecting to internet | ReiLabs</title>
+
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="http://www.rei-labs.net/xmlrpc.php">
+
+		<link rel="alternate" type="application/rss+xml" title="ReiLabs » Feed" href="http://www.rei-labs.net/feed/">
+<link rel="alternate" type="application/rss+xml" title="ReiLabs » Comments Feed" href="http://www.rei-labs.net/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="ReiLabs » ESP8266 connecting to internet Comments Feed" href="http://www.rei-labs.net/esp8266-connecting-to-internet/feed/">
+<link rel="stylesheet" id="style.css-css" href="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/style_003.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-css" href="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/crayon.css" type="text/css" media="all">
+<link rel="stylesheet" id="cptch_stylesheet-css" href="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="implied_cookie_consent_css-css" href="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/implied-cookie-consent.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-style-css" href="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-media-queries-css" href="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/responsive.css" type="text/css" media="all">
+<script src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/ca-pub-1645048522275095.js" type="text/javascript" async=""></script><script src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/analytics.js" async=""></script><script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/jquery_002.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/flags.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.6.9","is_admin":"0","ajaxurl":"http:\/\/www.rei-labs.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/crayon.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/jquery_003.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/implied-cookie-consent.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/responsive-modernizr.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/external-tracking.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.rei-labs.net/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.rei-labs.net/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="ESP8266 WIFI module" href="http://www.rei-labs.net/esp8266-wifi-module/">
+<link rel="next" title="Install arduino driver on Windows 8" href="http://www.rei-labs.net/install-arduino-driver-on-windows-8/">
+
+<link rel="canonical" href="http://www.rei-labs.net/esp8266-connecting-to-internet/">
+<link rel="shortlink" href="http://www.rei-labs.net/?p=207">
+<style type="text/css">.goog-tooltip {display: none !important;}.goog-tooltip:hover {display: none !important;}.goog-text-highlight {background-color: transparent !important; border: none !important; box-shadow: none !important;}#google_language_translator { width:auto !important; }#flags { display:none; }.goog-te-banner-frame{visibility:hidden !important;}body { top:0px !important;}</style><!-- We need this for debugging -->
+<!-- Responsive 1.9.7.6 -->
+<!-- Google Analytics Tracking by Google Analyticator 6.4.8: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'disabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-6858374-1', 'auto');
+	ga('require', 'displayfeatures');
+
+	ga('set', 'anonymizeIp', true);
+ 
+	ga('send', 'pageview');
+</script>
+	<link href="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/translateelement.css" charset="UTF-8" rel="stylesheet" type="text/css"><script src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/main_it.js" charset="UTF-8" type="text/javascript"></script><script src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/element_main.js" charset="UTF-8" type="text/javascript"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+
+<body style="position: relative; min-height: 100%; top: 0px;" class="single single-post postid-207 single-format-standard">
+
+<div id="container" class="hfeed">
+
+	<div class="skip-container cf">
+		<a class="skip-link screen-reader-text focusable" href="#content">↓ Skip to Main Content</a>
+	</div><!-- .skip-container -->
+	<div id="header">
+
+		
+		<ul id="menu-top-menu" class="top-menu"><li id="menu-item-45" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-45"><a href="http://www.rei-labs.net/">Home</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="http://www.rei-labs.net/contact-kontakt/">Contact / Kontakt</a></li>
+</ul>
+		
+		
+			<div id="logo">
+				<a href="http://www.rei-labs.net/"><img src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/logo1.png" alt="ReiLabs" height="100" width="300"></a>
+			</div><!-- end of #logo -->
+
+		
+		
+				
+		
+		
+	</div><!-- end of #header -->
+
+	<div id="wrapper" class="clearfix">
+
+<div id="content" class="grid col-620">
+
+	<div class="breadcrumb-list" xmlns:v="http://rdf.data-vocabulary.org/#"><span class="breadcrumb" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.rei-labs.net/">Home</a></span> <span class="chevron">›</span> <span class="breadcrumb" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.rei-labs.net/category/electronics/">Electronics</a></span> <span class="chevron">›</span> <span class="breadcrumb-current">ESP8266 connecting to internet</span></div>
+	
+		
+						<div id="post-207" class="post-207 post type-post status-publish format-standard hentry category-electronics category-programming tag-at-commands tag-client tag-communication tag-esp8266 tag-fetch-http tag-internet tag-programming-2 tag-server tag-wifi-module">
+				
+				
+	<h1 class="entry-title post-title">ESP8266 connecting to internet</h1>
+
+<div class="post-meta">
+	<span class="meta-prep meta-prep-author posted">Posted on </span><a href="http://www.rei-labs.net/esp8266-connecting-to-internet/" title="ESP8266 connecting to internet" rel="bookmark"><time class="timestamp updated" datetime="2014-10-02T20:01:34+00:00">October 2, 2014</time></a><span class="byline"> by </span><span class="author vcard"><a class="url fn n" href="http://www.rei-labs.net/author/dejko1/" title="View all posts by dejko1">dejko1</a></span>
+			<span class="comments-link">
+		<span class="mdash">—</span>
+			<a href="http://www.rei-labs.net/esp8266-connecting-to-internet/#comments" title="Comment on ESP8266 connecting to internet">2 Comments ↓</a>		</span>
+	</div><!-- end of .post-meta -->
+
+				<div class="post-entry">
+					<p>You should connect to the module as outlined in my <a title="ESP8266 WIFI module" href="http://www.rei-labs.net/esp8266-wifi-module/">first article about this module</a> (which also shows use of some other commands).</p>
+<p>To try out the commands in this post you should already have the 
+module set up in STA or AP+STA mode and connected to router/internet.</p>
+<p>If bray terminal works for you you can try using it for this example 
+as it really has a neat function of being able to store multiple 
+predefined send sentences (“Macros”) and access them at the click of a 
+button. On my machine however for some reason the bray terminal doesn’t 
+read the port correctly when there is a lot of data coming in (like 
+receiving the content of a webpage) – I guess this has something to do 
+with Windows 8. The display in bray terminal is also neater than the 
+RealTerm used here.</p>
+<p>AT Commands:</p>
+<p>AT+CWMODE=3 – set the module operating mode to STA+AP.</p>
+<p>AT+RST – reset the module to finish changing the operating mode.</p>
+<p>AT+CIPMUX=1 – enable multiple connections.</p>
+<p>AT+CWLAP – check the available access points to connect to.</p>
+<p>AT+CWJAP=”ssid”,”password” to connect to the access point.</p>
+<p>AT+CIFSR – check the module ip and connection status.</p>
+<p>AT+CIPSTART=4,”TCP”,”www.google.com”,80 – start the connection to 
+google (you may occasionally get DNS fail, just retry the command)</p>
+<p>AT+CIPSEND=4,42 -send 42 characters</p>
+<p>When you receive &gt; from the module send the following data (replacing \r\n with CR and LF characters):</p>
+<p>GET / HTTP/1.1\r\n<br>
+Host: www.google.com\r\n\r\n\r\n</p>
+<p>(The first two of the request in green are sent from the PC, the rest is reply from the modem.)<a href="http://www.rei-labs.net/wp-content/uploads/2014/10/google_request.png"><img class="aligncenter size-medium wp-image-211" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/google_request-289x300.png" alt="google_request" height="300" width="289"></a></p>
+<p>You should get SEND OK and after that the content of the webpage 
+requested in +IPD format. I get a 302 page moved result and a link to 
+local google page google.si. If you malformed the GET request you will 
+get a 400 error. The +IPD frames will be maximum of 1024 bytes long. If 
+the webpage content is larger it will be split into several frames.</p>
+<p><a href="http://www.rei-labs.net/wp-content/uploads/2014/10/google_content2.png"><img class="aligncenter size-medium wp-image-212" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/google_content2-289x300.png" alt="google_content2" height="300" width="289"></a></p>
+<p>You should use AT+CIPCLOSE=4 to close the connection if the server 
+doesn’t close it automatically. Otherwise you may get unexpected 
+results.</p>
+<p>By replacing the first / in the GET request with the url of your 
+choice you can request any url on the www.google.com host. You can also 
+send GET data to the server with it. When changing the request you also 
+have to adjust the number of characters of request in CIPSEND command.</p>
+<p>Obivously you can also get data from the server by looking at the 
+content that is returned. Note that also HTTP header is output, not only
+ the HTML code /content</p>
+<p>&nbsp;</p>
+<p>Macros for bray terminal:</p>
+<p>AT+CIPSTART=4,”TCP”,”www.google.com”,80#013#010<br>
+AT+CIPSEND=4,42#013#010<br>
+GET / HTTP/1.1#013#010Host: www.google.com#013#010#013#010#013#010<br>
+AT+CIPCLOSE=4#013#010</p>
+<p>&nbsp;</p>
+
+					
+									</div><!-- end of .post-entry -->
+
+				<div class="navigation">
+					<div class="previous">‹ <a href="http://www.rei-labs.net/esp8266-wifi-module/" rel="prev">ESP8266 WIFI module</a></div>
+					<div class="next"><a href="http://www.rei-labs.net/install-arduino-driver-on-windows-8/" rel="next">Install arduino driver on Windows 8</a> ›</div>
+				</div><!-- end of .navigation -->
+
+				
+
+	<div class="post-data">
+		Posted in <a href="http://www.rei-labs.net/category/electronics/">Electronics</a>, <a href="http://www.rei-labs.net/category/programming/">Programming</a>		Tagged with: <a href="http://www.rei-labs.net/tag/at-commands/" rel="tag">at commands</a>, <a href="http://www.rei-labs.net/tag/client/" rel="tag">client</a>, <a href="http://www.rei-labs.net/tag/communication/" rel="tag">communication</a>, <a href="http://www.rei-labs.net/tag/esp8266/" rel="tag">esp8266</a>, <a href="http://www.rei-labs.net/tag/fetch-http/" rel="tag">fetch http</a>, <a href="http://www.rei-labs.net/tag/internet/" rel="tag">internet</a>, <a href="http://www.rei-labs.net/tag/programming-2/" rel="tag">programming</a>, <a href="http://www.rei-labs.net/tag/server/" rel="tag">server</a>, <a href="http://www.rei-labs.net/tag/wifi-module/" rel="tag">wifi module</a><br>	</div><!-- end of .post-data -->
+
+
+<div class="post-edit"></div>
+							</div><!-- end of #post-207 -->
+			
+						
+	<h6 id="comments">
+		2 comments on “<span>ESP8266 connecting to internet</span>”	</h6>
+
+	
+	<ol class="commentlist">
+				<li class="comment even thread-even depth-1 parent" id="comment-974">
+				<div id="div-comment-974" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/dace937e2e7a99a4970192c247a1aae3.png" class="avatar avatar-60 photo" height="60" width="60">			<cite class="fn">Leo</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.rei-labs.net/esp8266-connecting-to-internet/#comment-974">
+			January 30, 2015 at 01:48</a>		</div>
+
+		<p>I tried to get data from a website (I set DST_IP to 
+“www.google.de”) and the only thing I get back is a few characters. Do 
+you know where the mistake is which makes my ESP8266 only receive/output
+ a few characters instead what you got?</p>
+<p>This is the important part of code I used:</p>
+<p>void loop()<br>
+{<br>
+	String cmd = “AT+CIPSTART=\”TCP\”,\””;<br>
+	cmd += DST_IP;<br>
+	cmd += “\”,80″;<br>
+	Serial1.println(cmd);<br>
+	Serial.println(cmd);<br>
+	if (Serial1.find(“Error”)) return;<br>
+	cmd = “GET / HTTP/1.0\r\n\r\n”;<br>
+	Serial1.print(“AT+CIPSEND=”);<br>
+	Serial1.println(cmd.length());</p>
+<p>	if (Serial1.find(“&gt;”))<br>
+	{<br>
+		Serial.print(“&gt;”);<br>
+	}<br>
+	else<br>
+	{<br>
+		Serial1.println(“AT+CIPCLOSE”);<br>
+		Serial.println(“connect timeout”);<br>
+		delay(1000);<br>
+		return;<br>
+	}<br>
+Serial1.print(cmd);<br>
+delay(2000);<br>
+while (Serial1.available())<br>
+{<br>
+		char c = Serial1.read();<br>
+		Serial.write(c);<br>
+		if (c == ‘\r’) Serial.print(‘\n’);<br>
+	}<br>
+	Serial.println(“====”);<br>
+	delay(1000);<br>
+}</p>
+<p>…and the output I get:</p>
+<p>AT+CIPSTART=”TCP”,”www.google.de”,80<br>
+&gt; GET / HTTP/1.0</p>
+<p>SEND OK</p>
+<p>+IPD,520:HTTP/1.0 302 Found</p>
+<p>Cach====</p>
+<p>I would be very pleased if you could find the mistake, because i didn’t find anything on the internet which could help <img src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/icon_sad.gif" alt=":(" class="wp-smiley"> thanks!</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.rei-labs.net/esp8266-connecting-to-internet/?replytocom=974#respond" onclick='return addComment.moveForm( "div-comment-974", "974", "respond", "207" )' aria-label="Reply to Leo">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-dejko1 bypostauthor odd alt depth-2" id="comment-981">
+				<div id="div-comment-981" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/200c3f339bef1384b43ff5612d0c4fbb.png" class="avatar avatar-60 photo" height="60" width="60">			<cite class="fn">dejko1</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.rei-labs.net/esp8266-connecting-to-internet/#comment-981">
+			February 3, 2015 at 11:45</a>		</div>
+
+		<p>I think the problem with your code is actually a problem with 
+Arduino itself… Arduino doesn’t have much memory available, so only 64 
+characters are reserved for serial buffering.</p>
+<p>You can increase the memory used for serial buffer, however that will
+ only alleviate the problem (you will be able to read more content), not
+ fix it completely:<br>
+<a href="http://www.hobbytronics.co.uk/arduino-serial-buffer-size" rel="nofollow">http://www.hobbytronics.co.uk/arduino-serial-buffer-size</a></p>
+<p>The characters are being kept in serial buffer only until you read 
+them, so if you remove the delay(2000); line from your code you will 
+probably also be able to read some more data. Note that if the buffer 
+gets filled while you read it (if the reading is too slow) you will get 
+data with some characters / content missing in between.</p>
+<p>If you set the baudrate on ESP8266 to a lower setting you may also be able to get the arduino to read some more data.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.rei-labs.net/esp8266-connecting-to-internet/?replytocom=981#respond" onclick='return addComment.moveForm( "div-comment-981", "981", "respond", "207" )' aria-label="Reply to dejko1">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+
+	
+
+
+	<h6 id="pings">2 Pings/Trackbacks for "ESP8266 connecting to internet"</h6>
+
+	<ol class="commentlist">
+				<li class="pingback even thread-even depth-1" id="comment-791">
+				<div id="div-comment-791" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.rei-labs.net/esp8266-wifi-module/" rel="external nofollow" class="url">ESP8266 WIFI module | ReiLabs</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.rei-labs.net/esp8266-connecting-to-internet/#comment-791">
+			October 17, 2014 at 06:24</a>		</div>
+
+		<p>[…] Be sure to also check the follow-up about connecting to internet / fetching a webpage here. […]</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-813">
+				<div id="div-comment-813" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.rei-labs.net/esp8266-update-firmware-to-change-the-baudrate/" rel="external nofollow" class="url">ESP8266 update firmware to change the baudrate | ReiLabs</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.rei-labs.net/esp8266-connecting-to-internet/#comment-813">
+			November 3, 2014 at 20:34</a>		</div>
+
+		<p>[…]  (You may also use arduino as both the power source and 
+USB-serial converter, I have used it in my previous posts as a power 
+source. Actually the flashing process should take less power than 
+connecting to WIFI so […]</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+	</ol>
+
+
+
+
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.rei-labs.net/esp8266-connecting-to-internet/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://www.rei-labs.net/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" size="30" type="text"></p>
+<p class="comment-form-email"><label for="email">E-mail</label> <span class="required">*</span><input id="email" name="email" size="30" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" size="30" type="text"></p>
+<p class="cptch_block"><br>		<input name="cptch_result" value="cjU=" type="hidden">
+		<input name="cptch_time" value="1425030718" type="hidden">
+		<input value="Version: 4.0.9" type="hidden">
+		<input id="cptch_input" class="cptch_input" autocomplete="off" name="cptch_number" maxlength="2" size="2" aria-required="true" required="required" style="margin-bottom:0;display:inline;font-size: 12px;width: 40px;" type="text"> + 6 =  seven</p>												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea></p>						<p class="form-allowed-tags" id="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a
+ href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; 
+&lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code class="" 
+title="" data-url=""&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; 
+&lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre class="" 
+title="" data-url=""&gt; &lt;span class="" title="" data-url=""&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" class="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="207" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="3808c89629" type="hidden"></p><p style="display: none;"></p>					<input id="ak_js" name="ak_js" value="1425031423067" type="hidden"></form>
+							</div><!-- #respond -->
+			
+
+			
+		
+</div><!-- end of #content -->
+
+
+	<div id="widgets" class="grid col-300 fit">
+		
+		<div id="search-2" class="widget-wrapper widget_search"><form method="get" id="searchform" action="http://www.rei-labs.net/">
+	<label class="screen-reader-text" for="s">Search for:</label>
+	<input class="field" name="s" id="s" placeholder="search here …" type="text">
+	<input class="submit" name="submit" id="searchsubmit" value="Go" type="submit">
+</form></div><div id="text-5" class="widget-wrapper widget_text"><div class="widget-title"><h3>Advertisment</h3></div>			<div class="textwidget"><script async="" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/adsbygoogle.js"></script>
+<!-- Rei-Labs Blog Widget Responsive -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-1645048522275095" data-ad-slot="9734656367" data-ad-format="auto"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:251px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:251px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" frameborder="0" height="600" width="251"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</div>		<div id="recent-posts-2" class="widget-wrapper widget_recent_entries">		<div class="widget-title"><h3>Recent Posts</h3></div>		<ul>
+					<li>
+				<a href="http://www.rei-labs.net/repairing-crumar-organizer-electronic-organ/">Repairing Crumar Organizer electronic organ</a>
+						</li>
+					<li>
+				<a href="http://www.rei-labs.net/cirrus-project-aiming-to-reach-space-with-amateur-rocket/">Cirrus project aiming to reach space with amateur rocket</a>
+						</li>
+					<li>
+				<a href="http://www.rei-labs.net/testing-digital-altimeter-for-project-rocket-404/">Testing digital altimeter for project Rocket 404</a>
+						</li>
+					<li>
+				<a href="http://www.rei-labs.net/correctly-setting-up-prebulid-batch-script-in-coocox/">Correctly setting up prebulid batch script in CooCox</a>
+						</li>
+					<li>
+				<a href="http://www.rei-labs.net/connecting-multiple-virtual-serial-ports-together/">Connecting multiple virtual serial ports together</a>
+						</li>
+				</ul>
+		</div><div id="glt_widget-2" class="widget-wrapper widget_glt_widget"><div class="widget-title"><h3>Translate</h3></div><div id="flags" class="size20"><ul id="sortable" class="ui-sortable" style="float:left"><li id="English"><a title="English" class="notranslate flag en"></a></li><li id="German"><a title="German" class="notranslate flag de"></a></li><li id="Slovenian"><a title="Slovenian" class="notranslate flag sl"></a></li></ul></div><div id="google_language_translator"><div style="" dir="ltr" class="skiptranslate goog-te-gadget"><div id=":0.targetLanguage"><select class="goog-te-combo"><option selected="selected" value="">Seleziona lingua</option><option value="it">Italiano</option><option value="af">Afrikaans</option><option value="sq">Albanese</option><option value="ar">Arabo</option><option value="hy">Armeno</option><option value="az">Azero</option><option value="eu">Basco</option><option value="bn">Bengalese</option><option value="be">Bielorusso</option><option value="my">Birmano</option><option value="bs">Bosniaco</option><option value="bg">Bulgaro</option><option value="ca">Catalano</option><option value="ceb">Cebuano</option><option value="cs">ceco</option><option value="ny">Chichewa</option><option value="zh-CN">Cinese (semplificato)</option><option value="zh-TW">Cinese (tradizionale)</option><option value="ko">Coreano</option><option value="ht">Creolo haitiano</option><option value="hr">Croato</option><option value="da">danese</option><option value="iw">Ebraico</option><option value="eo">Esperanto</option><option value="et">Estone</option><option value="tl">filippino</option><option value="fi">Finlandese</option><option value="fr">Francese</option><option value="gl">Galiziano</option><option value="cy">Gallese</option><option value="ka">Georgiano</option><option value="ja">Giapponese</option><option value="jw">Giavanese</option><option value="el">Greco</option><option value="gu">Gujarati</option><option value="ha">Hausa</option><option value="hi">hindi</option><option value="hmn">Hmong</option><option value="ig">Igbo</option><option value="id">Indonesiano</option><option value="ga">Irlandese</option><option value="is">Islandese</option><option value="kn">Kannada</option><option value="kk">Kazako</option><option value="km">Khmer</option><option value="lo">Lao</option><option value="la">Latino</option><option value="lv">Lettone</option><option value="lt">Lituano</option><option value="mk">Macedone</option><option value="ml">Malabarese</option><option value="mg">Malagasy</option><option value="ms">Malese</option><option value="mt">Maltese</option><option value="mi">Maori</option><option value="mr">Marati</option><option value="mn">Mongolo</option><option value="ne">Nepalese</option><option value="no">Norvegese (Bokmål)</option><option value="nl">Olandese</option><option value="fa">Persiano</option><option value="pl">Polacco</option><option value="pt">Portoghese</option><option value="pa">Punjabi</option><option value="ro">Rumeno</option><option value="ru">Russo</option><option value="sr">Serbo</option><option value="st">Sesotho</option><option value="si">Singalese</option><option value="sk">Slovacco</option><option value="sl">Sloveno</option><option value="so">Somalo</option><option value="es">Spagnolo</option><option value="su">Sundanese</option><option value="sv">Svedese</option><option value="sw">Swahili</option><option value="tg">Tagiko</option><option value="th">Tailandese</option><option value="ta">Tamil</option><option value="de">Tedesco</option><option value="te">Telugu</option><option value="tr">Turco</option><option value="uk">ucraino</option><option value="hu">Ungherese</option><option value="ur">Urdu</option><option value="uz">Usbeco</option><option value="vi">Vietnamita</option><option value="yi">Yiddish</option><option value="yo">Yoruba</option><option value="zu">Zulu</option></select></div>Powered by <span style="white-space:nowrap"><a class="goog-logo-link" href="https://translate.google.com/" target="_blank"><img src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/google_logo_41.png" style="padding-right: 3px" height="13px" width="37px">Traduttore</a></span></div></div></div><div id="archives-2" class="widget-wrapper widget_archive"><div class="widget-title"><h3>Archives</h3></div>		<ul>
+	<li><a href="http://www.rei-labs.net/2015/02/">February 2015</a></li>
+	<li><a href="http://www.rei-labs.net/2015/01/">January 2015</a></li>
+	<li><a href="http://www.rei-labs.net/2014/12/">December 2014</a></li>
+	<li><a href="http://www.rei-labs.net/2014/11/">November 2014</a></li>
+	<li><a href="http://www.rei-labs.net/2014/10/">October 2014</a></li>
+	<li><a href="http://www.rei-labs.net/2014/09/">September 2014</a></li>
+	<li><a href="http://www.rei-labs.net/2014/08/">August 2014</a></li>
+	<li><a href="http://www.rei-labs.net/2014/07/">July 2014</a></li>
+	<li><a href="http://www.rei-labs.net/2014/06/">June 2014</a></li>
+		</ul>
+</div><div id="categories-2" class="widget-wrapper widget_categories"><div class="widget-title"><h3>Categories</h3></div>		<ul>
+	<li class="cat-item cat-item-6"><a href="http://www.rei-labs.net/category/arduino/">Arduino</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.rei-labs.net/category/audio-equipment-and-music/">Audio equipment and Music</a>
+</li>
+	<li class="cat-item cat-item-83"><a href="http://www.rei-labs.net/category/botany/">Botany</a>
+</li>
+	<li class="cat-item cat-item-75"><a href="http://www.rei-labs.net/category/drivers/">Drivers</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.rei-labs.net/category/electronics/">Electronics</a>
+</li>
+	<li class="cat-item cat-item-164"><a href="http://www.rei-labs.net/category/model-rocketry/">Model rocketry</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.rei-labs.net/category/programming/">Programming</a>
+</li>
+	<li class="cat-item cat-item-84"><a href="http://www.rei-labs.net/category/reilabs-legacy-posts/">ReiLabs Legacy Posts</a>
+</li>
+	<li class="cat-item cat-item-82"><a href="http://www.rei-labs.net/category/server-2/">Server</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.rei-labs.net/category/software/">Software</a>
+</li>
+		</ul>
+</div><div id="meta-2" class="widget-wrapper widget_meta"><div class="widget-title"><h3>Meta</h3></div>			<ul>
+						<li><a href="http://www.rei-labs.net/wp-login.php">Log in</a></li>
+			<li><a href="http://www.rei-labs.net/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.rei-labs.net/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+</div>
+			</div><!-- end of #widgets -->
+</div><!-- end of #wrapper -->
+</div><!-- end of #container -->
+
+<div id="footer" class="clearfix">
+	
+	<div id="footer-wrapper">
+
+		
+		<div class="grid col-940">
+
+			<div class="grid col-540">
+							</div><!-- end of col-540 -->
+
+			<div class="grid col-380 fit">
+				<ul class="social-icons"></ul><!-- .social-icons -->			</div><!-- end of col-380 fit -->
+
+		</div><!-- end of col-940 -->
+			<div id="colophon-widget" class="grid col-940">
+		
+		
+			<div id="text-6" class="colophon-widget widget-wrapper widget_text">			<div class="textwidget"><script async="" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/adsbygoogle.js"></script>
+<!-- Rei-Labs Blog Widget Responsive -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-1645048522275095" data-ad-slot="9734656367" data-ad-format="auto"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:918px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:918px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" frameborder="0" height="90" width="918"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</div>
+		
+			</div><!-- end of #colophon-widget -->
+
+		<div class="grid col-300 copyright">
+			© 2015<a href="http://www.rei-labs.net/" title="ReiLabs">
+				ReiLabs			</a>
+		</div><!-- end of .copyright -->
+
+		<div class="grid col-300 scroll-top"><a href="#scroll-top" title="scroll to top">↑</a></div>
+
+		<div class="grid col-300 fit powered">
+			<a href="http://cyberchimps.com/responsive-theme/" title="Responsive Theme">
+				Responsive Theme</a>
+			powered by <a href="http://wordpress.org/" title="WordPress">
+				WordPress</a>
+		</div><!-- end .powered -->
+
+	</div><!-- end #footer-wrapper -->
+
+	</div><!-- end #footer -->
+
+
+    <script>
+      jQuery(document).ready(function($) {
+        $("a.nturl").on("click",function() {
+	  default_lang = "en";
+	  lang_prefix = $(this).attr("class").split(" ")[2];
+			  
+	  if (lang_prefix == default_lang) {			   
+	    load_default();
+	  } else {
+	    load_selected_language();
+	  }
+			 
+	  function load_default() {
+	    doGoogleLanguageTranslator(default_lang + "|" + default_lang);
+	  }
+			 
+	  function load_selected_language() {
+	    doGoogleLanguageTranslator(default_lang + "|" + lang_prefix);
+	  }
+        });
+		  
+        $("a.flag").on("click",function() {
+          default_lang = "en";
+	  lang_prefix = $(this).attr("class").split(" ")[2];
+			  
+	  if (lang_prefix == default_lang) {			   
+	    load_default();
+	  } else {
+	    load_selected_language();
+          }
+			 
+	  function load_default() {
+	    doGoogleLanguageTranslator(default_lang + "|" + default_lang);
+	  }
+			 
+	  function load_selected_language() {
+	    doGoogleLanguageTranslator(default_lang + "|" + lang_prefix);
+	  }
+        });
+
+        if ($ ("body > #google_language_translator").length == 0) {
+          $("#glt-footer").html("<div id='google_language_translator'></div>");
+        }
+      });
+    </script>
+
+    <div id="glt-footer"><div id="google_language_translator"></div></div><script type="text/javascript">function GoogleLanguageTranslatorInit() { new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_language_translator');}</script><script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/element.js"></script><div id="icc_message" style="background-color: rgb(221, 221, 221); display: block;">This site uses cookies. <a href="http://www.rei-labs.net/cookies">Find out more about this site’s cookies.</a> By using this site you consent to the <a href="http://www.rei-labs.net/tou">Terms of use</a>. <span class="icc_dismiss_button">☒</span></div><script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/form.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/responsive-scripts.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/jquery.js"></script>
+<script type="text/javascript" src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/comment-reply.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="ESP8266%20connecting%20to%20internet%20_%20ReiLabs_files/translate-32.png" height="20" width="20"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Testo originale</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Contribuisci a una traduzione migliore</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div style="display: none;" class="status-message"></div></div>
+
+
+
+
+
+</body></html>
+<!-- Dynamic page generated in 0.508 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2015-02-27 09:51:59 -->
+<!-- super cache -->
