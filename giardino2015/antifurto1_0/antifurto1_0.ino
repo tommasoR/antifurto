@@ -1,6 +1,5 @@
 #include <SPI.h>
-#include <OneWire.h>
-#include <DallasTemperature.h>
+
 
 /* Antifurto giardino versione 1.0 del Febbraio 2015 by Tom
    comprende:
@@ -46,7 +45,7 @@ const word PAGINA2 = 13000;// dopo 13 secondi pagina 2 i valori DEVONO essere di
 //Variabili
 unsigned long currentMillis = 0L;
 word sogliaGiornoNotte = 100;//da verificare con metodo empirico
-unsigned long pollingPhotoR = 30000;//5 minut1 300.000 TODO
+unsigned long pollingPhotoR = 300000;//5 minut1 300.000 TODO
 word pollingMonitor = PAGINA1;
 unsigned long durataSirena = 0;// ogni allarme definisce la durata in millisecondi
 unsigned long startMillisSirena = 0L;
@@ -82,7 +81,6 @@ zona zonas[3];
 //LM35 Pin Variables
 #define tempPin 1 //the analog pin the LM35's Vout (sense) pin is connected to
     //the resolution is 10 mV / degree centigrade with a
-    //500 mV offset to allow for negative temperatures
   float temperatureC = 0.0; // the analog reading from the sensor
   int LM35sensor = 0;
   float volts = 0.0;
@@ -313,7 +311,7 @@ void loop(void)
 {
   currentMillis = millis();
   photoRes();
-  contattiNC();
+  //contattiNC();
   readTemp();
   monitorTmp();
   sirena();
@@ -382,6 +380,8 @@ Serial.println(charBuf);
      //valore letto per la temperatura
      dtostrf(temperatureC , 2, 2, tempBuf);
 Serial.print("valore che dovrei mandare su lcd tempBuf=");Serial.println(tempBuf);
+LcdString("  T:");
+LcdString(tempBuf);
     } else {
       //pagina 2
       pollingMonitor=PAGINA1;//prossimo giro fai vedere prima pagina
@@ -435,11 +435,13 @@ Serial.println("spengo");
 }
 
 void readTemp() {
-  if(currentMillis - previousMillisTemp > 20000) {
+  LM35sensor += analogRead(tempPin);
+  LM35sensor /=2;
+  if(currentMillis - previousMillisTemp > 5000) {
     // save the last time control
     previousMillisTemp = currentMillis;
     //getting the voltage reading from the temperature sensor
-    LM35sensor = analogRead(tempPin);
+    //LM35sensor = analogRead(tempPin);
     //lettura valore del sensore LM35 messo sull'ingresso
     //analogico A1
     volts = ( LM35sensor/1024.0)*5.0; //formula per ottenere la tensione di uscita dell'LM35 in volts
